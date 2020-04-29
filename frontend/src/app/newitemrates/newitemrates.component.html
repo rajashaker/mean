@@ -1,0 +1,1065 @@
+<body>
+  <div id="main">
+    <nav class="navbar  navbar-expand-lg navbar-light " style="background-color: -webkit-linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5));">
+      <a class="navbar-brand"  > CMS</a>
+      <button class="navbar-toggler"style="background-color:#fffffff7" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav" >
+          <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          PROFILE
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" routerLink="/basicrates" >Update</a>
+              <a class="dropdown-item"routerLink="/des">Change Password</a>
+             
+            </div>
+          </li>
+
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          PROJECT
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" routerLink="/basicrates" >ADD</a>
+              <a class="dropdown-item"routerLink="/des"> EDIT</a>
+              <a class="dropdown-item"routerLink="/des"> DELETE</a>
+             
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            STANDARD ITEMS
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" routerLink="/basicrates" >Basic Rates</a>
+              <a class="dropdown-item"routerLink="/des">Description & cost</a>
+              <a class="dropdown-item" >Refer</a>
+            </div>
+          </li> -->
+  
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            NEWITEMS
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <!-- <a class="dropdown-item" routerLink="/bas" >Basic Rates</a> -->
+              <a  class="dropdown-item"routerLink="/NIR">Item Rates</a>
+              <a class="dropdown-item" routerLink="/NCBU">Cost Breakup</a>
+            </div>
+          </li>
+
+
+
+
+
+
+
+        </ul>
+       
+       
+      </div>
+    </nav>
+
+
+
+
+
+  <h1  style="font-style:italic;text-align: center;" class="animated fadeInRight">
+    NEW ITEMS OF CONSTRUCTION
+  </h1>
+
+  <mat-card class="card1">
+    <form [formGroup]="form">
+      <!-- {{form.value |json}} -->
+      <div class="mb-3">
+        <!-- <label >SELECT</label> -->
+<!-- ((submitandview())) put in formcontrolname civelec -->
+
+        <div class="form-check">
+          <!-- <mat-card class="card0"> -->
+          <input class="form-check-input" type="radio" formControlName="Civ_Elec" (click)="civilyearofsr2007();ui($event);"
+            value="CIVIL">
+          <label class="form-check-label">CIVIL</label>
+          &nbsp;&nbsp;
+          <input class="form-check-input" type="radio" formControlName="Civ_Elec" (click)="electricalyearof2007();ui($event)"
+            value="ELECT">
+          <label class="form-check-label">ELECTRICAL </label>
+        <!-- </mat-card> -->
+        </div>
+        <br>
+        <div class="row">
+        <div *ngIf=show class="column">
+          <!-- <select (change)="di($event)" required class="custom-select" formControlName="year" placeholder="select year"
+          [class.is-invalid]="form.get('year').invalid && form.get('year').touched">
+            <option value="">select year</option>
+            <option *ngFor="let city of dropciv" [ngValue]="city._id"> {{city._id}} </option>
+          </select> -->
+        &nbsp;&nbsp;&nbsp;&nbsp;   
+        <mat-form-field  appearance="fill">
+          <mat-label >Select year</mat-label>
+          <mat-select  formControlName="year"  (selectionChange)="di($event)" required>
+            <mat-option value="">--Select--</mat-option>
+            <mat-option [title]="city._id" *ngFor="let city of dropciv" [value]="city._id">
+              {{city._id}}
+            </mat-option>
+          </mat-select>
+          <mat-error>Please select year</mat-error>
+         </mat-form-field> 
+          
+        </div>
+        <br>
+
+     
+
+
+
+        &nbsp;&nbsp;&nbsp;&nbsp; 
+<div *ngIf=show1 class="column1">
+  
+  <mat-form-field  appearance="fill" class="example-full-widt">
+    <mat-label >Select year</mat-label>
+    <mat-select  formControlName="details"  (selectionChange)="onChange($event)" required>
+      <mat-option value="">--Select--</mat-option>
+      <mat-option value="Add New Item Of Construction">Add New Item Of Construction </mat-option>
+          <mat-option value="Add New Item Of Construction Under Standard & New Item">Add New Item Of Construction Under Standard & New Item</mat-option>
+          <mat-option value="Edit New Item Of Construction">Edit And Delete New Item Of Construction</mat-option>
+         
+          <mat-option value="View Rates of New Item Of Construction">View Rates of New Item Of Construction</mat-option>
+          <mat-option value="View Standard And New Item Of Construction">View Standard And New Item Of Construction</mat-option>
+          
+    </mat-select>
+    <mat-error>Select any one</mat-error>
+   </mat-form-field> 
+    
+
+
+
+        <!-- <select required  [class.is-invalid]="form.get('details').invalid && form.get('details').touched"
+        class="custom-select" formControlName="details" (change)="onChange($event)">
+
+          
+          <option value="Add New Item Of Construction">Add New Item Of Construction </option>
+          <option value="Add New Item Of Construction Under Standard & New Item">Add New Item Of Construction Under Standard & New Item</option>
+          <option value="Edit New Item Of Construction">Edit And Delete New Item Of Construction</option>
+         
+          <option value="View Rates of New Item Of Construction">View Rates of New Item Of Construction</option>
+          <option value="View Standard And New Item Of Construction">View Standard And New Item Of Construction</option>
+          
+        </select> -->
+      </div>
+    </div>
+      </div>
+    </form>
+
+  
+
+
+
+  <!-- //add form -->
+
+  <mat-card class="card3" *ngIf=addnew>
+    <div>
+      <h2 style="font-family:'Times New Roman, Times, serif';text-align: center;color:#661f77;padding-top: 10px;" class="animated bounceInDown">{{title}}</h2>
+      <form [formGroup]="form1">
+        <!-- {{form1.value |json}} -->
+      <div class="row">
+        <div class="s1">
+          &nbsp;&nbsp;&nbsp;&nbsp; 
+        <mat-form-field appearance="fill">
+          <mat-label >Select Chapter</mat-label>
+          <mat-select  formControlName="subheads" (selectionChange)="xs($event);" required>
+            <mat-option value="">Select</mat-option>
+            <mat-option *ngFor="let city of ash" [value]="city._id.as">
+              {{city._id.as}}-{{city._id.qw}}
+            </mat-option>
+          </mat-select>
+          <mat-error>Please select Chapter</mat-error>
+         </mat-form-field> 
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;  
+      <div *ngIf=step1 class="s2">
+        &nbsp;&nbsp;&nbsp;&nbsp;  
+        <mat-form-field appearance="fill" >
+          <mat-label>Select SubHeads </mat-label>
+          <mat-select  formControlName="summa" (selectionChange)="xsubheads($event);" required  >
+            <mat-option >select subheads </mat-option>
+            <mat-option value="x.x">X.X </mat-option>
+            <mat-option value="x.x.x">X.X.X </mat-option>
+            <mat-option value="x.x.x.x">X.X.X.X </mat-option>
+            <mat-option value="x.x.x.x.x">X.X.X.X.X </mat-option>
+          </mat-select>
+          <mat-error>Please select  SubHeads </mat-error>
+         </mat-form-field>  
+        </div>
+      </div>
+     <div class="x.x">
+       <h6 style="font-style:italic;font-family:'Times New Roman, Times, serif';text-align: center;padding-top: 10px;color:royalblue;" *ngIf=disi class="animated bounceInUp">ITEMCODE FOR THIS ITEM - {{b}}</h6>
+       <!-- <input type=text [value]="b" > -->
+    <div  *ngIf="newone">
+     
+                 <mat-form-field   appearance="fill" *ngIf="first"   class="example-full-width">
+                  <!-- <mat-label>Description </mat-label> -->
+            <textarea matInput  (change)="description($event);"  formControlName="description" required  placeholder="Enter Description for x.x"></textarea>
+            <mat-error>Description required</mat-error> 
+          </mat-form-field>
+  
+        </div>
+          
+          <div  *ngIf="second" >
+            <!-- <input  [disabled]=true   type=text [value]="c" > -->
+            <mat-form-field  appearance="fill" class="example-full-width">
+              <textarea matInput formControlName="masterdesc" placeholder="Description for x.x" required ></textarea>
+              <mat-error>Description required</mat-error> 
+            </mat-form-field>
+            <!-- <input  [disabled]=true  type=text [value]="b" > -->
+            <mat-form-field  appearance="fill" class="example-full-width">
+              <textarea matInput formControlName="description"(change)="description($event);" placeholder="Description for x.x.x" required ></textarea>
+              <mat-error>Description required</mat-error> 
+            </mat-form-field>
+          </div>
+  
+          <div   *ngIf="third" >
+            <!-- <input [disabled]=true  type=text [value]="c" > -->
+            <mat-form-field  appearance="fill"  class="example-full-width">
+              <textarea  formControlName="masterdesc" matInput placeholder="Description for x.x" required></textarea>
+              <mat-error>Description required</mat-error> 
+            </mat-form-field>
+            
+            <!-- <input  [disabled]=true  type=text [value]="e" > -->
+            <mat-form-field  appearance="fill" class="example-full-width">
+              <textarea  formControlName="submasterdesc" matInput placeholder="Description for x.x.x" required></textarea>
+              <mat-error>Description required</mat-error> 
+            </mat-form-field>
+            <!-- <input  [disabled]=true   type=text [value]="b" > -->
+            <mat-form-field  appearance="fill" class="example-full-width">
+              <textarea  formControlName="description" (change)="description($event);" matInput placeholder="Description for x.x.x.x" required></textarea>
+              <mat-error>Description required</mat-error> 
+            </mat-form-field>
+  
+           
+          </div>
+  
+          <div  *ngIf="fourth" >
+            <!-- <input    [disabled]=true  type=text [value]="c" > -->
+            <mat-form-field  appearance="fill" class="example-full-width">
+              <textarea  formControlName="masterdesc" matInput placeholder="Description for x.x" required></textarea>
+              <mat-error>Description required</mat-error> 
+            </mat-form-field>
+            
+            <!-- <input  [disabled]=true  type=text [value]="f" > -->
+            <mat-form-field  appearance="fill"  class="example-full-width">
+              <textarea  formControlName="submasterdesc" matInput placeholder="Description for x.x.x" required></textarea>
+              <mat-error>Description required</mat-error> 
+            </mat-form-field>
+            
+            <!-- <input  [disabled]=true  type=text [value]="e" > -->
+            <mat-form-field  appearance="fill"  class="example-full-width">
+              <textarea  formControlName="subdesc" matInput placeholder="Description for x.x.x.x" required></textarea>
+              <mat-error>Description required</mat-error> 
+            </mat-form-field>
+  
+            <!-- <input  [disabled]=true  type=text [value]="b" > -->
+            <mat-form-field  appearance="fill"  class="example-full-width">
+              <textarea  formControlName="description"  (change)="description($event);" matInput placeholder="Description for x.x.x.x.x"  required></textarea>
+              <mat-error>Description required</mat-error> 
+            </mat-form-field>
+  
+            
+          </div>
+
+          <div class="three" *ngIf="main">
+            <mat-form-field  appearance="outline">
+              <mat-label>Unit</mat-label>
+              <input matInput type="number"  formControlName="unit"    placeholder="Enter Unitvalue ">
+              <mat-icon matSuffix>unit</mat-icon>
+              <mat-error *ngIf="!form1.controls['unit'].valid && form1.controls['unit'].touched">
+                {{ getunit() }} 
+
+              </mat-error>
+               </mat-form-field>
+               &nbsp;
+               &nbsp;
+               &nbsp;
+               <mat-form-field appearance="fill" >
+                <mat-label>Select Unit </mat-label>
+                <mat-select formControlName="unitval"  (selectionChange)="other($event);" required  >
+                  <mat-option >select </mat-option>
+                  <mat-option  *ngFor="let city of unitss" [value]="city._id"> {{city._id}}  </mat-option>
+                  <mat-option  >others </mat-option>
+                </mat-select>
+                <mat-error>Please select unit </mat-error>
+               </mat-form-field>  
+               &nbsp;
+               &nbsp;
+
+    
+                  <mat-form-field appearance="fill"  *ngIf=addnewunit>
+                    <mat-label>Enter New Unit</mat-label>
+                    <input matInput formControlName="newunit" (keyup)="ss11($event)" placeholder="Enter New Unit">
+                    <mat-hint align="start">only letters </mat-hint>
+                   <mat-error>Required only letters</mat-error>
+                  </mat-form-field>
+                  &nbsp;
+               &nbsp;
+                  <button *ngIf=addnewunit mat-raised-button  
+                  matTooltip="click Add and Select unit" 
+                  aria-label="Button that displays a tooltip when focused or hovered over"
+                   [disabled]="!form1.controls['newunit'].valid"   (click)="vv()" color="accent" >Add</button>
+           
+
+
+                   &nbsp;
+                   &nbsp;
+
+
+          
+
+
+             
+            
+
+            <mat-form-field appearance="fill">
+              <mat-label>Standard Rate</mat-label>
+              <input matInput type="number"   formControlName="rate"  placeholder="Enter Rate " class="example-right-align">
+              <span matPrefix>₹&nbsp;</span>
+              <span matSuffix>.00</span>
+              
+              <mat-error *ngIf="!form1.controls['rate'].valid && form1.controls['rate'].touched">
+                {{ getrate() }} 
+
+              </mat-error>
+            </mat-form-field>
+
+    
+          </div>
+         
+          
+          
+          <div align="center">
+            <div *ngIf=hide>
+            <button  [disabled]='!form1.valid'   (click)="sube()"mat-raised-button  color="accent"  >Save</button> &nbsp;
+          </div>
+           <button mat-button color="primary" (click)="reset()" >Clear</button>
+          </div>
+    
+        </div>
+     </form>
+
+    </div>
+
+  </mat-card>
+
+
+ 
+
+
+  <!-- Add New Item Of Construction Under Standard & New Item -->
+
+<mat-card class="card7" *ngIf=underexists>
+  
+ 
+  <h2 class="animated flipInX" style="font-family:'Times New Roman, Times, serif';text-align: center;color:#661f77;padding-top: 10px;" >{{title}}</h2>
+  <form [formGroup]="form5">
+    <!-- {{form5.value |json}}
+    {{form5.valid}} -->
+
+    <mat-form-field appearance="fill">
+      <mat-select  (selectionChange)="getsub($event);" formControlName="usersubhead" placeholder="Select Subheads">
+  
+        <ng-container *ngFor="let city of under">
+          <mat-option  matTooltip="{{city._id.as +'-'+city._id.qw}}" value="{{city._id.as}}"> {{city._id.as}}-{{city._id.qw}}</mat-option>
+        </ng-container>
+      </mat-select >
+     
+    </mat-form-field> 
+    &nbsp;&nbsp;&nbsp;&nbsp;
+
+    <mat-form-field *ngIf=underexists2  appearance="fill">
+      <mat-select (selectionChange)="getsub1($event);"  formControlName="subhead1" placeholder="Select Subheads1">
+     
+        <ng-container *ngFor="let city of under1">
+          <mat-option    matTooltip="{{city._id.as +'-'+city._id.qw}}" [value]="city._id.as"> {{city._id.as}}-{{city._id.qw}}</mat-option>
+          
+        </ng-container>
+        <mat-option style="font-style:italic;text-align:center;" value="newitem"> -- New Item --</mat-option>
+      </mat-select >
+    </mat-form-field>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-form-field  *ngIf=underexists3 appearance="fill">
+      <mat-select  (selectionChange)="getsub2($event);" formControlName="usermastercode" placeholder="Select Subheads2">
+     
+        <ng-container *ngFor="let city of under2" appearance="fill">
+          <mat-option   matTooltip="{{city._id.as +'-'+city._id.qw}}" [value]="city._id.as"> {{city._id.as}}-{{city._id.qw}}</mat-option>
+   </ng-container>
+   <mat-option style="font-style:italic;text-align:center;" value="newitem"> -- New Item --</mat-option>
+      </mat-select >
+    </mat-form-field>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-form-field *ngIf=underexists4 appearance="fill">
+      <mat-select (selectionChange)="getsub3($event);"   formControlName="usersubcode" placeholder="Select Subheads3">
+       
+        <ng-container *ngFor="let city of under3">
+          <mat-option  matTooltip="{{city._id.as +'-'+city._id.qw}}" [value]="city._id.as"> {{city._id.as}}-{{city._id.qw}}</mat-option>
+    
+        </ng-container>
+        <mat-option style="font-style:italic;text-align:center;" value="newitem"> -- New Item --</mat-option>
+      </mat-select >
+    </mat-form-field>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    
+    <mat-form-field *ngIf=underexists5 appearance="fill">
+      <mat-select    (selectionChange)="getsub4($event);"  formControlName="userssubcode" placeholder="Select Subheads4">
+        
+        <ng-container *ngFor="let city of under4">
+          <mat-option   matTooltip="{{city._id.as +'-'+city._id.qw}}" [value]="city._id.as"> {{city._id.as}}-{{city._id.qw}}</mat-option>
+    
+        </ng-container>
+        <!-- <mat-option style="font-style:italic;text-align:center;" value="newitem"> -- New Item --</mat-option> -->
+      </mat-select >
+    </mat-form-field> 
+    &nbsp;&nbsp;&nbsp;&nbsp;
+
+    <h4  class="animated fadeInRight"  *ngIf="tit" >{{title1}}</h4>
+    <h4  class="animated fadeInRight"  *ngIf="allsub" >Add Subheads</h4>
+
+    <div *ngIf=point >
+   
+      <mat-form-field appearance="fill"  >
+        <mat-select formControlName="summa" (selectionChange)="Addsubheads($event)" placeholder="Subhead x.x">
+         
+      <mat-option  value="x.x"> X.X</mat-option>
+        </mat-select >
+      </mat-form-field>
+     
+    </div>
+<!-- //x.x.x -->
+    <div *ngIf=threesub >
+   
+      <mat-form-field  appearance="fill" >
+        <mat-select formControlName="summa" (selectionChange)="Addsubheads($event)" placeholder="Subhead x.x.x">
+       
+      <mat-option  value="x.x.x"> X.X.X</mat-option>
+        </mat-select >
+      </mat-form-field>
+
+    </div>
+
+    <div *ngIf=foursub  >
+   
+      <mat-form-field appearance="fill" >
+      <mat-select formControlName="summa" (selectionChange)="Addsubheads($event)" placeholder="Subhead x.x.x.x">
+       
+        <mat-option  value="x.x.x.x"> X.X.X.X</mat-option>
+          </mat-select >
+        </mat-form-field>
+    
+    </div>
+    <div *ngIf=fivesub >
+   
+      <mat-form-field appearance="fill" >
+      <mat-select formControlName="summa" (selectionChange)="Addsubheads($event)" placeholder="Subhead x.x.x.x.x">
+       
+        <mat-option  value="x.x.x.x.x">X.X.X.X.X </mat-option>
+          </mat-select >
+        </mat-form-field>
+      
+    </div>
+    <div *ngIf=allsub > 
+      <mat-form-field  appearance="fill">
+        <mat-label>Select SubHeads </mat-label>
+        <mat-select  formControlName="summa1" (selectionChange)="xsubheads1($event);" required  >
+          <mat-option value=""  >select subheads </mat-option>
+          <mat-option  value="x.x" [disabled]="disableSelect1">X.X </mat-option>
+          <mat-option  value="x.x.x" [disabled]="disableSelect2">X.X.X </mat-option>
+          <mat-option  value="x.x.x.x" [disabled]="disableSelect3">X.X.X.X </mat-option>
+          <mat-option  value="x.x.x.x.x" [disabled]="disableSelect4" >X.X.X.X.X </mat-option>
+        </mat-select>
+        <mat-error>Please select  SubHeads </mat-error>
+       </mat-form-field>  
+      </div>
+<!--   
+      
+        <mat-form-field  *ngIf=desxx class="example-full-width">
+          <textarea  formControlName="description" matInput (change)="description1($event)"   placeholder=" Enter Description here "></textarea>
+        </mat-form-field>
+    <br>
+    <div  *ngIf="desxxx" >
+ 
+      <mat-form-field   class="example-full-width">
+        <textarea  disabled="true"  matInput formControlName="MasterDesc" placeholder="Description for x.x"></textarea>
+      </mat-form-field>
+
+      <mat-form-field   class="example-full-width">
+        <textarea matInput formControlName="description"(change)="description1($event);" placeholder="Description for x.x.x"></textarea>
+      </mat-form-field>
+    </div> -->
+
+     <!-- <div   *ngIf="desxxxx" >
+     
+      <mat-form-field    class="example-full-width">
+        <textarea  disabled="true" formControlName="MasterDesc" matInput placeholder="Description for x.x"></textarea>
+      </mat-form-field>
+      
+      
+      <mat-form-field   class="example-full-width">
+        <textarea  formControlName="SubMasterDesc" matInput placeholder="Description for x.x.x"></textarea>
+      </mat-form-field>
+     
+      <mat-form-field   class="example-full-width">
+        <textarea  formControlName="description" (change)="description1($event);" matInput placeholder="Description for x.x.x.x"></textarea>
+      </mat-form-field>
+
+     
+    </div>
+
+    <div  *ngIf="desxxxxx" >
+   
+      <mat-form-field   class="example-full-width">
+        <textarea  formControlName="MasterDesc" matInput placeholder="Description for x.x"></textarea>
+      </mat-form-field>
+      
+    
+      <mat-form-field   class="example-full-width">
+        <textarea  formControlName="SubMasterDesc" matInput placeholder="Description for x.x.x"></textarea>
+      </mat-form-field>
+      
+    
+      <mat-form-field   class="example-full-width">
+        <textarea  formControlName="SubDesc" matInput placeholder="Description for x.x.x.x"></textarea>
+      </mat-form-field> -->
+
+      <!-- <mat-form-field   class="example-full-width">
+        <textarea  formControlName="description"  (change)="description1($event);" matInput placeholder="Description for x.x.x.x.x"></textarea>
+      </mat-form-field> -->
+
+      
+    <!-- </div>   -->
+
+    <div *ngIf="imp">  
+      <h6 *ngIf=showrate 
+      style="font-family:'Times New Roman, Times, serif';text-align: center;
+      padding-top: 10px;color: #084a79eb;font-size: 23px;font-weight: inherit;
+    font-style: italic" 
+      class="animated fadeInLeft" >ItemCode For This Item-{{b}}</h6>
+
+      <mat-form-field appearance="fill"  class="example-full-width">
+        <textarea  formControlName="description" matInput (change)="description1($event)"   placeholder=" Enter Description here "></textarea>
+      </mat-form-field>
+
+    
+
+
+
+
+
+
+
+
+
+
+   
+      <mat-form-field  appearance="outline">
+        <mat-label>Unit</mat-label>
+        <input matInput  type="number" formControlName="unit"    placeholder="Enter Unitvalue ">
+        <mat-icon matSuffix>unit</mat-icon>
+        <mat-error *ngIf="!form5.controls['unit'].valid && form5.controls['unit'].touched">
+          {{ getunit1() }} 
+
+        </mat-error>
+         </mat-form-field>
+         &nbsp;
+         &nbsp;
+         &nbsp;
+         <mat-form-field  appearance="fill">
+          <mat-label>Select Unit </mat-label>
+          <mat-select formControlName="unitval"  (selectionChange)="others($event);" required  >
+            <mat-option >select </mat-option>
+            <mat-option  *ngFor="let city of unitss" [value]="city._id"> {{city._id}}  </mat-option>
+            <mat-option  >others </mat-option>
+          </mat-select>
+          <mat-error>Please select unit </mat-error>
+         </mat-form-field>  
+         &nbsp;
+         &nbsp;
+         <mat-form-field appearance="fill"  *ngIf=addnewunit>
+          <mat-label>Enter New Unit</mat-label>
+          <input matInput formControlName="newunit" (keyup)="ss12($event)" placeholder="Enter New Unit">
+          <mat-hint align="start">only letters </mat-hint>
+         <mat-error>Required only letters</mat-error>
+        </mat-form-field>
+        &nbsp;
+     &nbsp;
+        <button *ngIf=addnewunit mat-raised-button  
+        matTooltip="click Add and Select unit" 
+        aria-label="Button that displays a tooltip when focused or hovered over"
+         [disabled]="!form5.controls['newunit'].valid"   (click)="vv1()" color="accent" >Add</button>
+ 
+
+
+         &nbsp;
+         &nbsp;
+
+
+      
+
+         <mat-form-field appearance="fill">
+          <mat-label> Rate</mat-label>
+          <input matInput type="number"   formControlName="rate" 
+          (keyup)="code($event)" placeholder="Enter Rate " class="example-right-align">
+          <span matPrefix>₹&nbsp;</span>
+          <span matSuffix>.00</span>
+          
+          <mat-error *ngIf="!form5.controls['rate'].valid && form5.controls['rate'].touched">
+            {{ getrate1() }} 
+  
+          </mat-error>
+        </mat-form-field>
+
+   
+    
+    
+    <div align="center">
+    
+      <button   *ngIf="but"   (click)="sa()"  [disabled]='!form5.valid' mat-raised-button color="accent"  >Save</button> &nbsp;
+    
+     <button color="primary" mat-raised-button (click)="form5resteting()" >Clear</button>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <div *ngIf="new">
+    
+    
+  <div *ngIf=threesub >
+   
+    <select class="custom-select"  (change)="Addsubheads($event)"  formControlName="summa" >
+      <option value="">select subheads </option>
+     
+      <option value="x.x.x">X.X.X </option>
+     
+    </select>
+  </div>
+
+  <div *ngIf=foursub >
+   
+    <select class="custom-select"  (change)="Addsubheads($event)"  formControlName="summa" >
+      <option value="">select subheads </option>
+     
+  
+      <option value="x.x.x.x">X.X.X.X </option>
+     
+    </select>
+  </div>
+
+  
+  <div *ngIf=fivesub >
+   
+    <select class="custom-select"  (change)="Addsubheads($event)"  formControlName="summa" >
+      <option value="select">select subheads </option>
+     
+      <option value="">X.X.X.X.X </option>
+     
+    </select>
+  </div>
+
+
+  <div >
+  
+
+    
+   
+     
+    </div>
+  </div> -->
+
+
+
+    
+
+
+  </form>
+</mat-card>
+</mat-card>
+ <!--view form-->
+ <mat-card class="card6" *ngIf=viewnew>
+  <h2 class="animated flipInY" 
+  style="font-family:'Times New Roman, Times, serif';text-align: center;color:#661f77;" >{{title}}</h2>
+<form [formGroup]="form2">
+<!-- {{form2.value |json}} -->
+
+<mat-form-field >
+  <mat-label >Select Chapter</mat-label>
+  <mat-select  formControlName="usersubhead" (click)="submitandview($event);" (selectionChange)="submitandview($event);" required>
+    <mat-option value="">Select</mat-option>
+    <mat-option *ngFor="let city of newsub" [value]="city._id.as">
+      {{city._id.as}}-{{city._id.qw}}
+    </mat-option>
+  </mat-select>
+  
+ </mat-form-field>
+
+
+  <div  *ngIf="edittab" class="example-container mat-elevation-z8">
+      
+
+    <table mat-table [dataSource]="listData" class="animated fadeInRight">
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="Code"  sticky>
+        <th mat-header-cell *matHeaderCellDef> CODE </th>
+        <td mat-cell *matCellDef="let element"> {{element.Itemcode}} </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="Description" >
+        <th mat-header-cell *matHeaderCellDef>  DESCRIPTION </th>
+        <td mat-cell *matCellDef="let element"> {{element.Description}} </td>
+      </ng-container>
+    
+      <!-- Weight Column -->
+      <ng-container matColumnDef="Unitvalue">
+        <th mat-header-cell *matHeaderCellDef> UNIT </th>
+        <td mat-cell *matCellDef="let element"> {{element.Unitvalue}} {{element.Unit}}  </td>
+      </ng-container> 
+    
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="Rate">
+        <th mat-header-cell *matHeaderCellDef> RATE(in rs) </th>
+        <td mat-cell *matCellDef="let element"> {{element.Rate}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="currate">
+        <th mat-header-cell *matHeaderCellDef> Cuurent Market RATE(in rs) </th>
+        <td mat-cell *matCellDef="let element"> {{element.currentrate}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="loading">
+        <mat-footer-cell *matFooterCellDef colspan="6">
+       After selecting  click the show button to view the data ...
+        </mat-footer-cell>
+        </ng-container>
+        <ng-container matColumnDef="noData">
+          <mat-footer-cell *matFooterCellDef colspan="6">
+         No Data...
+          </mat-footer-cell>
+          </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}"></mat-footer-row>
+      <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null&&listData.data.length==0)}"></mat-footer-row>
+    </table>
+    </div>
+
+
+</form>
+</mat-card>
+
+
+<!--edit form-->
+<mat-card  class="card5" *ngIf=editnew> 
+  <h2 class="animated flipInX"
+  style="font-family:'Times New Roman, Times, serif';text-align: center;color:crimson;">{{title}}</h2>
+  <!-- {{form3.value |json}} -->
+  <form [formGroup]="form3">
+    
+  
+   
+    <!-- <button (click)="submit($event)">click and get subheads</button>   
+    <button (click)="submitget()">show</button>    -->
+      <!-- <div  class="a"> -->
+        <mat-form-field >
+          <mat-label >Select Chapter</mat-label>
+          <mat-select  formControlName="usersubhead" (click)="submit($event);" (selectionChange)="submit($event);" required>
+            <mat-option value="">Select</mat-option>
+            <mat-option *ngFor="let city of newsub" [value]="city._id.as">
+              {{city._id.as}}-{{city._id.qw}}
+            </mat-option>
+          </mat-select>
+          
+         </mat-form-field>
+       
+      <!-- </div> -->
+  
+      <div *ngIf="edittab" class="example-container mat-elevation-z8">
+          
+    
+        <table mat-table [dataSource]="listData" class="animated fadeInRight">
+      
+          <!-- Position Column -->
+          <ng-container matColumnDef="Code" sticky>
+            <th mat-header-cell *matHeaderCellDef> CODE </th>
+            
+           
+            <td mat-cell *matCellDef="let element"> 
+              <!-- <a  style=" color: #09ebd4;" class="we"   (click)="onSelect(element);">
+                {{element.Itemcode}}  </a>  -->
+                {{element.Itemcode}} </td>
+          </ng-container>
+        
+          <!-- Name Column -->
+          <ng-container matColumnDef="Description">
+            <th mat-header-cell *matHeaderCellDef>  DESCRIPTION </th>
+            <td mat-cell *matCellDef="let element"> {{element.Description}} </td>
+          </ng-container>
+        
+          <!-- Weight Column -->
+          <ng-container matColumnDef="Unitvalue">
+            <th mat-header-cell *matHeaderCellDef> UNIT </th>
+            <td mat-cell *matCellDef="let element"> {{element.Unitvalue}} {{element.Unit}}  </td>
+          </ng-container> 
+        
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="Rate">
+            <th mat-header-cell *matHeaderCellDef> RATE(in rs) </th>
+            <td mat-cell *matCellDef="let element"> {{element.Rate}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="currate">
+            <th mat-header-cell *matHeaderCellDef> Curent Market RATE(in rs) </th>
+            <td mat-cell *matCellDef="let element"> {{element.currentrate}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Update & delete </th>
+            <mat-cell *matCellDef="let element">
+              <button mat-icon-button (click)="submitget()" color="accent"><mat-icon>refresh</mat-icon></button> 
+              <button mat-icon-button (click)="onSelect(element)"><mat-icon>launch</mat-icon></button>
+             
+              <button mat-icon-button  (click)="onSelectdelete(element)"color="warn"><mat-icon>delete_outline</mat-icon></button>
+             
+            </mat-cell>
+          </ng-container>
+  
+          <ng-container matColumnDef="loading">
+            <mat-footer-cell *matFooterCellDef colspan="6">
+           After selecting  click the show button to view the data ...
+            </mat-footer-cell>
+            </ng-container>
+            <ng-container matColumnDef="noData">
+              <mat-footer-cell *matFooterCellDef colspan="6">
+             No Data...
+              </mat-footer-cell>
+              </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumn; sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumn;"></tr>
+          <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}"></mat-footer-row>
+          <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null&&listData.data.length==0)}"></mat-footer-row>
+        </table>
+        </div>
+  
+  
+    </form>
+  
+  
+</mat-card>
+
+
+<!-- //View Standard And New Item Of Construction -->
+<mat-card  class="card6" *ngIf=standardnew>
+   
+  <h2 class="animated flipInX"
+  style="font-family:'Times New Roman, Times, serif';text-align: center;color:#661f77;">{{title}}</h2>
+  <form [formGroup]="form4" >
+    <!-- {{form4.value |json}} -->
+    <br>
+
+    <mat-form-field>
+      <mat-select (click)="getingstandardsub($event)"  (selectionChange)="getingstandardsub($event);" formControlName="usersubhead" placeholder="Select Subheads">
+        <mat-option>None</mat-option>
+        <ng-container *ngFor="let city of newstandsub">
+          <mat-option  value="{{city._id.as}}"> {{city._id.as}}-{{city._id.qw}}</mat-option>
+        </ng-container>
+      </mat-select >
+    </mat-form-field>
+
+  </form>
+  <div >
+  <p style="color: rgba(10, 28, 93, 0.73);margin-top: -28px;text-align: -webkit-right;" >
+   <span><input class="ss"style="background-color: rgba(10, 28, 93, 0.73);width: 30px;
+    height: 30px;"></span>
+   indicates new rates</p>
+  </div>
+
+  <div  *ngIf="edittab" class="example-container mat-elevation-z8">
+          
+    
+    <table mat-table [dataSource]="listData" class="animated fadeInRight">
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="Code" sticky>
+        <th mat-header-cell *matHeaderCellDef> CODE </th>
+        
+       
+        <td mat-cell *matCellDef="let element" color="accent" >
+        <a  style="color: rgba(10, 28, 93, 0.73);
+        font-size: 18px;
+        font-weight: bold;" 
+         
+        *ngIf="(element.SR_NSR=='NSR'); else elseBlock">{{element.Itemcode}} </a>
+        <ng-template    #elseBlock>
+            <a>{{element.Itemcode}} </a>
+          
+
+        </ng-template>
+      </td>
+      </ng-container>
+
+      <!-- *ngIf="(element.SR_NSR!=SR); else elseBlock">{{element.Itemcode}} 
+      <ng-template    #elseBlock>
+          {{element.Itemcode}} 
+
+      </ng-template> -->
+    
+
+
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="Description">
+        <th mat-header-cell *matHeaderCellDef>  DESCRIPTION </th>
+        <td mat-cell *matCellDef="let element"> {{element.Description}} </td>
+      </ng-container>
+    
+      <!-- Weight Column -->
+      <ng-container matColumnDef="Unitvalue">
+        <th mat-header-cell *matHeaderCellDef> UNIT </th>
+        <td mat-cell *matCellDef="let element"> {{element.Unitvalue}} {{element.Unit}}  </td>
+      </ng-container> 
+    
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="Rate">
+        <th mat-header-cell *matHeaderCellDef> RATE(in rs) </th>
+        <td mat-cell *matCellDef="let element"> {{element.Rate}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="currate">
+        <th mat-header-cell *matHeaderCellDef> Curent Market RATE(in rs) </th>
+        <td mat-cell *matCellDef="let element"> {{element.currentrate}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="loading">
+        <mat-footer-cell *matFooterCellDef colspan="6">
+       After selecting  click the show button to view the data ...
+        </mat-footer-cell>
+        </ng-container>
+        <ng-container matColumnDef="noData">
+          <mat-footer-cell *matFooterCellDef colspan="6">
+         No Data...
+          </mat-footer-cell>
+          </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColum; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColum;"></tr>
+      <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}"></mat-footer-row>
+      <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null&&listData.data.length==0)}"></mat-footer-row>
+    </table>
+    </div>
+</mat-card>
+</div>
+
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <mat-action-row *ngIf=all >
+
+  <mat-form-field *ngIf=underexists>
+    <mat-select  (selectionChange)="getsub($event);" formControlName="usersubhead" placeholder="Select Subheads">
+      <mat-option>None</mat-option>
+      <ng-container *ngFor="let city of under">
+        <mat-option matTooltip="{{city._id.as +'-'+city._id.qw}}" value="{{city._id.as}}"> {{city._id.as}}-{{city._id.qw}}</mat-option>
+      </ng-container>
+    </mat-select >
+    <mat-hint> First time DoubleTab it</mat-hint>
+  </mat-form-field> 
+
+&nbsp;&nbsp; -->
+
+
+<!-- 
+
+
+  <mat-form-field *ngIf=underexists>
+    <mat-select (click)="getsub()"   formControlName="usersubhead" placeholder="Select Subheads">
+      <mat-option>None</mat-option>
+      <ng-container *ngFor="let city of under">
+        <mat-option   matTooltip="{{city._id.as +'-'+city._id.qw}}" value="{{city._id.as}}"> {{city._id.as}}-{{city._id.qw}}</mat-option>
+      </ng-container>
+    </mat-select >
+  </mat-form-field> -->
+ 
+  <!-- <mat-form-field  *ngIf=underexists2>
+    <mat-select  (click)="getsub1()"  formControlName="subhead1" placeholder="Select Subheads1">
+      <mat-option>None</mat-option>
+      <ng-container *ngFor="let city of under1">
+        <mat-option   matTooltip="{{city._id.as +'-'+city._id.qw}}" [value]="city._id.as"> {{city._id.as}}-{{city._id.qw}}</mat-option>
+      </ng-container>
+    </mat-select >
+  </mat-form-field>
+
+  &nbsp;&nbsp;
+
+
+  <mat-form-field  *ngIf=underexists3>
+    <mat-select (click)="getsub2()"   formControlName="usermastercode" placeholder="Select Subheads2">
+      <mat-option>None</mat-option>
+      <ng-container *ngFor="let city of under2">
+        <mat-option   matTooltip="{{city._id.as +'-'+city._id.qw}}" [value]="city._id.as"> {{city._id.as}}-{{city._id.qw}}</mat-option>
+
+      </ng-container>
+    </mat-select >
+  </mat-form-field>
+  &nbsp;&nbsp;
+
+<mat-form-field *ngIf=underexists4 >
+  <mat-select (click)="getsub3()"   formControlName="usersubcode" placeholder="Select Subheads3">
+    <mat-option>None</mat-option>
+    <ng-container *ngFor="let city of under3">
+      <mat-option  matTooltip="{{city._id.as +'-'+city._id.qw}}" [value]="city._id.as"> {{city._id.as}}-{{city._id.qw}}</mat-option>
+
+    </ng-container>
+  </mat-select >
+</mat-form-field>
+&nbsp;&nbsp;
+
+<mat-form-field *ngIf=underexists5>
+  <mat-select   (click)="getsub4()"  formControlName="userssubcode" placeholder="Select Subheads4">
+    <mat-option>None</mat-option>
+    <ng-container *ngFor="let city of under4">
+      <mat-option   matTooltip="{{city._id.as +'-'+city._id.qw}}" [value]="city._id.as"> {{city._id.as}}-{{city._id.qw}}</mat-option>
+
+    </ng-container>
+  </mat-select >
+</mat-form-field>
+</mat-action-row> -->

@@ -1,0 +1,289 @@
+
+
+
+  <br><div>
+  <div class="container-fluid">
+    <h2>Standard Items Of Construction (Basic)</h2>
+  <form  #userForm="ngForm"  (ngSubmit)="onSubmit()">
+
+      <!-- {{userForm.value|json}} -->
+    <div class="form-group">
+           <!-- <input type="text" name="_id " #_id="ngModel" [(ngModel)]="user._id">  -->
+      <tr>
+      <div class ="mb-3">
+            <label><h5>Select</h5></label>
+            <div class="form-check">
+            <input class="form-check-input" type="radio"   [(ngModel)]="userModel.Civ_Elec" [(ngModel)]='Selected' 
+            (ngModelChange)= 'Onyearselected($event)'   name="Civ_Elec"  (click)="we()" 
+            ngModel  value="CIVIL">
+            <label class="form-check-label">CIVIL</label>
+            </div>
+  <div *ngIf=show>
+            <div class="form-group">
+           
+   <mat-form-field>
+           
+  <mat-label>Select year</mat-label>
+   <mat-select  class="form-group" [(ngModel)]="userModel.product" ngModel name="product"    required>
+   <mat-option>Select</mat-option>
+    <mat-option  *ngFor="let  product of Products" [value]="product._id">   {{product._id}}
+    </mat-option>
+  </mat-select></mat-form-field>   
+  
+  
+
+  <mat-form-field>        
+    <mat-label>Select type</mat-label>
+    <mat-select  class="form-group" [(ngModel)]="userModel.rad" ngModel name="rad"    required>
+    <mat-option>Select </mat-option>
+    <mat-option  *ngFor="let  product of rad" [value]="product._id">{{product._id}} </mat-option>
+     </mat-select>
+      </mat-form-field>
+                         
+      <br>
+      <button mat-raised-button  (click)= "asd()">Show</button>
+      &nbsp;   &nbsp;
+      <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search By Code And Description">
+        </mat-form-field>
+      
+          </div>
+        </div>
+            <div class="form-check">
+              <input class="form-check-input"  ngModel type="radio"
+               name="Civ_Elec"[(ngModel)]='Selected'   [(ngModel)]="userModel.Civ_Elec"
+              (ngModelChange)= 'Onyearselected($event)' 
+                (click)="fe()"  value="ELECT" >
+          
+              <label class="form-check-label">ELECTRICAL</label>
+            </div>
+          </div>
+  </tr>
+         
+  
+          </div>
+  
+         
+          <div *ngIf=show1>
+       
+          <div class="form-group">
+      
+ <mat-form-field>
+           
+  <mat-label>Select year</mat-label>
+  <mat-select  class="form-group" [(ngModel)]="userModel.product" ngModel name="product" (click)="  basicelctrates()"  required>
+<mat-option>Select</mat-option>
+<mat-option   *ngFor="let  product of Product" [value]="product._id">    {{product._id}}</mat-option>
+</mat-select>
+</mat-form-field>   
+
+<mat-form-field>        
+  <mat-label>Select type</mat-label>
+  <mat-select  class="form-group" [(ngModel)]="userModel.rad" ngModel name="rad"  (click)="basicelctrates()"  required>
+  <mat-option>Select </mat-option>
+  <mat-option  (click)="sub()" *ngFor="let  product of rad" [value]="product._id">{{product._id}} </mat-option>
+   </mat-select>
+    </mat-form-field>
+
+    <br>
+    <button mat-raised-button  (click)= "asd()">Show</button>
+    &nbsp;   &nbsp;
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search By Code And Description">
+      </mat-form-field>
+                 
+                  <!-- <mat-error *ngIf="animalControl.hasError('required')">Please choose an animal</mat-error>
+                  <mat-hint>{{animalControl.value?.sound}}</mat-hint> -->
+
+                </div>
+              </div>
+                  <div *ngIf=show1>
+       
+                    <div class="form-group">
+
+             
+        
+  
+    </div>
+  </div>
+    
+  
+  </form>
+
+  <!-- <form [formGroup]="productForm" (ngSubmit)="save($event)">
+      <table>
+        <tr>
+          <td>Id</td>
+          <td> <input formControlName="_id" type="text" required="required"
+            value="{{this.sdd}}"></td>
+        </tr>
+        <tr> 
+          <td>marketrate</td>
+          <td> <input  type="text" formControlName="Marketrate" required="required"
+            value="[(this.marketrate)]"></td>
+        </tr> -->
+ 
+  <!-- <h3> Update Product</h3>
+  <form  #userForm="ngForm" (ngSubmit)="save(form)">
+    <table> -->
+      <!-- <tr> -->
+         <!-- // [(ngModel)]="this.productservice.selected" -->
+        <!-- <td>Id</td>
+        <td>  <input type="text" name="_id "  value="{{this.sdd}}"> </td>
+      </tr> -->
+      <!-- <tr> 
+        <td>Code</td>
+        <td> <input  type="text" name ="Code" #name="ngModel" [(ngModel)]="user.code" ></td>
+      </tr> -->
+      <!-- <tr> 
+          <td>Marketrate</td>
+          <td> <input type="text" name="Marketrate " [(ngModel)]="userModel.Marketrate " ngModel  value="{{this.marketrate}}"></td>
+        </tr> -->
+        <!-- <tr> 
+            <td>Description</td>
+            <td> <input  type="text" name ="Description" #name="ngModel" [(ngModel)]="user.Description" required="required"></td>
+          </tr>
+          <tr> 
+              <td>Unit</td>
+              <td> <input  type="text" name ="Unit" #name="ngModel" [(ngModel)]="user.Unit" required="required"></td>
+            </tr> -->
+      
+  
+      
+        <!-- <td>
+          <button type="submit">Save</button>
+        </td>
+     
+    </table> -->
+  </div>
+  
+<form [formGroup]="productForm" >
+  <table>
+    <tr>
+      <!-- <td>Id</td> -->
+      <td> <input formControlName="_id"   [(ngModel)]="this.sdd"  type="hidden" required="required"></td>
+    </tr>
+    <tr> 
+      <td>Current Marketrate </td>
+      <td> <input formControlName="Marketrate" [(ngModel)]="this.marketrate" type="text" required="required"></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    
+      <td>
+        <button type="submit" (click)="twe()">update</button>
+      </td>
+    </tr>
+  </table>
+</form>
+  <!-- <form [formGroup]="productForm" (ngSubmit)="save($event)"> -->
+  <div  class="container">
+    <div  class="table">
+    <table mat-table [dataSource]="listData" class="mat-elevation-z8">
+    
+        <ng-container matColumnDef="_id">
+            <th mat-header-cell *matHeaderCellDef> ID </th>
+            <td mat-cell  formControlName="_id" *matCellDef="let element"> {{element._id}} </td>
+          </ng-container>
+      <!-- Position Column -->
+      <ng-container matColumnDef="Code">
+        <th mat-header-cell *matHeaderCellDef> CODE </th>
+        <td mat-cell *matCellDef="let element"> {{element.Code}} </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="Description">
+        <th mat-header-cell *matHeaderCellDef>  DESCRIPTION </th>
+        <td mat-cell *matCellDef="let element"> {{element.Description}} </td>
+      </ng-container>
+    
+      <!-- Weight Column -->
+      <ng-container matColumnDef="Unitvalue">
+        <th mat-header-cell *matHeaderCellDef> UNIT </th>
+        <td mat-cell *matCellDef="let element"> {{element.Unitvalue}} {{element.Unit}}  </td>
+      </ng-container> 
+    
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="Rate">
+        <th mat-header-cell *matHeaderCellDef> Schedule of Rate(in rs) </th>
+        <td mat-cell *matCellDef="let element"> {{element.Rate}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Marketrate">
+        <th mat-header-cell *matHeaderCellDef> Current Market Rate(in rs) </th>
+        <td   mat-cell *matCellDef="let element">
+         <input type="text" style="width:100%;"        value="{{element.Marketrate}}" > 
+           <!-- {{element.Marketrate}}   -->
+          </td> 
+      </ng-container>
+
+      <ng-container matColumnDef="update">
+          <th mat-header-cell *matHeaderCellDef> Edit </th>
+          <td  mat-cell *matCellDef="let element ">
+             &nbsp;<mat-icon aria-hidden="false" aria-label="Example Edit icon" (click)="onedit(element)">
+             edit</mat-icon> </td>
+        </ng-container>
+
+ <ng-container matColumnDef="loading">
+        <mat-footer-cell *matFooterCellDef colspan="6">
+       After selecting  click the show button to view the data ...
+        </mat-footer-cell>
+        </ng-container>
+        <ng-container matColumnDef="noData">
+          <mat-footer-cell *matFooterCellDef colspan="6">
+         No Data...
+          </mat-footer-cell>
+          </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}"></mat-footer-row>
+      <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null&&listData.data.length==0)}"></mat-footer-row>
+    </table>
+    </div>
+    <br>
+  </div>
+   <!-- <button type="submit">Save</button>
+</form> -->
+  
+
+    
+
+
+    
+<!-- <mat-icon aria-hidden="false" aria-label="Example Edit icon" (click)="onedit(element)" >edit</mat-icon> -->
+    
+    
+    
+    
+    
+
+       <!-- <select class="form-group"  ngModel name="product" (click)="sub()" [(ngModel)]="userModel.product" >
+                   <option value="">Select year</option>
+                  <option *ngFor="let product of Products" [value]="product._id">  
+                     {{product._id}}</option>
+           
+                    </select> -->
+                         <!-- <mat-radio-group   aria-labelledby="example-radio-group-label" name="rad"
+ 
+                  class="example-radio-group"   [(ngModel)]="favoriteSeason">
+
+<mat-radio-button class="example-radio-button"   (click)="sub()" *ngFor="let season of rad" [value]="season">
+{{season._id}}
+</mat-radio-button>
+</mat-radio-group>     -->
+
+<!-- <mat-form-field>
+           
+  <mat-label>Select type</mat-label>
+      <mat-select  class="form-group" [(ngModel)]="userModel.rad1" ngModel name="rad1"  (click)="ae()"  required>
+        <mat-option>Select </mat-option>
+        <mat-option  (click)="sub()" ngFor="let  product of rad1" [value]="product._id">
+            {{product._id}}
+        </mat-option>
+      </mat-select></mat-form-field> -->
+          <!-- <select class="form-group" ngModel  name="product"  (click)="sub()"   [(ngModel)]="userModel.product">
+             <option value="">Select year</option>
+           
+                <option *ngFor="let product of Product"   [value]="product._id">   {{product._id}}</option>  
+              </select> -->

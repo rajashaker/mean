@@ -1,0 +1,287 @@
+mat-spinner{
+  
+
+    /* border: 3px solid #73AD21; */
+  
+    position: fixed;;
+   
+    top: 27em;
+      left: 26em;
+  
+  }
+  
+  
+  mat-card{
+    max-width: 400px;
+    height:100px
+  }
+  
+  .bc{
+    top:50px;
+    clear: left;
+  }
+  
+  
+  #main{
+    width: 100%;
+    height: 100vh;
+    background-image:-webkit-linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url('../../assets/tu.jpg');
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding:0;
+    font-family: sans-serif;
+    overflow:auto;
+  }
+  nav{
+   
+    color:white
+  }
+  .navbar-light .navbar-brand{
+  color:white;
+  }
+  navbar-light .navbar-nav .active>.nav-link{
+    color:white
+  }
+  nav ul li a{
+    height: 70px;
+    line-height: 70px;
+    padding: 0 20px;
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    
+  }
+  nav ul li a:hover{
+    color :#fff;
+    background:#ccd8e2;
+    cursor:pointer
+  }
+  
+  
+   .navbar-brand{
+    
+    color: white;
+  
+   
+    font-size: 24px;
+    
+    font-weight: bold;
+  }
+  
+  h1{margin: auto;
+    text-align: center;
+    color: #fff;
+    margin-top:10px;
+  
+  }
+  .form-check-label{
+    margin-left: 1.6em;
+    color:White;
+  }
+  .form-check-input{
+  
+    margin-left: 5px;
+  }
+  .form-check{
+    margin-top:2em;
+  }
+  
+  
+  .form-group {
+    width: 100px;
+    margin-left: 1.5em;
+    margin-top:1em; 
+    float:left;
+    overflow:hidden;
+  }
+  .lo{
+    float:left;
+  }
+  .subhead{
+    float:left;
+    width: 100px;
+    margin-left: 1em;
+    margin-top:1em; 
+    float:left;
+    overflow:hidden; 
+
+  }
+  
+  .radiobut{
+    width:100%;
+   
+  }
+  .hi{
+    height:20px;
+  }
+  
+  
+  
+  
+  .example-container {
+  
+  width: auto;
+    height: 300px;
+    overflow: auto;
+    background-image:-webkit-linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5));
+    background-size: cover;
+    margin-right: 10em;
+    margin-left: 10em;
+    top:1.5em;
+    position:relative;
+     clear: left;
+  }
+  
+  table {
+    width: 100%;
+  }
+  th{
+    border: 1px solid #e0e0e0;
+  }
+  td{
+    border-right: 1px solid  #e0e0e0;
+  }
+  .mat-header-cell {
+    color: white;
+    text-align:center;
+    background-color: black;
+    font-family: Tahoma;
+    font-size: 10pt;
+    padding:20px;
+    font-weight: bold;
+  }
+  
+  
+  
+  .hide{
+    display:none;
+  }
+  .mat-raised-button {
+    
+    font-family: tahoma;
+    font-size: 10pt;
+    background-color: #2fdb13;
+    color:black;
+    font-size: 10pt;
+    font-weight: bold;
+    margin-left:1em;
+    top:1.2em;
+   
+   
+   
+   
+  }
+  mat-icon{
+    margin-left: 1.5em;
+  }
+  @media(max-width:1000px) 
+  {
+    mat-spinner{
+    
+  
+      /* border: 3px solid #73AD21; */
+    
+      position: fixed;;
+     
+      top: 27em;
+        left: 20em;
+    
+    }
+    
+  
+    nav ul li a:hover{
+      color :#fff;
+      background:#ccd8e2;
+      cursor: pointer;
+    }
+    /* .mat-header-cell {
+      color: white;
+      text-align:center;
+      background-color: #171314;
+      font-family: Tahoma;
+      font-size: 10pt;
+      padding:10px;
+      position: relative;
+    }
+     */
+  
+  
+  .example-container{
+  
+  
+  
+    width: auto;
+    height: 400px;
+    overflow: auto;
+    background-image:-webkit-linear-gradient(rgba(0, 0, 0, 0.5),rgba(188, 248, 131, 0.5));
+    background-size: cover;
+    margin-right: 1em;
+    margin-left: 1em;
+    top:1.5em;
+    position:relative;
+    
+  } 
+  #main{
+    width: 100%;
+    height: 100vh;
+    background-image:-webkit-linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url('../../assets/tu.jpg');
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding:0;
+    font-family: sans-serif;
+    overflow:auto;
+  }
+  .table {
+    width:100%;
+  }
+  
+  }
+  @media(max-width:650px) 
+  {
+    mat-spinner{
+    
+  
+      /* border: 3px solid #73AD21; */
+    
+      position: fixed;;
+     
+      top: 27em;
+        left: 10em;
+    
+    }}
+  
+  @media(max-width:420px) 
+  {
+    .mat-header-cell {
+    color: white;
+    text-align:center;
+    background-color: black;
+    font-family: Tahoma;
+    font-size: 10pt;
+    padding:10px;
+    font-weight: bold;
+  }
+  .example-container{
+  
+  
+  
+    width: auto;
+    height: 400px;
+    overflow: auto;
+    background-image:-webkit-linear-gradient(rgba(90, 240, 118, 0),rgba(212, 229, 219, 0.45));
+    background-size: cover;
+    margin-right: 0;
+    margin-left: 0;
+    top:1.5em;
+    position:relative;
+    
+  } 
+  }
+
+ 
+  
+  
+  /* background-image:-webkit-linear-gradient(rgb(90, 240, 118),rgba(0, 0, 0, 0)); */
+   

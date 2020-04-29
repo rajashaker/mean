@@ -1,0 +1,158 @@
+<!-- <form >
+  <mat-card class="example-card">
+  <mat-card-header>
+      
+      <mat-card-title >Add Form</mat-card-title>
+    </mat-card-header>
+      <mat-form-field >
+          <mat-label>Choose Group</mat-label>
+          <mat-select  class="form-group" required>
+          <mat-option >Select </mat-option>
+          <mat-option value="FOR USE">kilogram </mat-option>
+          
+        </mat-select>
+  </mat-form-field> 
+           <div class="example-container">
+          <mat-form-field >
+            <mat-label>Description</mat-label>
+             <textarea matInput placeholder="Enter the Description"></textarea>
+             
+           </mat-form-field>
+          </div>
+  
+  
+          <div> 
+              <mat-form-field appearance="outline">
+                <mat-label>Enter the Units</mat-label>
+                <input matInput placeholder="Units"  >
+                </mat-form-field>
+                &nbsp;&nbsp;&nbsp;
+                <mat-form-field >
+                    <mat-label>Unitvalue</mat-label>
+                    <mat-select    class="form-group" required>
+                    <mat-option >Select </mat-option>
+                    <mat-option value="FOR USE">kilogram </mat-option>
+                    
+                  </mat-select>
+    </mat-form-field>
+    
+            </div>
+  
+  
+            <div> 
+                <mat-form-field appearance="outline">
+                  <mat-label>Enter the Standard Rate</mat-label>
+                  <input     matInput placeholder="Standard Rate">
+                  </mat-form-field>
+                  &nbsp;&nbsp;&nbsp;
+                <mat-form-field appearance="outline">
+                    <mat-label> Enter the Current Marketrate</mat-label>
+                    <input    matInput placeholder="Current Marketrate">
+                  </mat-form-field>
+                  &nbsp;&nbsp;&nbsp;
+                  <mat-form-field >
+                  <mat-label>Equivalent Factor</mat-label>
+                  <mat-select    class="form-group" required>
+                  <mat-option >Select </mat-option>
+                  <mat-option value="FOR USE">FOR USE </mat-option>
+                  <mat-option value="ON HIRE">ON HIRE </mat-option>
+                </mat-select>
+  </mat-form-field>
+                        </div>
+                      <mat-card-actions>
+      <button mat-button>SAVE</button>
+      <button mat-button>CLEAR</button>
+    </mat-card-actions>
+        </mat-card>
+      </form> -->
+
+      <form [formGroup]="form" class="normal-form">
+        <mat-grid-list cols="2" rowHeight="400px">
+          <mat-grid-tile>
+            <div class="controles-container">
+<div class="add-bottom-padding">
+                <mat-radio-group   aria-label="Select an option" formControlName="Civ_Elec">
+                  <mat-radio-button value="1">CIVIL</mat-radio-button>
+                  <mat-radio-button value="2">ELECTRICAL</mat-radio-button>
+                </mat-radio-group>
+              </div>         
+ 
+              <mat-form-field >
+                  <mat-label>Select Type</mat-label>
+                  <mat-select formControlName="type" required>
+                  <mat-option >Select </mat-option>
+                  <mat-option value="FOR USE">kilogram </mat-option>
+                  
+                </mat-select> 
+              </mat-form-field>
+                <mat-form-field >
+                  <mat-label>Select Group</mat-label>
+                  <mat-select formControlName="groupm" required>
+                  <mat-option >Select </mat-option>
+                  <mat-option value="FOR USE">kilogram </mat-option>
+                  
+                </mat-select> 
+
+
+</mat-form-field>
+
+<mat-form-field class="form-element">
+  <textarea matInput placeholder="Description" 
+   matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" formControlName="description"></textarea>
+  <!-- matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"  -->
+  <!-- <mat-error *ngIf="!formGroup.controls['description'].valid && formGroup.controls['description'].touched">
+    Required field, must be between 5 and 10 characters.
+  </mat-error> -->
+</mat-form-field>
+
+
+
+</div>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            
+            <div class="controles-containers">
+
+            <mat-form-field appearance="outline">
+              <mat-label>Enter the Units</mat-label>
+              <input matInput placeholder="Units" formControlName="Unit" >
+              </mat-form-field>
+              &nbsp;&nbsp;&nbsp;
+              <mat-form-field >
+                  <mat-label>Unitvalue</mat-label>
+                  <mat-select  formControlName="Unitvalue"   required>
+                  <mat-option >Select </mat-option>
+                  <mat-option value="FOR USE">kilogram </mat-option>
+                  
+                </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+      <mat-label>Enter the Standard Rate</mat-label>
+      <input    formControlName="Rate"  matInput placeholder="Standard Rate">
+      </mat-form-field>
+      &nbsp;&nbsp;&nbsp;
+    <mat-form-field appearance="outline">
+        <mat-label> Enter the Current Marketrate</mat-label>
+        <input   formControlName="marketrate"   matInput placeholder="Current Marketrate">
+      </mat-form-field>
+      &nbsp;&nbsp;&nbsp;
+      <mat-form-field >
+      <mat-label>Equivalent Factor</mat-label>
+      <mat-select  formControlName="Eqfactor"  required>
+      <mat-option >Select </mat-option>
+      <mat-option value="FOR USE">FOR USE </mat-option>
+      <mat-option value="ON HIRE">ON HIRE </mat-option>
+    </mat-select>
+</mat-form-field>
+<mat-card-actions>
+    <button mat-button [disabled]="form.invalid">SAVE</button>
+    <button mat-button (click)="onclear()">CLEAR</button>
+  </mat-card-actions>
+  </div>
+  
+          </mat-grid-tile>
+         
+          
+        </mat-grid-list>
+        
+      </form>

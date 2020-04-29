@@ -1,0 +1,582 @@
+<body>
+  <div id="main">
+    <nav class="navbar  navbar-expand-lg navbar-light " style="background-color: -webkit-linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5));">
+      <a class="navbar-brand"  > CMS</a>
+      <button class="navbar-toggler"style="background-color:#fffffff7" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav" >
+          <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          PROFILE
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" routerLink="/basicrates" >Update</a>
+              <a class="dropdown-item"routerLink="/des">Change Password</a>
+             
+            </div>
+          </li>
+
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          PROJECT
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" routerLink="/basicrates" >ADD</a>
+              <a class="dropdown-item"routerLink="/des"> EDIT</a>
+              <a class="dropdown-item"routerLink="/des"> DELETE</a>
+             
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            STANDARD ITEMS
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" routerLink="/basicrates" >Basic Rates</a>
+              <a class="dropdown-item"routerLink="/des">Description & cost</a>
+              <a class="dropdown-item" >Refer</a>
+            </div>
+          </li> -->
+  
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            NEWITEMS
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" routerLink="/bas" >Basic Rates</a>
+              <a class="dropdown-item"routerLink="/NIR">Item Rates</a>
+              <a class="dropdown-item" routerLink="/NCBU">Cost Breakup</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <h5 style="font-style:italic;text-align: center;padding-top: 10px;color:rgba(7, 117, 102, 0.72)" class="animated fadeInLeft">COST BREAK UP OF NEW ITEM OF CONSTRUCTION </h5>
+<button (click)="exportAsXLSX()">excel</button>
+<button mat-raised-button color="accent" (click)="back()">Back</button>
+
+<!-- <button mat-raised-button (click)="calculatesr()">nsr</button> -->
+    <mat-card id="all">
+
+      <h6 align="center">{{title}}</h6>
+
+      <form [formGroup]="form1">
+       {{form1.value |json}} 
+    
+       <mat-radio-group  formControlName="Civ_Elec" aria-label="Select an option">
+        <mat-radio-button   value="CIVIL" (change)="civil()">CIVIL</mat-radio-button>
+        <mat-radio-button    value="ELECT" (change)="elect()">ELECTRICAL</mat-radio-button>
+       
+      </mat-radio-group>
+
+      <br>
+        <mat-form-field  appearance="fill"   >
+          <mat-label >Select Year</mat-label>
+          <mat-select (selectionChange)="f1($event)" formControlName="schyear"  required>
+           
+            <mat-option *ngFor="let city of year" [value]="city._id">
+              {{city._id}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+     
+
+         <!-- &nbsp;&nbsp; -->
+<!-- 
+         <mat-form-field  *ngIf="sub1" class="animated fadeInRight"  appearance="fill">
+          <mat-label >Select Chapter</mat-label>
+          <mat-select    formControlName="details" required>
+            <mat-option value="">Select</mat-option>
+            <mat-option value="view  Cost Breakup New Item Of Construction on basicrates">view  Cost Breakup New Item Of Construction on basicrates</mat-option>
+            <mat-option value="view  Cost Breakup New Item Of Construction on marketrates">view  Cost Breakup New Item Of Construction on marketrates</mat-option> 
+   
+         </mat-select>
+          <mat-error>Please select Chapter</mat-error>
+         </mat-form-field>  -->
+
+
+
+         &nbsp;&nbsp;
+
+         <mat-form-field  *ngIf="sub1" class="animated fadeInRight"  appearance="fill">
+          <mat-label >Select Chapter</mat-label>
+          <mat-select   (selectionChange)="sr($event)"  formControlName="subheads" required>
+            <mat-option value="">Select</mat-option>
+           <mat-option *ngFor="let city of subheads" [value]="city._id.as">
+              {{city._id.as}}-{{city._id.qw}}
+            </mat-option> 
+         </mat-select>
+          <mat-error>Please select Chapter</mat-error>
+         </mat-form-field> 
+
+
+      
+         <div  *ngIf=firsttable class="example-container mat-elevation-z8">
+          
+    
+          <table mat-table [dataSource]="listData1" class="animated fadeInRight">
+            <ng-container matColumnDef="select">
+              <th  mat-header-cell *matHeaderCellDef> select </th>
+              
+              <td  mat-cell *matCellDef="let element"> 
+               
+                <mat-radio-button    disabled
+                *ngIf="element.Calquantity == 0 else elseBlock" ></mat-radio-button>
+                
+              
+                <ng-template    #elseBlock>
+                  <mat-radio-button (click)="onselect(element);"></mat-radio-button>
+                 
+               </ng-template>
+                  </td>
+            </ng-container>
+
+            
+            <ng-container matColumnDef="Code" sticky>
+              <th  mat-header-cell *matHeaderCellDef> ITEMCODE </th>
+              
+              <td  mat-cell *matCellDef="let element"> 
+                <a  style="color:#09ebd4;" >{{element.Itemcode}} </a>   
+               
+                  </td>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="Description">
+              <th mat-header-cell *matHeaderCellDef>  DESCRIPTION </th>
+              <td mat-cell *matCellDef="let element"> {{element.Description}} </td>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="Unitvalue">
+              <th mat-header-cell *matHeaderCellDef> UNIT </th>
+              <td  mat-cell *matCellDef="let element"> {{element.Unitvalue}}-{{element.Unit}}  </td>
+            </ng-container> 
+          
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="Rate">
+              <th mat-header-cell *matHeaderCellDef> STANDARD RATE(in rs) </th>
+              <td align="right" mat-cell *matCellDef="let element"> {{element.Rate | number:'1.2-2'}} </td>
+            </ng-container>
+    
+           
+            <ng-container matColumnDef="loading">
+              <mat-footer-cell *matFooterCellDef colspan="6">
+             After selecting  click the show button to view the data ...
+              </mat-footer-cell>
+              </ng-container>
+              <ng-container matColumnDef="noData">
+                <mat-footer-cell *matFooterCellDef colspan="6">
+               No Data...
+                </mat-footer-cell>
+                </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData1!=null}"></mat-footer-row>
+            <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData1!=null&&listData1.data.length==0)}"></mat-footer-row>
+          </table>
+          </div>
+
+<!-- marketrate -->
+          <div  *ngIf=thirdtable class="example-container mat-elevation-z8">
+          
+    
+            <table mat-table [dataSource]="listData3" class="animated fadeInRight">
+          
+              
+              <ng-container matColumnDef="select">
+                <th  mat-header-cell *matHeaderCellDef> select </th>
+                
+                <td  mat-cell *matCellDef="let element"> 
+                  <!-- <a  style="color:#09ebd4;" (click)="onselect1(element);">{{element.Itemcode}} </a>   -->
+                  <mat-radio-button    disabled
+                  *ngIf="element.Calquantity == 0 else elseBlock" ></mat-radio-button>
+                  
+                
+                  <ng-template    #elseBlock>
+                    <mat-radio-button (click)="onselect1(element);"></mat-radio-button>
+                   
+                 </ng-template>
+                    </td>
+              </ng-container>
+
+
+
+              <ng-container matColumnDef="Code" sticky>
+                <th  mat-header-cell *matHeaderCellDef> CODE </th>
+                
+                <td  mat-cell *matCellDef="let element"> 
+                  <a  style="color:#09ebd4;" (click)="onselect1(element);">{{element.Itemcode}} </a>   
+                 
+                    </td>
+              </ng-container>
+            
+              <!-- Name Column -->
+              <ng-container matColumnDef="Description">
+                <th mat-header-cell *matHeaderCellDef>  DESCRIPTION </th>
+                <td mat-cell *matCellDef="let element"> {{element.Description}} </td>
+              </ng-container>
+            
+              <!-- Weight Column -->
+              <ng-container matColumnDef="Unitvalue">
+                <th mat-header-cell *matHeaderCellDef> UNIT </th>
+                <td  mat-cell *matCellDef="let element"> {{element.Unitvalue}}-{{element.Unit}}  </td>
+              </ng-container> 
+            
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="Rate">
+                <th mat-header-cell *matHeaderCellDef> MarketRATE(in rs) </th>
+                <td align="right" mat-cell *matCellDef="let element"> {{element.currentrate | number:'1.2-2'}} </td>
+              </ng-container>
+      
+             
+              <ng-container matColumnDef="loading">
+                <mat-footer-cell *matFooterCellDef colspan="6">
+               After selecting  click the show button to view the data ...
+                </mat-footer-cell>
+                </ng-container>
+                <ng-container matColumnDef="noData">
+                  <mat-footer-cell *matFooterCellDef colspan="6">
+                 No Data...
+                  </mat-footer-cell>
+                  </ng-container>
+            
+              <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData3!=null}"></mat-footer-row>
+              <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData3!=null&&listData3.data.length==0)}"></mat-footer-row>
+            </table>
+            </div>
+        
+
+      </form>
+<h5 *ngIf=errorhead align="center"> {{error}}   </h5>
+
+      <form [formGroup]="form2">
+
+        {{form2.value |json}} 
+        <div *ngIf=secondtable class="example-container mat-elevation-z8">
+          
+    
+          <table   mat-table [dataSource]="listData2" class="animated fadeInRight">
+  
+      
+  
+  
+  
+            <ng-container matColumnDef="Itemcode" sticky>
+              <th mat-header-cell *matHeaderCellDef> Itemcode </th>
+  <td mat-cell   align="center" *matCellDef="let element"> {{element.ItemCode}} </td>
+  </ng-container>
+  
+            <ng-container matColumnDef="Icode" >
+              <th mat-header-cell *matHeaderCellDef> Icode </th>
+              
+             
+              <td mat-cell  align="center" *matCellDef="let element"> 
+                {{element.Icode}}  
+               
+                  </td>
+            </ng-container>
+  
+  
+  
+            <ng-container matColumnDef="Code"  >
+              <th mat-header-cell *matHeaderCellDef> CODE </th>
+              
+             
+              <td mat-cell  align="center" *matCellDef="let element"> 
+                <a>{{element.Code}} </a>   
+               
+                  </td>
+            </ng-container>
+            
+       
+  
+  
+          
+           
+            <ng-container matColumnDef="Description">
+              <th mat-header-cell *matHeaderCellDef>  DESCRIPTION </th>
+              <td mat-cell   *matCellDef="let element"> {{element.Description}} </td>
+            </ng-container>
+          
+           
+            <ng-container matColumnDef="Unitvalue">
+              <th mat-header-cell *matHeaderCellDef> Unit </th>
+              <td mat-cell  align="center" *matCellDef="let element"> {{element.Unitvalue}} {{element.Unit}}   </td>
+            </ng-container> 
+  
+        <ng-container matColumnDef="Rate">
+              <th mat-header-cell *matHeaderCellDef> RATE(in rs) </th>
+              <td mat-cell  align="center" *matCellDef="let element"> {{element.Rate}} </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="Qty">
+              <th mat-header-cell *matHeaderCellDef> Quantity </th>
+              <td mat-cell  align="center" *matCellDef="let element"> {{element.Quantity}} </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="Amount">
+              <th mat-header-cell *matHeaderCellDef> Amount(in rs) </th>
+              <td mat-cell  align="center" *matCellDef="let element"> {{element.Total| number:'1.2-2'}} </td>
+            </ng-container>
+  
+  <!-- //labour','cartage','water','gst','over','cess' -->
+  
+            <ng-container matColumnDef="labour">
+              <th mat-header-cell *matHeaderCellDef> labour%-charges </th>
+              <td mat-cell  align="center" *matCellDef="let element"> {{element.labour_facor}}% = {{element.labourcost| number:'1.2-2'}}  </td>
+            </ng-container>
+            <ng-container matColumnDef="cartage">
+              <th mat-header-cell *matHeaderCellDef> cartage%-charges </th>
+              <td mat-cell  align="center" *matCellDef="let element">{{element.cartage}}% = {{element.cartagecost| number:'1.2-2'}} </td>
+            </ng-container>
+            <ng-container matColumnDef="water">
+              <th mat-header-cell *matHeaderCellDef> water%-charges  </th>
+              <td mat-cell  align="center" *matCellDef="let element">{{element.Water}}% = {{element.watercost| number:'1.2-2'}} </td>
+            </ng-container>
+            <ng-container matColumnDef="gst">
+              <th mat-header-cell *matHeaderCellDef> gst%-charges </th>
+              <td mat-cell  align="center" *matCellDef="let element"> {{element.gst}}% = {{element.gstcost| number:'1.2-2'}}</td>
+            </ng-container>
+            <ng-container matColumnDef="over">
+              <th mat-header-cell *matHeaderCellDef> Overheads%-charges </th>
+              <td mat-cell  align="center" *matCellDef="let element"> {{element.Overheads}}% = {{element.overheadcost| number:'1.2-2'}} </td>
+            </ng-container>
+            <ng-container matColumnDef="cess">
+              <th mat-header-cell *matHeaderCellDef> cess%-charges </th>
+              <td mat-cell  align="center" *matCellDef="let element">{{element.cess}}% = {{element.cesscost| number:'1.2-2'}}  </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="loading">
+              <mat-footer-cell *matFooterCellDef colspan="6">
+             After selecting  click the show button to view the data ...
+              </mat-footer-cell>
+              </ng-container>
+              <ng-container matColumnDef="noData">
+                <mat-footer-cell *matFooterCellDef colspan="6">
+               No Data...
+                </mat-footer-cell>
+                </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayed; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayed;"></tr>
+            <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData2!=null}"></mat-footer-row>
+            <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData2!=null&&listData2.data.length==0)}"></mat-footer-row>
+          </table>
+          <div >
+            <table>
+          <tr  *ngFor="let product of try2" align="right"> 
+            <td>Total:</td>  <td>{{product.labour[0].total| number:'1.2-2'}} </td>
+          </tr> 
+        
+          <tr  *ngFor="let product of try2" align="right">
+            <td>labourfactor:</td> <td>{{product.labour[0].labourfacor| number:'1.2-2'}}</td> </tr> 
+        
+            <tr  *ngFor="let product of try2" align="right"> 
+              <td> Total</td> <td>{{product.labour[0].labplustotal| number:'1.2-2'}}</td> </tr> 
+        
+             <tr  *ngFor="let product of try2" align="right"> <td>Add 1% cartagecharges:</td>   
+                <td>{{product.labour[0].cartage| number:'1.2-2'}} </td></tr>
+                
+                
+                <tr  *ngFor="let product of try2" align="right"> 
+                  <td>  Cartagecharges+total:</td>
+                  <td> {{product.labour[0].labourfacorpluscartage| number:'1.2-2'}}</td></tr> 
+        
+                  <tr  *ngFor="let product of try2" align="right">  
+                    <td> Add 1% watercharges:</td>
+                    <td> {{product.labour[0].watercharge| number:'1.2-2'}} </td></tr> 
+        
+                    <tr  *ngFor="let product of try2" align="right"> 
+                      <td>Watercharges+total:</td>
+                      <td>{{product.labour[0].waterchargeplustotal| number:'1.2-2'}}</td> </tr> 
+        
+                      <tr  *ngFor="let product of try2" align="right">
+                        <td>GST(14.5%):</td> <td>{{product.labour[0].gstt| number:'1.2-2'}}</td> </tr> 
+        
+                        <tr  *ngFor="let product of try2" align="right">
+                         <td>total:</td> <td>{{product.labour[0].overheadsplustotal| number:'1.2-2'}}</td> </tr>
+        
+                         <tr  *ngFor="let product of try2" align="right">
+                          <td>Add 15%  Overheadscharges:
+                            </td> <td>{{product.labour[0].over| number:'1.2-2'}}</td> </tr> 
+        
+                         <tr  *ngFor="let product of try2" align="right"><td>total:</td>
+                          <td> {{product.labour[0].overheadsplustotal| number:'1.2-2'}}</td> </tr>
+                       
+                         <tr  *ngFor="let product of try2" align="right"><td>Add Cess(1%)</td> 
+                          <td>{{product.labour[0].cess| number:'1.2-2'}} </td></tr> 
+        
+                         <tr  *ngFor="let product of try2" align="right">
+                           <td>total:</td> <td>{{product.labour[0].cesst| number:'1.2-2'}}</td> </tr>
+                       
+                           <tr  align="right">
+                            <td>Calculated quantity</td> <td>{{calquanval}}</td> </tr>
+    
+                       <tr  *ngFor="let product of try2" align="right"> <td>cost of({{calunitval}}) {{calunit}}</td>
+                        <td>{{product.labour[0].totaldivcal| number:'1.2-2'}}</td> </tr> 
+                       <tr *ngFor="let product of try2" align="right"> 
+                         <td>say :</td> <td>{{product.labour[0].totaldivcal| number:'1.2-2'}} </td> </tr>
+      
+        </table>
+        </div>
+         </div>
+   
+         
+         <div  *ngIf=forthtable class="example-container mat-elevation-z8">
+          
+    
+          <table mat-table [dataSource]="listData4" class="animated fadeInRight">
+        
+            
+            <ng-container matColumnDef="select">
+              <th  mat-header-cell *matHeaderCellDef> select </th>
+              
+              <td  mat-cell *matCellDef="let element"> 
+            
+                  <mat-radio-button (click)="opendialog(element)"></mat-radio-button>
+                 
+              
+                  </td>
+            </ng-container>
+
+
+
+            <ng-container matColumnDef="Code" sticky>
+              <th  mat-header-cell *matHeaderCellDef> CODE </th>
+              
+              <td  mat-cell *matCellDef="let element"> 
+                <a  style="color:#09ebd4;" >{{element.Code}} </a>   
+               
+                  </td>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="Description">
+              <th mat-header-cell *matHeaderCellDef>  DESCRIPTION </th>
+              <td mat-cell *matCellDef="let element"> {{element.Description}} </td>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="Unitvalue">
+              <th mat-header-cell *matHeaderCellDef> UNIT </th>
+              <td  mat-cell *matCellDef="let element"> {{element.Unitvalue}}-{{element.Unit}}  </td>
+            </ng-container> 
+          
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="Rate">
+              <th mat-header-cell *matHeaderCellDef> MarketRATE(in rs) </th>
+              <td align="right" mat-cell *matCellDef="let element"> {{element.Rate | number:'1.2-2'}} </td>
+            </ng-container>
+    
+           
+            <ng-container matColumnDef="loading">
+              <mat-footer-cell *matFooterCellDef colspan="6">
+             After selecting  click the show button to view the data ...
+              </mat-footer-cell>
+              </ng-container>
+              <ng-container matColumnDef="noData">
+                <mat-footer-cell *matFooterCellDef colspan="6">
+               No Data...
+                </mat-footer-cell>
+                </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="display; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: display;"></tr>
+            <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData4!=null}"></mat-footer-row>
+            <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData4!=null&&listData4.data.length==0)}"></mat-footer-row>
+          </table>
+
+
+           <table> 
+
+            <tr  *ngFor="let product of try3 " align="right"> 
+              <td>Total:</td>  <td>{{product.total | number:'1.2-2'}} </td>
+            </tr> 
+          
+            <tr  *ngFor="let product of try3" align="right">
+              <td>labourfactor:</td> <td>{{product.labourfacor| number:'1.2-2'}}</td> </tr> 
+          
+              <tr  *ngFor="let product of try3" align="right"> 
+                <td> Total</td> <td>{{product.labplustotal| number:'1.2-2'}}</td> </tr> 
+          
+               <tr  *ngFor="let product of try3" align="right"> <td>Add 1% cartagecharges:</td>   
+                  <td>{{product.cartage| number:'1.2-2'}} </td></tr>
+                  
+                  
+                  <tr  *ngFor="let product of try3" align="right"> 
+                    <td>  Cartagecharges+total:</td>
+                    <td> {{product.labourfacorpluscartage| number:'1.2-2'}}</td></tr> 
+          
+                    <tr  *ngFor="let product of try3" align="right">  
+                      <td> Add 1% watercharges:</td>
+                      <td> {{product.watercharge| number:'1.2-2'}} </td></tr> 
+          
+                      <tr  *ngFor="let product of try3" align="right"> 
+                        <td>Watercharges+total:</td>
+                        <td>{{product.waterchargeplustotal| number:'1.2-2'}}</td> </tr> 
+          
+                        <tr  *ngFor="let product of try3" align="right">
+                          <td>GST(14.5%):</td> <td>{{product.gstt| number:'1.2-2'}}</td> </tr> 
+          
+                          <tr  *ngFor="let product of try3" align="right">
+                           <td>total:</td> <td>{{product.overheadsplustotal| number:'1.2-2'}}</td> </tr>
+          
+                           <tr  *ngFor="let product of try3" align="right">
+                            <td>Add 15%  Overheadscharges:
+                              </td> <td>{{product.over| number:'1.2-2'}}</td> </tr> 
+          
+                           <tr  *ngFor="let product of try3" align="right"><td>total:</td>
+                            <td> {{product.overheadsplustotal| number:'1.2-2'}}</td> </tr>
+                         
+                           <tr  *ngFor="let product of try3" align="right"><td>Add Cess(1%)</td> 
+                            <td>{{product.cess| number:'1.2-2'}} </td></tr> 
+          
+                           <tr  *ngFor="let product of try3" align="right">
+                             <td>total:</td> <td>{{product.cesst| number:'1.2-2'}}</td> </tr>
+                         
+                             <tr  align="right">
+                              <td>Calculated quantity</td> <td>{{calquanval}}</td> </tr>
+      
+                         <tr  *ngFor="let product of try3" align="right"> <td>cost of({{calunitval}}) {{calunit}}</td>
+                          <td>{{product.totaldivcal| number:'1.2-2'}}</td> </tr> 
+                         <tr *ngFor="let product of try3" align="right"> 
+                           <td>say :</td> <td>{{product.totaldivcal| number:'1.2-2'}} </td> </tr>
+        
+          </table>  
+
+
+          </div>
+           
+      
+      </form>
+
+      <div class="container">
+        <mat-spinner *ngIf=showspinner ></mat-spinner>
+      </div>
+   
+      
+
+
+
+
+
+
+     
+
+
+
+
+
+</mat-card>
+</div>
+</body>

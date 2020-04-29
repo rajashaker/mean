@@ -1,0 +1,184 @@
+
+
+<body>
+  <div id="main">
+
+
+ 
+      <h3 align="center">Details For the Cost of Standard Items of Constuction(CIVIL)</h3>
+  
+        <div class="qw" >
+    <tr class="to" *ngFor="let heading of head ">
+     {{heading.Itemcode}}   {{heading.SubHeadDes}} {{heading.MasterDesc}} {{heading.SubMasterDesc}}  <br>
+       </tr>
+
+</div>
+
+
+   
+  <div class="example-container mat-elevation-z8">
+    
+
+  <table mat-table [dataSource]="listData"  class="animated fadeInRight">
+ 
+    <!-- Position Column -->
+    <ng-container matColumnDef="ItemCode" >
+      <th mat-header-cell *matHeaderCellDef>ITEMCODE</th>
+      <td mat-cell *matCellDef="let element"> {{element.ItemCode}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Code">
+      <th mat-header-cell *matHeaderCellDef>CODE</th>
+      <td mat-cell *matCellDef="let element"> {{element.Code}} </td>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="Description">
+      <th mat-header-cell *matHeaderCellDef>  DESCRIPTION </th>
+      <td mat-cell *matCellDef="let element"> {{element.Description}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Unitvalue">
+      <th mat-header-cell *matHeaderCellDef> UNIT </th>
+      <td mat-cell *matCellDef="let element"> {{element.Unitvalue}} {{element.Unit}}  </td>
+    </ng-container> 
+    <ng-container matColumnDef="Quantity">
+      <th mat-header-cell *matHeaderCellDef>Quantity </th>
+      <td mat-cell *matCellDef="let element"> {{element.Quantity}} </td>
+    </ng-container> 
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Rate">
+      <th mat-header-cell *matHeaderCellDef> RATE(in rs) </th>
+      <td mat-cell *matCellDef="let element"> {{element.Rate}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="Amount">
+      <th mat-header-cell *matHeaderCellDef> Amount </th>
+      <td mat-cell *matCellDef="let element"> {{element.Amount}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+  </table>
+</div>
+
+  <div class="example-container mat-elevation-z8">
+    <table>
+  <tr  *ngFor="let product of try2" align="right"> 
+    <td>Total:</td>  <td>{{product.labour[0].total| number:'1.2-2'}} </td>
+  </tr> 
+
+  <tr  *ngFor="let product of try2" align="right">
+    <td>labourfactor:</td> <td>{{product.labour[0].labourfacor| number:'1.2-2'}}</td> </tr> 
+
+    <tr  *ngFor="let product of try2" align="right"> 
+      <td> Total</td> <td>{{product.labour[0].labplustotal| number:'1.2-2'}}</td> </tr> 
+
+     <tr  *ngFor="let product of try2" align="right"> <td>Add 1% cartagecharges:</td>   
+        <td>{{product.labour[0].cartage| number:'1.2-2'}} </td></tr>
+        
+        
+        <tr  *ngFor="let product of try2" align="right"> 
+          <td>  Cartagecharges+total:</td>
+          <td> {{product.labour[0].labourfacorpluscartage| number:'1.2-2'}}</td></tr> 
+
+          <tr  *ngFor="let product of try2" align="right">  
+            <td> Add 1% watercharges:</td>
+            <td> {{product.labour[0].watercharge| number:'1.2-2'}} </td></tr> 
+
+            <tr  *ngFor="let product of try2" align="right"> 
+              <td>Watercharges+total:</td>
+              <td>{{product.labour[0].waterchargeplustotal| number:'1.2-2'}}</td> </tr> 
+
+              <tr  *ngFor="let product of try2" align="right">
+                <td>GST(14.5%):</td> <td>{{product.labour[0].gstt| number:'1.2-2'}}</td> </tr> 
+
+                <tr  *ngFor="let product of try2" align="right">
+                 <td>total:</td> <td>{{product.labour[0].overheadsplustotal| number:'1.2-2'}}</td> </tr>
+
+                 <tr  *ngFor="let product of try2" align="right">
+                  <td>Add 15%  Overheadscharges:
+                    </td> <td>{{product.labour[0].over| number:'1.2-2'}}</td> </tr> 
+
+                 <tr  *ngFor="let product of try2" align="right"><td>total:</td>
+                  <td> {{product.labour[0].overheadsplustotal| number:'1.2-2'}}</td> </tr>
+               
+                 <tr  *ngFor="let product of try2" align="right"><td>Add Cess(1%)</td> 
+                  <td>{{product.labour[0].cess| number:'1.2-2'}} </td></tr> 
+
+                 <tr  *ngFor="let product of try2" align="right">
+                   <td>total:</td> <td>{{product.labour[0].cesst| number:'1.2-2'}}</td> </tr>
+               
+               <tr  *ngFor="let product of try2" align="right"> <td>cost of {{unitvalue}} {{unit}}:</td>
+                <td>{{product.labour[0].totaldivcal| number:'1.2-2'}}</td> </tr> 
+               <tr *ngFor="let product of try2" align="right"> 
+                 <td>say :</td> <td>{{rate|number:'1.2-2'}} </td> </tr>
+
+
+
+
+
+
+  <!-- <tr  *ngFor="let product of try2" align="right"> labourfactor:&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].labourfacor| number:'1.2-2'}} </tr> 
+  <tr  *ngFor="let product of try2" align="right"> &nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].labplustotal| number:'1.2-2'}} </tr> 
+  <tr  *ngFor="let product of try2" align="right">  Add 1%  cartagecharges:&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].cartage| number:'1.2-2'}} </tr> 
+  <tr  *ngFor="let product of try2" align="right"> Cartagecharges+total:&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].labourfacorpluscartage| number:'1.2-2'}} </tr> 
+  <tr  *ngFor="let product of try2" align="right">  Add 1% watercharges:&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].watercharge| number:'1.2-2'}} </tr> 
+  <tr  *ngFor="let product of try2" align="right"> Watercharges+total:&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].waterchargeplustotal| number:'1.2-2'}} </tr> 
+  
+  <tr  *ngFor="let product of try2" align="right"> GST(14.5%):&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].gstt| number:'1.2-2'}} </tr> 
+  <tr  *ngFor="let product of try2" align="right"> total:&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].gsttot| number:'1.2-2'}} </tr> 
+  
+  <tr  *ngFor="let product of try2" align="right">Add 15%  Overheadscharges:&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].over| number:'1.2-2'}} </tr> 
+  <tr  *ngFor="let product of try2" align="right">total:&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].overheadsplustotal| number:'1.2-2'}} </tr>
+
+  <tr  *ngFor="let product of try2" align="right">Add Cess(1%)  :&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].cess| number:'1.2-2'}} </tr> 
+  <tr  *ngFor="let product of try2" align="right">total:&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].cesst| number:'1.2-2'}} </tr>
+
+<tr  *ngFor="let product of try2" align="right"> cost of {{unitvalue}} {{unit}}:&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].totaldivcal| number:'1.2-2'}} </tr> 
+<tr *ngFor="let product of try2" align="right">  say : {{rate|number:'1.2-2'}}  </tr> -->
+
+</table>
+</div>
+
+  
+
+  </div>
+</body>
+  
+  
+  
+
+
+
+
+<!-- <h3>Material</h3>
+<div *ngIf=showele>
+  
+  <select [(ngModel)]='yearSelected' (ngModelChange)='onYearSelected($event)' [ngModelOptions]="{standalone: true}" name="schyear" #schyear="ngModel" [(ngModel)]="userModel.schyear">
+    <option *ngFor ="let emp of getelec" [value]="emp._id">
+      {{emp._id}}
+    </option></select>
+    <div *ngIf=show1>
+        <select name="work" #work="ngModel" [(ngModel)]="userModel.work">
+          <option *ngFor="let dep of department" [value]="dep._id.code" >
+            {{dep._id.code}}-{{dep._id.des}}
+          </option>
+        </select>
+        <!-- let i=index"
+        [ngValue]="control">{{controlArray[i].name}}</option>
+      </select> -->
+      
+    
+    
+      <!-- </div>
+  </div> -->
+  
+
+
+
+
+

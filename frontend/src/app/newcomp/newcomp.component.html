@@ -1,0 +1,24 @@
+<h2> 2012 Plant's Record   </h2>
+<br><br><br>
+<table border ="1">
+    <tr>
+      
+      <th>    Code</th>
+    
+      <th>  Description</th>
+      <th>    Unit</th>
+      <th>   Rate in rs</th>
+      <th>   Types</th>
+    
+    
+  
+    </tr>
+ <tr *ngFor="let product of bala">
+   <td> {{product.Code}}</td>
+   <td> {{product.Description}}</td> 
+   <td> {{product.Unitvalue}} {{product.Unit}}</td>
+   <td> {{product.Rate}}</td>
+   <td> {{product.Ratestype}}</td>
+
+ </tr>
+  </table>

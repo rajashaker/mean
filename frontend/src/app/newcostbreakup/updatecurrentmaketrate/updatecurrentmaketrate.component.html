@@ -1,0 +1,41 @@
+<h3 align="center">UPDATE CURRENT MARKETRATE</h3>
+<form [formGroup]="form" >
+  <!-- {{form.value |json}}  -->
+  <div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>CODE</mat-label>
+      <input matInput formControlName="code">
+    </mat-form-field>
+&nbsp;
+    <mat-form-field appearance="fill">
+      <mat-label>description</mat-label>
+      <textarea matInput  formControlName="description"></textarea>
+    </mat-form-field>
+  <br>
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td>
+      <mat-form-field appearance="fill">
+        <mat-label>STANDARD RATE</mat-label>
+        <input matInput formControlName="standardrate">
+       
+      </mat-form-field>
+  </td>
+  &nbsp;
+  &nbsp;
+    <td>
+      <mat-form-field appearance="fill">
+        <mat-label>MARKET RATE</mat-label>
+        <input matInput    maxlength="9" type="number" formControlName="currentrate">
+        <!-- <mat-hint align="end">{{Rate.value.length}}/9</mat-hint> -->
+        <mat-error>*Insufficent Data</mat-error>
+      </mat-form-field>
+  </td>
+  
+  </tr></table>
+</div>
+<div align="center" >
+  <button [disabled]='!form.valid' mat-raised-button color="accent"  (click)="update()"> save</button>
+  &nbsp;&nbsp;
+  <button  [disabled]='!form.valid' mat-raised-button color="primary" [mat-dialog-close]="false"  (click)="onClose()"> close</button>
+</div>
+ </form> 

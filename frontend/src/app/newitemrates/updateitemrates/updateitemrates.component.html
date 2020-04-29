@@ -1,0 +1,38 @@
+<h2 class="animated zoomIn">Update New Item Of construction</h2>
+<form [formGroup]="form">
+  <!-- {{form.value |json}} -->
+  <mat-form-field appearance="outline">
+    <mat-label>ItemCode</mat-label>
+    <input  formControlName="itemcode" matInput placeholder="Placeholder">
+   
+    <mat-hint>It is disabled</mat-hint>
+  </mat-form-field>
+
+<div>
+  <mat-form-field class="example-full-width">
+    <mat-label>Description</mat-label>
+    <textarea  formControlName="description" matInput placeholder="Enter Description"></textarea>
+  </mat-form-field>
+</div>  
+
+  <mat-form-field appearance="outline">
+    <mat-label>Unit</mat-label>
+    <input formControlName="unit" matInput >
+    <mat-hint>It is disabled</mat-hint>
+   </mat-form-field> &nbsp;
+
+   <mat-form-field appearance="outline">
+    <mat-label>Schedule of Rate (in Rs)</mat-label>
+    <input  formControlName="rate" matInput placeholder="Placeholder">
+    <mat-hint>It is disabled</mat-hint>
+   </mat-form-field>&nbsp;
+
+   <mat-form-field appearance="outline">
+    <mat-label>Current Market Rate (in Rs)</mat-label>
+    <input formControlName="currate"  matInput placeholder="Enter current market rate">
+   </mat-form-field>
+   <div class="example-button-row">
+    <button mat-raised-button (click)="update()" color="accent">Update</button>
+     </div>
+     <button mat-raised-button (click)="onClose()" >Cancel</button>
+</form>

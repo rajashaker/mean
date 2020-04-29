@@ -1,0 +1,850 @@
+
+.form-check-input{
+    margin-left:0.5em;
+}
+.form-check-label{
+    margin-left:1.5em;
+}
+nav ul li a:hover{
+  color :#fff;
+  background:black;
+  cursor:pointer
+}
+
+
+
+
+#main{
+    width: 100%;
+    height: 100vh;
+    background-image:url('../../assets/crt.jpg');
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding:0;
+    font-family: ' Montserrat', sans-serif, -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, “Helvetica Neue”, Ubuntu, Arial, sans-serif;
+    overflow:auto;
+  }
+  .card7{
+    height: 100%;
+    width:100%
+  }
+  .example-full-width {
+    width: 100%;
+  }
+  .example-full-widt {
+    width: 100%;
+  }
+  .column1{
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    clear:both
+  }
+
+  .card1{
+
+    /* font-size: 21px; */
+    font-style: normal;
+    font-family:sans-serif;
+    font-weight: bold;
+    border: transparent;
+
+    background-size: cover;
+    background-position: center;
+   
+  }
+ 
+  .example-right-align {
+    text-align: right;
+  }
+  
+  input.example-right-align::-webkit-outer-spin-button,
+  input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+  }
+  
+  input.example-right-align {
+    -moz-appearance: textfield;
+  }
+
+
+  .example-container {
+    height: 400px;
+    /* width: 1000px; */
+    overflow: auto;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  th {
+    padding-left: 8px;
+    border-right: 1px solid rgb(41, 202, 19);
+    text-align: center;
+  }
+  td {
+    padding-left: 8px;
+    /* margin-right: 8px; */
+    border-right: 1px solid rgb(41, 202, 19);
+  }
+  .mat-table {
+    border-right: 1px solid rgb(41, 202, 19);
+  }
+   td.mat-cell{
+    padding-left: 7px;
+  }
+  .mat-header-cell {
+    color: white;
+    text-align:center;
+    background-color:#032b29b3;
+    
+    font-size: 10pt;
+    padding:20px;
+    font-weight: bold;
+  } 
+  
+  
+  @media(max-width:500px) 
+  {
+    .mat-header-cell {
+      color: white;
+      text-align:center;
+      background-color:#032b29b3;
+      
+      font-size: 10pt;
+      padding:10px;
+      font-weight: bold;
+      height:50px
+    } 
+
+   
+    
+  }
+
+
+
+
+
+
+  /* .card1{
+
+    font-size: 21px;
+    font-style: italic;
+    font-family: monospace;
+    font-weight: bold;
+ 
+  border: transparent;
+  font-family: cursive;
+    
+    background-size: cover;
+    background-position: center;
+   
+  }
+  .card0{
+    width:100px
+  }
+
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+  h1,h2{
+    text-align: center;
+  }
+  .column{
+    width: 150px;
+    float: left;
+    margin-left: 2.5em;
+  }
+  .column1{
+    width: 500px;
+    float: left;
+    margin-left: 2em;
+  }
+  .s1{
+    float: left;
+    margin-left: 2.5em;
+  }
+
+.s2{
+  width: 500px;
+  float: left;
+  margin-left: 2em;
+}
+
+  .row::after {
+    content: "";
+    clear: both;
+    
+  }
+  button{
+    align-items: center;
+  }
+  .card1{
+    margin-left: 2em;
+    margin-right: 2em;
+  }
+  .a:not([href]):not([tabindex]) {
+    color: white;
+    text-decoration: none;
+    font-family: cursive;
+    font-size: 32px;
+}
+h6.bounceInUp{
+  text-align: center;
+}
+
+.card3{
+height:300px;
+width:1050px;
+margin-top: 0.5em;
+margin-left: 7em;
+margin-right:  7em;
+overflow: auto;
+font-style: italic;
+font-family: monospace;
+border: transparent;
+font-family: cursive;
+}
+.three{
+  margin-left: 6em;
+}
+.example-full-width1{
+  width:50%;
+  margin-left:5em
+}
+
+.example-container mat-elevation-z8{
+  height: 400px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+.card5{
+  height:300px;
+width:1050px;
+margin-top: 0.5em;
+margin-left: 7em;
+margin-right:  7em;
+overflow: auto;
+font-style: italic;
+font-family: monospace;
+border: transparent;
+font-family: cursive;
+
+}
+th{
+  border: 1px solid #e0e0e0;
+}
+td{
+  border-right: 1px solid  #e0e0e0;
+}
+.mat-header-cell {
+  color: white;
+  text-align:center;
+  background-color:#032b29b3;
+  
+  font-size: 10pt;
+  padding:20px;
+  font-weight: bold;
+} 
+.card6{
+  height:300px;
+  width:1050px;
+  margin-top: 0.5em;
+  margin-left: 7em;
+  margin-right:  7em;
+  overflow: auto;
+  font-style: italic;
+  font-family: monospace;
+  border: transparent;
+  font-family: cursive;
+  
+}
+.card7{
+  height:300px;
+  width:1050px;
+  margin-top: 0.5em;
+  margin-left: 7em;
+  margin-right:  7em;
+  overflow: auto;
+  font-style: italic;
+  font-family: monospace;
+  border: transparent;
+  font-family: cursive;
+  
+} */
+
+/* 
+@media(max-width:1200px) 
+{
+  .card5{
+    height:300px;
+  width:1050px;
+  margin-top: 0.5em;
+  margin-left: 4em;
+  margin-right:  4em;
+  overflow: auto;
+  font-style: italic;
+  font-family: monospace;
+  border: transparent;
+  font-family: cursive;
+  
+  }
+  .card6{
+    height:300px;
+  width:1050px;
+  margin-top: 0.5em;
+  margin-left: 4em;
+  margin-right:  4em;
+  overflow: auto;
+  font-style: italic;
+  font-family: monospace;
+  border: transparent;
+  font-family: cursive;
+  
+  }
+  .form-check-input{
+    margin-left:0.5em;
+}
+.form-check-label{
+    margin-left:1.5em;
+}
+nav ul li a:hover{
+  color :#fff;
+  background:black;
+  cursor:pointer
+}
+
+
+#main{
+    width: 100%;
+    height: 100vh;
+    background-image:url('../../assets/crt.jpg');
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding:0;
+    font-family: ' Montserrat', sans-serif, -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, “Helvetica Neue”, Ubuntu, Arial, sans-serif;
+    overflow:auto;
+  }
+  .card1{
+    background-image:radial-gradient(#3e3333, #0e576900),url('../../assets/crt.jpg');
+    font-size: 21px;
+    font-style: italic;
+    font-family: monospace;
+    font-weight: bold;
+  color:white;
+  border: transparent;
+  font-family: cursive;
+    
+    background-size: cover;
+    background-position: center;
+   
+  }
+  .card0{
+    width:100px
+  }
+
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+  h1,h2{
+    text-align: center;
+  }
+  .column{
+    width: 150px;
+    float: left;
+    margin-left: 2.5em;
+  }
+  .column1{
+    width: 500px;
+    float: left;
+    margin-left: 2em;
+  }
+  .s1{
+    float: left;
+    margin-left: 2.5em;
+  }
+
+.s2{
+  width: 500px;
+  float: left;
+  margin-left: 2em;
+}
+
+  .row::after {
+    content: "";
+    clear: both;
+    
+  }
+  button{
+    align-items: center;
+  }
+  .card1{
+    margin-left: 2em;
+    margin-right: 2em;
+  }
+  .a:not([href]):not([tabindex]) {
+    color: white;
+    text-decoration: none;
+    font-family: cursive;
+    font-size: 32px;
+}
+h6.bounceInUp{
+  text-align: center;
+}
+
+.card3{
+height:400px;
+width:1000px;
+margin-top: 0.5em;
+margin-left: 5em;
+margin-right:  5em;
+overflow: auto;
+font-style: italic;
+font-family: monospace;
+border: transparent;
+font-family: cursive;
+}
+.three{
+  margin-left: 6em;
+}
+.example-full-width1{
+  width:50%;
+  margin-left:5em
+
+}
+}
+
+
+@media(max-width:1165px) 
+{
+
+  .form-check-input{
+    margin-left:0.5em;
+}
+.form-check-label{
+    margin-left:1.5em;
+}
+nav ul li a:hover{
+  color :#fff;
+  background:black;
+  cursor:pointer
+}
+
+
+#main{
+    width: 100%;
+    height: 100vh;
+    background-image:url('../../assets/crt.jpg');
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding:0;
+    font-family: ' Montserrat', sans-serif, -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, “Helvetica Neue”, Ubuntu, Arial, sans-serif;
+    overflow:auto;
+  }
+  .card1{
+    background-image:radial-gradient(#3e3333, #0e576900),url('../../assets/crt.jpg');
+    font-size: 21px;
+    font-style: italic;
+    font-family: monospace;
+    font-weight: bold;
+  color:white;
+  border: transparent;
+  font-family: cursive;
+    
+    background-size: cover;
+    background-position: center;
+   
+  }
+  .card0{
+    width:100px
+  }
+
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+  h1,h2{
+    text-align: center;
+  }
+  .column{
+    width: 150px;
+    float: left;
+    margin-left: 2.5em;
+  }
+  .column1{
+    width: 500px;
+    float: left;
+    margin-left: 2em;
+  }
+  .s1{
+    float: left;
+    margin-left: 2.5em;
+  }
+
+.s2{
+  width: 500px;
+  float: left;
+  margin-left: 2em;
+}
+
+  .row::after {
+    content: "";
+    clear: both;
+    
+  }
+  button{
+    align-items: center;
+  }
+  .card1{
+    margin-left: 2em;
+    margin-right: 2em;
+  }
+  .a:not([href]):not([tabindex]) {
+    color: white;
+    text-decoration: none;
+    font-family: cursive;
+    font-size: 32px;
+}
+h6.bounceInUp{
+  text-align: center;
+}
+
+.card3{
+height:400px;
+width:1010px;
+margin-top: 0.5em;
+margin-left: 3em;
+margin-right:  3em;
+overflow: auto;
+font-style: italic;
+font-family: monospace;
+border: transparent;
+font-family: cursive;
+}
+.three{
+  margin-left: 6em;
+}
+.example-full-width1{
+  width:50%;
+  margin-left:5em
+
+}
+.card5{
+  height:400px;
+width:1050px;
+margin-top: 0.5em;
+margin-left: 3em;
+margin-right:  3em;
+overflow: auto;
+font-style: italic;
+font-family: monospace;
+border: transparent;
+font-family: cursive;
+
+}
+.card6{
+  height:400px;
+width:1050px;
+margin-top: 0.5em;
+margin-left: 3em;
+margin-right:  3em;
+overflow: auto;
+font-style: italic;
+font-family: monospace;
+border: transparent;
+font-family: cursive;
+
+}
+
+.card7{
+  height:400px;
+width:1050px;
+margin-top: 0.5em;
+margin-left: 3em;
+margin-right:  3em;
+overflow: auto;
+font-style: italic;
+font-family: monospace;
+border: transparent;
+font-family: cursive;
+
+}
+}
+
+@media(max-width:800px) 
+{
+
+  .card3{
+    height:400px;
+    width:100%;
+    margin-top: 0.5em;
+    margin-left: 0px;
+    margin-right:  0px;
+    overflow: auto;
+    font-style: italic;
+    font-family: monospace;
+    border: transparent;
+    font-family: cursive;
+    }
+    .card5{
+      height:400px;
+  width: 100%;
+    margin-top: 0.5em;
+    margin-left: 0em;
+    margin-right:  0em;
+    overflow: auto;
+    font-style: italic;
+    font-family: monospace;
+    border: transparent;
+    font-family: cursive;
+    
+    }
+    .card6{
+      height:400px;
+  width: 100%;
+    margin-top: 0.5em;
+    margin-left: 0em;
+    margin-right:  0em;
+    overflow: auto;
+    font-style: italic;
+    font-family: monospace;
+    border: transparent;
+    font-family: cursive;
+    
+    }
+    .card7{
+      height:400px;
+  width: 100%;
+    margin-top: 0.5em;
+    margin-left: 0em;
+    margin-right:  0em;
+    overflow: auto;
+    font-style: italic;
+    font-family: monospace;
+    border: transparent;
+    font-family: cursive;
+    
+    }
+}
+
+
+@media(max-width:420px) 
+{
+  #main{
+    width: 100%;
+    height: 100vh;
+    background-image:url('../../assets/crt.jpg');
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding:0;
+    font-family: ' Montserrat', sans-serif, -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, “Helvetica Neue”, Ubuntu, Arial, sans-serif;
+    overflow:auto;
+  }
+  .card1{
+    background-image:radial-gradient(#3e3333, #0e576900),url('../../assets/crt.jpg');
+    font-size: 21px;
+    font-style: italic;
+    font-family: monospace;
+    font-weight: bold;
+  color:white;
+  border: transparent;
+    
+    background-size: cover;
+    background-position: center;
+    font-family: cursive;
+   
+  }
+  .card0{
+    width:100px
+  }
+
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+  h1,h2{
+    text-align: center;
+  }
+  .column{
+    width: 125px;
+    
+    margin-left: 0.5em;
+  }
+  .column1{
+    width: 500px;
+   margin-top: 10px;
+    margin-left: 0.5em;
+  }
+  .row::after {
+    content: "";
+    clear: both;
+    
+  }
+  button{
+    align-items: center;
+  }
+  .card1{
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .a:not([href]):not([tabindex]) {
+    color: white;
+    text-decoration: none;
+    font-family: cursive;
+    font-size: 32px;
+}
+.form-check-input{
+  margin-left:0.2em;
+}
+.form-check-label{
+  margin-left:1em;
+}
+nav ul li a:hover{
+color :#fff;
+background:black;
+cursor:pointer
+}
+
+.card3{
+
+  margin-top: 0.5em;
+margin-left: 0px;
+margin-right: 0px;
+  overflow: auto;
+  font-style: italic;
+  font-family: monospace;
+  border: transparent;
+  font-family: cursive;
+  height:300px;
+width:100%;
+  }
+
+  .three{
+    margin-left: 1em;
+  }
+  .example-full-width1{
+    width:50%;
+    margin-left:1em
+  }
+  .card5{
+    height:300px;
+  
+  margin-top: 0.5em;
+  margin-left: 0em;
+  margin-right:  0em;
+  overflow: auto;
+  font-style: italic;
+  font-family: monospace;
+  border: transparent;
+  font-family: cursive;
+  width:100%
+  
+  }
+
+  .example-container mat-elevation-z8{
+    height: 400px;
+    overflow: auto;
+    
+
+    
+  }
+  
+  table {
+    width: 100%;
+    
+  }
+ 
+  th{
+    border: 1px solid #e0e0e0;
+  }
+  td{
+    border-right: 1px solid  #e0e0e0;
+  }
+  .mat-header-cell {
+    color: white;
+    text-align:center;
+    background-color:black;
+    
+    font-size: 7pt;
+    padding:15px;
+    font-weight: bold;
+  }
+
+  .card6{
+    height:300px;
+  
+  margin-top: 0.5em;
+  margin-left: 0em;
+  margin-right:  0em;
+  overflow: auto;
+  font-style: italic;
+  font-family: monospace;
+  border: transparent;
+  font-family: apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";;
+  width:100%
+  
+  }
+
+  .card7{
+    height:300px;
+  
+  margin-top: 0.5em;
+  margin-left: 0em;
+  margin-right:  0em;
+  overflow: auto;
+  font-style: italic;
+  font-family: monospace;
+  border: transparent;
+  /* font-family: cursive; */
+  /* width:100%
+   */
+  /* }
+
+ 
+ 
+} */ 
+
+/* @media(max-width:420px) 
+{
+.column1{
+
+  min-width: 150px;
+  
+  width: 70%;
+  clear:both
+}
+} */

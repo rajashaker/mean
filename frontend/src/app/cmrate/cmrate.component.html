@@ -1,0 +1,126 @@
+
+ <button  (click)="single()">ld</button>
+ <button  (click)="di()">test</button>
+ 
+ <button (click)="exportAsXLSX()"><i class="fa fa-file-excel-o" style="font-size:48px;color:blue"></i>
+Excel</button> 
+ <!-- <button  (click)="cod()">load</button>
+ <button  (click)="de()">delete</button>
+ <button  (click)="display()">display</button> -->
+ <!--
+ cc
+ <button  (click)="result()">result</button>
+  
+  -->
+ <form [formGroup]="productForm" >
+    <table>
+      <tr>
+        <!-- <td>Id</td> -->
+        <td> <input formControlName="_id"    type="hidden" required="required"></td>
+      </tr>
+      <tr> 
+        <td>Current Marketrate </td>
+        <td> <input formControlName="Marketrate" type="text" required="required" ></td>
+      </tr>
+      <tr> 
+          <td>code </td>
+          <td> <input formControlName="rew" type="text" required="required"  ></td>
+        </tr>
+        <tr> 
+          <td>schyear </td>
+          <td> <input formControlName="sch"  type="text" required="required"></td>
+        </tr>
+        <tr> 
+          <td>civilelec </td>
+          <td> <input formControlName="civelec"  type="text" required="required"></td>
+        </tr>
+      <tr>
+        <td>&nbsp;</td>
+      
+        <td>
+          <button type="submit" (click)="twe();single()">update </button>
+     
+        </td>
+      </tr>
+    </table>
+  </form>
+
+
+ <table border="1"><tr>
+   <th>Code</th>
+   <th>ItemCode</th>
+  
+   <th>Description</th>
+   <th>Unit</th>
+   <th>Quantity</th>
+   
+   <th>standardRate in rates </th>
+   <th> Rate in analysisf</th>
+   
+   <th>Water</th>
+ <th>Cartage</th>
+ <th>Overheads</th>
+ <th>Amount</th>
+ <th>Ratestype</th>
+ <th>edit</th>
+ </tr>
+ <tr *ngFor = "let ana1 of try1"> 
+   <td>{{ana1.Code}}</td> 
+   <td>{{ana1.ItemCode}}</td>
+  
+   <td>{{ana1.Description}}</td>
+   <td>{{ana1.Unitvalue}}{{ana1.Unit}}</td>
+ <td>{{ana1.Quantity| number:'1.2-4'}}</td>
+ <td>{{ana1.Rate}}  </td>
+ <td>{{ana1.std}}</td>
+ 
+ <td>{{ana1.Water}}</td>
+ <td>{{ana1.cartage}}</td>
+ <td>{{ana1.Overheads}}</td>
+ <td>{{ana1.Amount| number:'1.2-2'}}</td>
+ <td>{{ana1.Ratestype}}</td>
+ <td><input type="checkbox" (click)="onedit(ana1)"  ></td>
+ </tr>
+ 
+   
+ 
+   </table>
+  
+   <div>
+  
+       
+       <tr  *ngFor="let product of try2" align="right"> Total:&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].total| number:'1.2-2'}} </tr> 
+       <tr  *ngFor="let product of try2" align="right"> labourfactor:&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].labourfacor| number:'1.2-2'}} </tr> 
+       <tr  *ngFor="let product of try2" align="right"> &nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].labplustotal| number:'1.2-2'}} </tr> 
+       <tr  *ngFor="let product of try2" align="right">  Add 1%  cartagecharges:&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].cartage| number:'1.2-2'}} </tr> 
+       <tr  *ngFor="let product of try2" align="right"> Cartagecharges+total:&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].labourfacorpluscartage| number:'1.2-2'}} </tr> 
+       <tr  *ngFor="let product of try2" align="right">  Add 1% watercharges:&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].watercharge| number:'1.2-2'}} </tr> 
+       <tr  *ngFor="let product of try2" align="right"> Watercharges+total:&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].waterchargeplustotal| number:'1.2-2'}} </tr> 
+       
+       <tr  *ngFor="let product of try2" align="right"> GST(14.5%):&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].gstt| number:'1.2-2'}} </tr> 
+       <tr  *ngFor="let product of try2" align="right"> total:&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].gsttot| number:'1.2-2'}} </tr> 
+       
+       <tr  *ngFor="let product of try2" align="right">Add 15%  Overheadscharges:&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].over| number:'1.2-2'}} </tr> 
+       <tr  *ngFor="let product of try2" align="right">total:&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].overheadsplustotal| number:'1.2-2'}} </tr>
+
+       <tr  *ngFor="let product of try2" align="right">Add Cess(1%)  :&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].cess| number:'1.2-2'}} </tr> 
+       <tr  *ngFor="let product of try2" align="right">total:&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].cesst| number:'1.2-2'}} </tr>
+    
+ <tr  *ngFor="let product of try2" align="right"> calquantityof():&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].totaldivcal| number:'1.2-2'}} </tr> 
+ 
+
+ 
+ 
+    
+   </div>
+ 
+   <mat-form-field>
+      <mat-label>Select an option</mat-label>
+      <mat-select [(value)]="selected">
+        <mat-option>None</mat-option>
+        <mat-option value="option1">Option 1</mat-option>
+        <mat-option value="option2">Option 2</mat-option>
+        <mat-option value="option3">Option 3</mat-option>
+      </mat-select>
+    </mat-form-field>
+    

@@ -1,0 +1,194 @@
+<form [formGroup]="form5" >
+  <!-- {{form5.getRawValue() |json}}   -->
+
+  <!-- <mat-grid-list cols="4" >
+    <mat-grid-tile  [rowspan]=1  [colspan]=1   >  
+      <label>Itemcode:&nbsp;</label> 
+      </mat-grid-tile>
+    <mat-grid-tile  [rowspan]=1  [colspan]=1   > <label>Icode:&nbsp;</label> 
+     </mat-grid-tile>
+    <mat-grid-tile  [rowspan]=1  [colspan]=1   ><label>Code:&nbsp;</label> 
+     </mat-grid-tile>
+    <mat-grid-tile  [rowspan]=1  [colspan]=1   ><label>unit:&nbsp;</label> 
+      </mat-grid-tile>
+    </mat-grid-list>
+
+  <mat-grid-list cols="4">
+    <mat-grid-tile  [rowspan]=1  [colspan]=1   >  
+      
+      <input class="we" formControlName="Itemcode"></mat-grid-tile>
+    <mat-grid-tile  [rowspan]=1  [colspan]=1   > 
+      <input class="we" formControlName="Icode"></mat-grid-tile>
+    <mat-grid-tile  [rowspan]=1  [colspan]=1   >
+      <input class="we" formControlName="Code" ></mat-grid-tile>
+    <mat-grid-tile  [rowspan]=1  [colspan]=1   >
+      <input   class="we" formControlName="unitplus"></mat-grid-tile>
+    </mat-grid-list> -->
+
+
+
+    <!-- <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Itemcode</th>
+          <th>Icode</th>
+          <th>Code</th>
+          <th>unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td> <input class="we" formControlName="Itemcode"></td>
+          <td> <input class="we" formControlName="Icode"></td>
+          <td> <input class="we" formControlName="Code" ></td>
+          <td> <input  type="text" class="we" formControlName="unitplus"></td>
+       
+        </tr>
+
+      </tbody>
+    </table> -->
+
+
+
+
+
+
+
+
+
+<div>
+  <div class="container"> 
+  <label>Itemcode:&nbsp;</label> 
+  <input class="we" formControlName="Itemcode">
+&nbsp;
+  <label>Icode:&nbsp;</label> 
+  <input class="we" formControlName="Icode">
+  &nbsp;
+  <label>Code:&nbsp;</label> 
+  <input class="we" formControlName="Code" >
+  &nbsp;
+  <label>unit:&nbsp;</label> 
+  <input   class="we" formControlName="unitplus">
+  <br>
+</div>
+  <label>Description</label>
+
+  
+
+  <mat-grid-list cols="1" rowHeight="50px">
+    <mat-grid-tile  [rowspan]=2  [colspan]=1   >
+      <textarea class="text" formControlName="Description"></textarea> </mat-grid-tile>
+         
+  </mat-grid-list>
+  
+
+  <table class="table-responsive ">
+     
+    <tr>
+      <th>Rate:<input class="we" formControlName="Rate"></th>
+      <th >Quantity:<input class="we"type="number" (change)="qty($event)" formControlName="Qty" required></th>
+      <th >total:<input  class="we" type="number"  formControlName="fintotal" required></th>
+</tr>
+</table>
+
+
+
+
+    <br>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+     
+        <tr>
+          <th>Labour percentage</th>
+          <th >Cartage</th>
+          <th >Water</th>
+          <th >Gst</th>
+          <th >Overheads</th>
+          <th >cess</th>
+        </tr>
+        <tr>
+          <td>       
+            <!-- <mat-form-field class="we" appearance="fill">
+            <mat-label>Labou percentage</mat-label>  -->
+            <input class="we" type="number" (change)="lab($event)" formControlName="labour" required>
+        <!-- </mat-form-field> -->
+        <br>
+        <!-- <mat-form-field class="we" appearance="fill">
+          <mat-label>Labourcost</mat-label> -->
+          <input class="we"  type="number"  formControlName="labourcost">
+         
+        <!-- </mat-form-field> -->
+      </td>
+          <td>  
+            <!-- <mat-form-field class="we" appearance="fill">
+            <mat-label>water percentage </mat-label> -->
+            <input  class="we" type="number" formControlName="cartage">
+         <!-- </mat-form-field> -->
+         <br>
+         <!-- <mat-form-field class="we" appearance="fill">
+          <mat-label>water charge </mat-label> -->
+          <input class="we"  formControlName="cartagetot">
+       
+        <!-- </mat-form-field> -->
+      </td>
+          <td> 
+            <!-- <mat-form-field  class="we" appearance="fill">
+            <mat-label>water percentage </mat-label> -->
+            <input class="we" type="number" formControlName="water">
+         <!-- </mat-form-field> -->
+     <br>
+         <!-- <mat-form-field class="we" appearance="fill">
+          <mat-label>water charge </mat-label> -->
+          <input  class="we"   formControlName="watertot">
+       
+        <!-- </mat-form-field> -->
+      </td>
+        <td>  
+          <!-- <mat-form-field  class="we" appearance="fill">
+          <mat-label>overheads percentage </mat-label> -->
+          <input type="number" class="we"  formControlName="gst">
+       <!-- </mat-form-field> -->
+       <br>
+       <!-- <mat-form-field  class="we" appearance="fill">
+        <mat-label>overheads  charge </mat-label> -->
+        <input class="we"  formControlName="gsttot">
+     
+      <!-- </mat-form-field> -->
+    </td>
+        <td>
+          <!-- <mat-form-field class="we" appearance="fill">
+            <mat-label>overheads percentage </mat-label> -->
+            <input class="we" type="number"  formControlName="overhead">
+         <!-- </mat-form-field> -->
+        <br>
+         <!-- <mat-form-field class="we" appearance="fill">
+          <mat-label>overheads  charge </mat-label> -->
+          <input class="we"   formControlName="overtot">
+       
+        <!-- </mat-form-field> -->
+        </td>
+        <td> 
+          <!-- <label>cess</label>  -->
+          <input class="we" type="number"  formControlName="cess">
+       
+       <br>
+       <!-- <label>cesstot</label> -->
+        <input  class="we"  formControlName="cesstot">
+     
+      </td>
+       
+        </tr>
+      </table>
+
+</div>
+  
+<div align="center">
+<button  mat-raised-button  [mat-dialog-close]="data" color="accent" (click)="update()" >update</button> 
+&nbsp;&nbsp;
+<button  mat-raised-button  mat-dialog-close color="warn" (click)="delete()" >delete</button> 
+</div>
+</div>
+
+<br>
+
+</form>

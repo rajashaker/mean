@@ -1,0 +1,423 @@
+<div class="container-fluid">
+    <h2>Cost BreakUp</h2>
+  <form  #userForm="ngForm"    (ngSubmit)="onSubmit()">
+      <!-- {{userForm.value|json}} -->
+    <div class="form-group">
+        <div class ="mb-3">
+          <label><h3>Select</h3></label>
+            <div class="form-check">
+            <input class="form-check-input" type="radio"   [(ngModel)]="userModel.Civ_Elec" [(ngModel)]='Selected' 
+            (ngModelChange)= 'Onyearselected($event)'   name="Civ_Elec"  (click)="loadData()" 
+            ngModel  value="CIVIL">
+             <label class="form-check-label">CIVIL</label>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <input class="form-check-input"  ngModel type="radio"
+               name="Civ_Elec"[(ngModel)]='Selected'   [(ngModel)]="userModel.Civ_Elec"
+              (ngModelChange)= 'Onyearselected($event)' 
+                (click)="loadata()"  value="ELECT" >
+            <label class="form-check-label">ELECTRICAL</label>
+      
+  
+            </div> </div> </div> 
+         
+  <div *ngIf=show>
+            <div class="form-group">
+              <mat-form-field>
+                        <mat-label>select year</mat-label>
+                                <mat-select  class="form-group"  ngModel  name="product" [(ngModel)]="userModel.product" (click)="sub()"  required>
+                                  <mat-option>Select  </mat-option>
+      <mat-option  (click)="ar()" *ngFor="let product of Products"   [value]="product._id">  
+                                      {{product._id}}
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field> 
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                              <mat-form-field>
+                                  <mat-label>Select Chapter</mat-label>
+                                          <mat-select  class="form-group"  ngModel name="produc" [(ngModel)]="userModel.produc" (click)="ar()"  required>
+           <mat-option>Select </mat-option>
+         <mat-option  (click)="sub()"*ngFor="let produc of dropciv" [value]="produc._id.as">  
+         {{produc._id.as}}-{{produc._id.qw}}
+                           </mat-option>
+ </mat-select></mat-form-field>
+
+
+                                          
+                           
+</div>
+<button mat-raised-button  (click)= "asd()">Show</button>
+&nbsp;   &nbsp;
+<mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search By Code And Description">
+  </mat-form-field><br>
+</div>
+
+          
+         
+          
+               <br>
+ 
+    
+          <div  class="s" *ngIf=show1>
+          <div class="form-group">
+        
+  
+  
+              <mat-form-field>
+                  <mat-label>Select year</mat-label>
+                          <mat-select  class="form-group"  ngModel  name="product" [(ngModel)]="userModel.product" (click)="sub()"  required>
+                            <mat-option>Select </mat-option>
+                            <mat-option  (click)="uq()" *ngFor="let product of Product"   [value]="product._id">  
+                                {{product._id}}
+                            </mat-option>
+                          </mat-select></mat-form-field>
+  
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                          <mat-form-field>
+                              <mat-label>Select a Chapter</mat-label>
+                                      <mat-select  class="form-group"  ngModel name="produc" [(ngModel)]="userModel.produc" (click)="uq()"  required>
+                                        <mat-option>Select </mat-option>
+                                        <mat-option  (click)="sub()" *ngFor="let produc of dropciv" [value]="produc._id.as">  
+                                            {{produc._id.as}}-{{produc._id.qw}}
+                                        </mat-option>
+                                      </mat-select></mat-form-field>
+
+
+
+
+
+  
+    </div>
+    <button mat-raised-button  (click)= "asd()">Show</button>
+    &nbsp;   &nbsp;
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search By Code And Description">
+      </mat-form-field><br>
+  
+      </div>
+      
+</form>
+  
+  
+</div>
+  
+<div    *ngIf=show1  class="table">
+  
+     
+         <table mat-table [dataSource]="listData" class="mat-elevation-z8">
+             <ng-container matColumnDef="code">
+            
+                 <th mat-header-cell *matHeaderCellDef> CODE </th>
+                 <td mat-cell *matCellDef="let element">
+                     <a   (click)="onSelect(element)"
+                     *ngIf="(element.Unitvalue!==0 && element.Rate!==0)">{{element.Itemcode}} </a></td>
+                   
+               </ng-container>
+           <!-- Position Column -->
+           <ng-container matColumnDef="Itemcode">
+             <th mat-header-cell *matHeaderCellDef>Itemcode</th>
+             <td mat-cell *matCellDef="let element"> {{element.Itemcode}} </td>
+           </ng-container>
+         
+           <!-- Name Column -->
+           <ng-container matColumnDef="Description">
+             <th mat-header-cell *matHeaderCellDef>  DESCRIPTION </th>
+             <td mat-cell *matCellDef="let element"> {{element.Description}} </td>
+           </ng-container>
+         
+           <!-- Weight Column -->
+           <ng-container matColumnDef="Unitvalue">
+             <th mat-header-cell *matHeaderCellDef> UNIT </th>
+             <td mat-cell *matCellDef="let element"> {{element.Unitvalue}} {{element.Unit}}  </td>
+           </ng-container> 
+         
+           <!-- Symbol Column -->
+           <ng-container matColumnDef="Rate">
+             <th mat-header-cell *matHeaderCellDef> RATE(in rs) </th>
+             <td mat-cell *matCellDef="let element"> {{element.Rate}} </td>
+           </ng-container>
+
+
+         
+
+          <ng-container matColumnDef="update">
+            <th mat-header-cell *matHeaderCellDef> Current marketrate </th>
+            <td mat-cell *matCellDef="let element"> {{element.qw.Rate}} </td>
+          </ng-container>
+  
+
+
+           <ng-container matColumnDef="loading">
+            <mat-footer-cell *matFooterCellDef colspan="6">
+           After selecting  click the show button to view the data ...
+            </mat-footer-cell>
+            </ng-container>
+            <ng-container matColumnDef="noData">
+              <mat-footer-cell *matFooterCellDef colspan="6">
+             No Data...
+              </mat-footer-cell>
+              </ng-container>
+         
+           <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+           <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}"></mat-footer-row>
+           <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null&&listData.data.length==0)}"></mat-footer-row>
+         </table>
+        </div>
+         <br>
+         
+         <div  *ngIf=show class="table">
+          <table mat-table [dataSource]="listData" class="mat-elevation-z8">
+           
+            <!-- Position Column -->
+            <ng-container matColumnDef="Itemcode">
+             
+                <th mat-header-cell *matHeaderCellDef> ItemCode </th>
+                <td mat-cell *matCellDef="let element">
+                    <a  
+                    *ngIf="(element.Unitvalue!==0 && element.Rate!==0); else elseBlock">{{element.Itemcode}} </a>
+                    <ng-template    #elseBlock>
+                        <a>{{element.Itemcode}} </a>
+
+                    </ng-template>
+                  
+                  
+                  </td>
+                  
+              </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="Description">
+              <th mat-header-cell *matHeaderCellDef>  DESCRIPTION </th>
+              <td mat-cell *matCellDef="let element"> {{element.Description}} </td>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="Unitvalue">
+              <th mat-header-cell *matHeaderCellDef> UNIT </th>
+              <td mat-cell *matCellDef="let element">
+             <a *ngIf="(element.Unitvalue!==0)"  > {{element.Unitvalue}} {{element.Unit}}</a>  </td>
+            </ng-container> 
+          
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="Rate">
+              <th mat-header-cell *matHeaderCellDef> RATE(in rs) </th>
+              <td mat-cell *matCellDef="let element"   > 
+                  <a [routerLink]="['/ana']"  (click)="onSelect(element)" *ngIf="(element.Rate!==0)"  >{{element.Rate}} </a></td>
+            </ng-container>
+            <ng-container matColumnDef="update">
+              <th mat-header-cell *matHeaderCellDef> Current marketrate </th>
+              <td mat-cell *matCellDef="let element">
+                  <a   (click)="onSelect(element)"> {{element.qw.Rate|number:'1.2-4'}}</a> </td>
+            </ng-container>
+            <!-- [routerLink]="['/cmr']" -->
+            <!-- [routerLink]="['/ana']" -->
+
+
+            <!-- <ng-container matColumnDef="Loading">
+             <mat-Footer-cell *matFooterCellDef colspan="6">
+            Loading data...
+            </mat-Footer-cell>
+           </ng-container> -->
+           <ng-container matColumnDef="loading">
+             <mat-footer-cell *matFooterCellDef colspan="6">
+            After selecting  click the show button to view the data ...
+             </mat-footer-cell>
+             </ng-container>
+             <ng-container matColumnDef="noData">
+               <mat-footer-cell *matFooterCellDef colspan="6">
+              No Data...
+               </mat-footer-cell>
+               </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <!-- <mat-footer-row *matFooterRowDef="['Loading']"></mat-footer-row> -->
+            <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}"></mat-footer-row>
+            <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null&&listData.data.length==0)}"></mat-footer-row>
+          </table>
+          </div>
+      
+
+
+<!-- 
+          <button  (click)="f()">show</button>
+
+
+<table border="1"><tr>
+  <th>Code</th>
+  <th>ItemCode</th>
+ 
+  <th>Description</th>
+  <th>Unit</th>
+  <th>Quantity</th>
+  
+  <th>standardRate in rates </th>
+  <th> Rate in analysisf</th>
+  
+  <th>Water</th>
+<th>Cartage</th>
+<th>Overheads</th>
+<th>Amount</th>
+<th>Ratestype</th>
+<th>edit</th>
+</tr>
+<tr *ngFor = "let ana1 of try"> 
+  <td>{{ana1.Code}}</td> 
+  <td>{{ana1.ItemCode}}</td>
+ 
+  <td>{{ana1.Description}}</td>
+  <td>{{ana1.Unitvalue}}{{ana1.Unit}}</td>
+<td>{{ana1.Quantity| number:'1.2-4'}}</td>
+<td><input type="text" [disabled]="disable"  value={{ana1.Rate}}  ></td>
+<td>{{ana1.std}}</td>
+
+<td>{{ana1.Water}}</td>
+<td>{{ana1.cartage}}</td>
+<td>{{ana1.Overheads}}</td>
+<td>{{ana1.Amount| number:'1.2-2'}}</td>
+<td>{{ana1.Ratestype}}</td>
+<td> <input type="checkbox"  name="ee"   (click)="onedit(ana1)" > </td>
+
+</tr>
+
+  
+
+  </table>
+
+  <div>
+ 
+      
+      <tr  *ngFor="let product of tr" align="right"> Total:&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].total| number:'1.2-2'}} </tr> 
+      <tr  *ngFor="let product of tr" align="right"> labourfactor:&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].labourfacor| number:'1.2-2'}} </tr> 
+      <tr  *ngFor="let product of tr" align="right"> &nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].labplustotal| number:'1.2-2'}} </tr> 
+      <tr  *ngFor="let product of tr" align="right">  Add 1%  cartagecharges:&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].cartage| number:'1.2-2'}} </tr> 
+      <tr  *ngFor="let product of tr" align="right"> Cartagecharges+total:&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].labourfacorpluscartage| number:'1.2-2'}} </tr> 
+      <tr  *ngFor="let product of tr" align="right">  Add 1% watercharges:&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].watercharge| number:'1.2-2'}} </tr> 
+      <tr  *ngFor="let product of tr" align="right"> Watercharges+total:&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].waterchargeplustotal| number:'1.2-2'}} </tr> 
+      <tr  *ngFor="let product of tr" align="right">Add 15%  Overheadscharges:&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].over| number:'1.2-2'}} </tr> 
+      <tr  *ngFor="let product of tr" align="right">total:&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].overheadsplustotal| number:'1.2-2'}} </tr>
+   
+<tr  *ngFor="let product of tr" align="right"> calquantityof():&nbsp;&nbsp;&nbsp;&nbsp;{{product.labour[0].totaldivcal| number:'1.2-2'}} </tr>  -->
+
+<!-- <h6>Total:</h6>  {{ana.total[0].as}}
+      
+     <tr><h6>   Add 1% percentage watercharges: </h6> {{ana.water[0].waters}}</tr> 
+        
+      <h6>  Watercharges+total :</h6> {{ana.total1[0].tq}}
+        
+      <h6>  Add 15% percentage Overheadscharges:</h6> {{ana.total1[0].sq}}  
+      
+      <h6>  total: </h6>{{ana.total1[0].aa}}
+     <h6>  calquantityof(): </h6> {{ana.total1[0].a}}
+   -->
+
+
+   
+  <!-- </div> -->
+
+
+ 
+  
+
+<br>
+  <!-- <div class="sub_div">
+      <button color="warn" mat-fab routerLink="/Labour">Labour</button>&nbsp;&nbsp;&nbsp;
+      
+      <button color="accent" mat-fab routerLink="/mat">Materials</button>&nbsp;&nbsp;&nbsp;
+      <button color="primary" mat-fab routerLink="/plant">Plants</button>&nbsp;&nbsp;&nbsp;
+      <button color="warn" mat-fab routerLink="/Carriage">Carriage</button>&nbsp;&nbsp;&nbsp;
+      <button color="primary" mat-button routerLink="/rates">Rates</button>&nbsp;&nbsp;&nbsp;
+      <button color="warn" mat-raised-button routerLink="/cost">Cost Break up</button>&nbsp;&nbsp;&nbsp;
+      <button color="warn" mat-button routerLink="/search">Search</button>&nbsp;&nbsp;&nbsp;
+      
+      </div> -->
+
+
+
+
+
+
+<!--   
+<table border ="1">
+  <tr>
+     
+    <th>    Code</th>
+    <th>    ItemCode</th>
+    <th>  Description</th>
+    <th>    Unit</th>
+    <th>   Rate in rs</th> -->
+    <!-- <th>   Types</th> -->
+  
+  
+<!-- 
+  </tr> -->
+ <!-- // [value]="product.Itemcode" -->
+<!-- <tr *ngFor="let product of bala">
+   <th scope="row"> <a [routerLink]="['/ana']"  (click)="onSelect(product)"*ngIf="( product.Unitvalue!==0 && product.Rate!==0)">{{product.Itemcode}}</a> </th> -->
+   <!-- <td> <routerLink *ngIf="( product.Unitvalue!==0 && product.Rate!==0)">{{product.Itemcode}}</button></td> -->
+    <!-- <td> {{product.Itemcode}}</td> 
+ <td> {{product.Description}}</td> 
+ <td> {{product.Unitvalue}} {{product.Unit}}</td>
+ <td> {{product.Rate}}</td>  -->
+ <!-- <button type="button" class="glyphicon glyphicon-check"></button> -->
+ <!-- </tr>
+</table> -->
+ <!-- <td> {{product.Ratestype}}</td>
+
+</tr>
+</table>
+<!-- <div *ngFor="let item of items">
+  <button *ngIf="(item.data.type == 1)">{{item.data.name}}</button>
+</div> -->  <!-- <div class="form-group">
+    <select class="form-group"  ngModel name="produc"   >
+       <option value="">Select year</option>
+      <option *ngFor="let produc of dropelec" [value]="produc._id.as">  
+         {{produc._id.as}}-{{produc._id.qw}}</option>
+
+        </select>
+</div> -->
+
+
+   <!-- <select class="form-group"  ngModel name="product" (click)="ar()"    [(ngModel)]="userModel.product" >
+                   <option value="">Select year</option>
+                  <option *ngFor="let product of Products"  (click)="onSubmit()"[value]="product._id">  
+                     {{product._id}}</option> -->
+
+
+                          <!-- <th scope="row"> <a [routerLink]="['/ana']"  (click)="onSelect(product)"
+            *ngIf="( product.Unitvalue!==0 && product.Rate!==0)">
+            {{product.Itemcode}}</a> </th> -->
+            <!-- <div class="form-group">
+          <mat-form-field>
+          <mat-label>choose a year</mat-label>
+                  <mat-select  class="form-group"  ngModel name="produc" [(ngModel)]="userModel.produc" (click)="sub()"  required>
+                    <mat-option>Select Year</mat-option>
+                    <mat-option  (click)="sub()"*ngFor="let produc of dropciv" [value]="produc._id.as">  
+                        {{produc._id.as}}-{{produc._id.qw}}
+                    </mat-option>
+                  </mat-select></mat-form-field> -->
+  
+  
+          <!-- <select class="form-group"  ngModel name="produc" [(ngModel)]="userModel.produc"  >
+             <option value="">Select year</option>
+            <option *ngFor="let produc of dropciv" [value]="produc._id.as">  
+               {{produc._id.as}}-{{produc._id.qw}}</option>
+     
+              </select> -->
+    <!-- </div> -->
+
+
+           <!-- <div class="form-check">
+              <input class="form-check-input"  ngModel type="radio"
+               name="Civ_Elec"[(ngModel)]='Selected'   [(ngModel)]="userModel.Civ_Elec"
+              (ngModelChange)= 'Onyearselected($event)' 
+                (click)="loadata()"  value="ELECT" >
+          
+              <label class="form-check-label">ELECTRICAL</label>
+            </div> -->
+
+              <!-- <select class="form-group" ngModel  name="product" (click)="uq()"    [(ngModel)]="userModel.product">
+             <option value="">Select year</option>
+           
+                <option *ngFor="let product of Product"   [value]="product._id">   {{product._id}}</option>  
+              </select> -->

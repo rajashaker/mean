@@ -1,0 +1,159 @@
+
+
+
+
+
+#main{
+
+
+ 
+  margin: 0;
+  padding:0;
+  font-family: sans-serif;
+  overflow:auto;
+}
+
+.example-container {
+  
+  width: auto;
+    height: 300px;
+    overflow: auto;
+    background-image:whitesmoke;
+    background-size: cover;
+    margin-right: 10em;
+    margin-left: 10em;
+    top:1.5em;
+    position:relative;
+     clear: left;
+  }
+  
+  table {
+    width: 100%;
+  }
+  th{
+    border: 1px solid #e0e0e0;
+  }
+  td{
+    border-right: 1px solid  #e0e0e0;
+  }
+  .mat-header-cell {
+    color: white;
+    text-align:center;
+    background-color: #b5e117ba;
+    font-family: Tahoma;
+    font-size: 10pt;
+    padding:20px;
+    font-weight: bold;
+  }
+  
+  
+  
+  .hide{
+    display:none;
+  }
+
+
+  @media(max-width:1000px) 
+  {
+    mat-spinner{
+    
+  
+      /* border: 3px solid #73AD21; */
+    
+      position: fixed;;
+     
+      top: 27em;
+        left: 20em;
+    
+    }
+    
+  
+    nav ul li a:hover{
+      color :#fff;
+      background:#ccd8e2;
+      cursor: pointer;
+    }
+    /* .mat-header-cell {
+      color: white;
+      text-align:center;
+      background-color: #171314;
+      font-family: Tahoma;
+      font-size: 10pt;
+      padding:10px;
+      position: relative;
+    }
+     */
+  
+  
+  .example-container{
+  
+  
+  
+    width: auto;
+    height: 400px;
+    overflow: auto;
+
+   
+    margin-right: 1em;
+    margin-left: 1em;
+    top:1.5em;
+    position:relative;
+    
+  } 
+  #main{
+   
+    margin: 0;
+    padding:0;
+    font-family: sans-serif;
+    overflow:auto;
+  }
+  .table {
+    width:100%;
+  }
+  
+  }
+  @media(max-width:650px) 
+  {
+    /* mat-spinner{ */
+    
+  
+      /* border: 3px solid #73AD21; */
+    
+      /* position: fixed;;
+     
+      top: 27em;
+        left: 10em;
+    
+    }} */
+  
+  @media(max-width:420px) 
+  {
+    .mat-header-cell {
+    color: white;
+    text-align:center;
+    background-color: #b5e117ba;
+    font-family: Tahoma;
+    font-size: 10pt;
+    padding:10px;
+    font-weight: bold;
+  }
+  .example-container{
+  
+  
+  
+    width: auto;
+    height: 400px;
+    overflow: auto;
+    background-image:-webkit-linear-gradient(rgba(90, 240, 118, 0),rgba(212, 229, 219, 0.45));
+    background-size: cover;
+    margin-right: 0;
+    margin-left: 0;
+    top:1.5em;
+    position:relative;
+    
+  } 
+  }
+
+}
+
+  

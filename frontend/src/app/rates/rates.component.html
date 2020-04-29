@@ -1,0 +1,151 @@
+
+<body>
+  <div id="main">
+    <nav class="navbar  navbar-expand-lg navbar-light " style="background-color: -webkit-linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5));">
+      <a class="navbar-brand"  > CMS</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav" >
+          <li class="nav-item active">
+            <a class="nav-link"  routerLink="/main" >HOME<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"routerLink="/Labour" >LABOUR</a>
+          </li>
+  
+          <li class="nav-item">
+            <a class="nav-link"routerLink="/mat" >MATERIALS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/plant" >PLANTS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"routerLink="/Carriage">CARRIAGE</a>
+          </li>
+       
+        </ul>
+       
+       
+      </div>
+    </nav>
+  
+ 
+  
+  <div class="radiobut" >
+   
+    <h1 class="animated fadeInLeft">STANDARD RATES</h1>
+  <div class= "containner">
+    <form [formGroup]="form">
+      <div class="mb-3">
+        <!-- <label >SELECT</label> -->
+        <div class="form-check">
+          <input class="form-check-input" type="radio" formControlName="Civ_Elec" (click)="civilyearofsr2007()" value="CIVIL" >
+          <label class="form-check-label">CIVIL</label>
+          &nbsp;&nbsp;
+          <input class="form-check-input" type="radio"  formControlName="Civ_Elec" (click)="electricalyearof2007()" value="ELECT" >
+          <label class="form-check-label">ELECTRICAL </label>
+        </div>
+        </div>
+  
+  <div   class="hi">
+    <div  *ngIf=show class="form-group" >
+      <select (click)="subhead1()"   
+       required class="custom-select"  formControlName="year">
+        <option value="" >select year</option>
+      <option  *ngFor="let city of dropciv"   [ngValue]="city._id"> {{city._id}} </option>
+      </select> 
+      
+    
+     </div>
+     <div *ngIf=show1 class="subhead">
+      <select   (click)="sub()"  required class="custom-select"  formControlName="subhead"> 
+                
+       <option value="" >Select Chapter </option>
+     <option  *ngFor="let city of ash"   [ngValue]="city._id.as"> {{city._id.as}}-{{city._id.qw}} </option>
+     </select>
+     </div>
+  <div class="lo">
+     
+    <button  [disabled]='!form.valid'  mat-raised-button (click)="table()" >Show</button>
+    </div>
+    <!-- <button (click)="exportAsXLSX()"><mat-icon>excel icon</mat-icon>
+      Excel</button>  -->
+      
+  
+  
+            </div>
+            
+  
+        
+    </form>
+  </div>
+  </div>
+  <!-- <mat-card  style="-webkit-text-fill-color: yellow">
+    <mat-form-field >
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search By Code And Description" style="-webkit-text-fill-color: yellow">
+    </mat-form-field>
+  </mat-card> -->
+  
+  <div *ngIf=button  class="bc" >
+    <mat-icon class="animated fadeInLeft"  aria-hidden="false" aria-label="search ">search</mat-icon>
+  <input  class="animated fadeInLeft" (keyup)="applyFilter($event.target.value)" placeholder="Search By Code And Description">
+  </div>
+  <div  *ngIf=button class="example-container mat-elevation-z8">
+        
+  
+    <table mat-table [dataSource]="listData" class="animated fadeInRight">
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="Code">
+        <th mat-header-cell *matHeaderCellDef> CODE </th>
+        <td mat-cell *matCellDef="let element"> {{element.Itemcode}} </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="Description">
+        <th mat-header-cell *matHeaderCellDef>  DESCRIPTION </th>
+        <td mat-cell *matCellDef="let element"> {{element.Description}} </td>
+      </ng-container>
+    
+      <!-- Weight Column -->
+      <ng-container matColumnDef="Unitvalue">
+        <th mat-header-cell *matHeaderCellDef> UNIT </th>
+        <td mat-cell *matCellDef="let element"> {{element.Unitvalue}} {{element.Unit}}  </td>
+      </ng-container> 
+    
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="Rate">
+        <th mat-header-cell *matHeaderCellDef> RATE(in rs) </th>
+        <td mat-cell *matCellDef="let element"> {{element.Rate}} </td>
+      </ng-container>
+      <ng-container matColumnDef="loading">
+        <mat-footer-cell *matFooterCellDef colspan="6">
+       After selecting  click the show button to view the data ...
+        </mat-footer-cell>
+        </ng-container>
+        <ng-container matColumnDef="noData">
+          <mat-footer-cell *matFooterCellDef colspan="6">
+         No Data...
+          </mat-footer-cell>
+          </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}"></mat-footer-row>
+      <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null&&listData.data.length==0)}"></mat-footer-row>
+    </table>
+    </div>
+    <div class="container">
+    <mat-spinner *ngIf=showspinner >balaji</mat-spinner>
+  </div>
+  </div>
+  
+<div>
+  
+</div>
+  
+  
+  </body>

@@ -1,0 +1,1199 @@
+<body>
+  <div id="main">
+    <nav class="navbar  navbar-expand-lg navbar-light " style="background-color: -webkit-linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5));">
+      <a class="navbar-brand"  > CMS</a>
+      <button class="navbar-toggler"style="background-color:#fffffff7" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav" >
+          <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          PROFILE
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" routerLink="/basicrates" >Update</a>
+              <a class="dropdown-item"routerLink="/des">Change Password</a>
+             
+            </div>
+          </li>
+
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          PROJECT
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" routerLink="/basicrates" >ADD</a>
+              <a class="dropdown-item"routerLink="/des"> EDIT</a>
+              <a class="dropdown-item"routerLink="/des"> DELETE</a>
+             
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            STANDARD ITEMS
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" routerLink="/basicrates" >Basic Rates</a>
+              <a class="dropdown-item"routerLink="/des">Description & cost</a>
+              <a class="dropdown-item" >Refer</a>
+            </div>
+          </li> -->
+  
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            NEWITEMS
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" routerLink="/bas" >Basic Rates</a>
+              <a class="dropdown-item"routerLink="/NIR">Item Rates</a>
+              <a class="dropdown-item" routerLink="/NCBU">Cost Breakup</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <h5 style="font-style:italic;text-align: center;padding-top: 10px;color:rgba(7, 117, 102, 0.72)" class="animated fadeInLeft">COST BREAK UP OF NEW ITEM OF CONSTRUCTION </h5>
+
+    <mat-card id="all">
+
+
+
+      <form [formGroup]="form1">
+       <!-- {{form1.value |json}}  -->
+    
+       <mat-radio-group  formControlName="Civ_Elec" aria-label="Select an option">
+        <mat-radio-button   value="CIVIL" (change)="civil()">CIVIL</mat-radio-button>
+        <mat-radio-button    value="ELECT" (change)="elect()">ELECTRICAL</mat-radio-button>
+       
+      </mat-radio-group>
+
+      <br>
+        <mat-form-field *ngIf=showyear  appearance="fill"   >
+          <mat-label >Select Year</mat-label>
+          <mat-select (selectionChange)="f1($event)" formControlName="schyear"  required>
+           
+            <mat-option *ngFor="let city of year" [value]="city._id">
+              {{city._id}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        &nbsp;&nbsp;
+        <mat-form-field  *ngIf=showdetail appearance="fill" class="example-full-widt">
+          <mat-label >Select </mat-label>
+          <mat-select   (selectionChange)="head($event)"  formControlName="details"   required>
+            <mat-option value="">--Select--</mat-option>
+            <mat-option value="Add Cost Breakup New Item Of Construction">Add Cost Breakup New Item Of Construction </mat-option>
+            <mat-option value="view  Cost Breakup New Item Of Construction on basicrates">view  Cost Breakup New Item Of Construction on basicrates</mat-option>
+            <mat-option value="view  Cost Breakup New Item Of Construction on marketrates">view  Cost Breakup New Item Of Construction on marketrates</mat-option>     
+          </mat-select>
+          <mat-error>Select any one</mat-error>
+         </mat-form-field> 
+
+         &nbsp;&nbsp;
+         <mat-form-field *ngIf=showchap  class="animated fadeInRight"  appearance="fill">
+          <mat-label >Select Chapter</mat-label>
+          <mat-select   (selectionChange)="sr($event)"  formControlName="subheads" required>
+            <mat-option value="">Select</mat-option>
+           <mat-option *ngFor="let city of subheads" [value]="city._id.as">
+              {{city._id.as}}-{{city._id.qw}}
+            </mat-option> 
+         </mat-select>
+          <mat-error>Please select Chapter</mat-error>
+         </mat-form-field> 
+
+
+         <!-- &nbsp;&nbsp;
+         <mat-form-field *ngIf=showchap1  class="animated fadeInRight"  appearance="fill">
+          <mat-label >Select Chapter</mat-label>
+          <mat-select   (selectionChange)="sr1($event)"  formControlName="subheads" required>
+            <mat-option value="">Select</mat-option>
+           <mat-option *ngFor="let city of subheads" [value]="city._id.as">
+              {{city._id.as}}-{{city._id.qw}}
+            </mat-option> 
+         </mat-select>
+          <mat-error>Please select Chapter</mat-error>
+         </mat-form-field>  -->
+
+       
+
+      </form>
+     
+      <form [formGroup]="form2">
+        <!-- {{form2.value |json}}  -->
+      
+          
+
+       
+     
+        <!-- <mat-card *ngIf=showchap class="animated fadeInUp" > -->
+        <!-- <h5 *ngIf=showchap style="font-style:italic;text-align:center;padding-top: 10px;" 
+        class="animated fadeInLeft">{{title}} </h5> -->
+        <!-- <br> -->
+
+<h5  *ngIf=showline style="font-style:italic;text-align:center;padding-top:10px;" class="animated flipInX">{{line}}</h5>
+
+
+         <!-- <mat-form-field *ngIf=showchap  class="animated fadeInRight" id="po" appearance="fill">
+          <mat-label >Select Chapter</mat-label>
+          <mat-select   (selectionChange)="sr($event)"  formControlName="subheads" required>
+            <mat-option value="">Select</mat-option>
+           <mat-option *ngFor="let city of subheads" [value]="city._id.as">
+              {{city._id.as}}-{{city._id.qw}}
+            </mat-option> 
+         </mat-select>
+          <mat-error>Please select Chapter</mat-error>
+         </mat-form-field>   -->
+
+         
+
+
+        
+          
+        <!-- </mat-card> -->
+
+
+
+
+<!-- //form2 data shows user added a item in sr table -->
+        <div  *ngIf=showtable class="example-container mat-elevation-z8">
+          
+    
+          <table mat-table [dataSource]="listData" class="animated fadeInRight">
+        
+            
+            <ng-container matColumnDef="Code" sticky>
+              <th  mat-header-cell *matHeaderCellDef> CODE </th>
+              
+              <td align="center" mat-cell *matCellDef="let element"> 
+                <a  style="color:#09ebd4;" (click)="onselect(element);">{{element.Itemcode}} </a>   
+               
+                  </td>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="Description">
+              <th mat-header-cell *matHeaderCellDef>  DESCRIPTION </th>
+              <td mat-cell *matCellDef="let element"> {{element.Description}} </td>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="Unitvalue">
+              <th mat-header-cell *matHeaderCellDef> UNIT </th>
+              <td  mat-cell *matCellDef="let element"> {{element.Unitvalue}}-{{element.Unit}}  </td>
+            </ng-container> 
+          
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="Rate">
+              <th mat-header-cell *matHeaderCellDef> RATE(in rs) </th>
+              <td align="right" mat-cell *matCellDef="let element"> {{element.Rate | number:'1.2-2'}} </td>
+            </ng-container>
+    
+           
+            <ng-container matColumnDef="loading">
+              <mat-footer-cell *matFooterCellDef colspan="6">
+             After selecting  click the show button to view the data ...
+              </mat-footer-cell>
+              </ng-container>
+              <ng-container matColumnDef="noData">
+                <mat-footer-cell *matFooterCellDef colspan="6">
+               No Data...
+                </mat-footer-cell>
+                </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}"></mat-footer-row>
+            <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null&&listData.data.length==0)}"></mat-footer-row>
+          </table>
+          </div>
+          </form>
+
+<form [formGroup]="form3">
+  <!-- {{form3.value |json}}  -->
+<div  class='containner' *ngIf="calculation">
+
+          <mat-form-field class="example-form-field" appearance="fill">
+            <mat-label style="color:rgb(3, 16, 20)">Itemcode</mat-label>
+            <input  style="color:rgb(3, 16, 20)" formControlName="Itemcode" matInput type="text">
+            </mat-form-field>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-form-field class="example-full-widt" >
+              <mat-label  style="color:rgb(3, 16, 20)">Description</mat-label>
+              <textarea style="color:rgb(3, 16, 20)" formControlName="Desc"  matInput placeholder="Description"></textarea>
+            </mat-form-field>
+            &nbsp;&nbsp;
+            <mat-form-field class="example-form-field" appearance="fill">
+              <mat-label style="color:rgb(3, 16, 20)">Unit</mat-label>
+              <input style="color:rgb(3, 16, 20)" matInput formControlName="unitplus"  type="text">
+              </mat-form-field>
+              &nbsp;&nbsp;
+           
+              <mat-form-field class="example-form-field" appearance="fill">
+                <mat-label style="color:rgb(3, 16, 20)">QUANTITY </mat-label>
+                <input matInput type="number"formControlName="calquantityvalue" (change)="calquan($event)"  placeholder="Enter Quantity ">
+               
+              </mat-form-field>
+ 
+              
+                <!-- <p>Enter Quantity For Which Analysis To Be Worked Out</p> -->
+              
+              
+             
+  
+
+
+              </div>
+              <br>
+<div *ngIf=diff align="center">
+              <mat-radio-group  *ngIf=diff aria-label="Select an option">
+                <mat-radio-button value="Itemcode" (change)="item($event)">Itemcode</mat-radio-button>
+                <mat-radio-button value="Material/labour code" (change)="item($event)">Material/labour code</mat-radio-button>
+                <mat-radio-button value="Analysis of Standard Items" (change)="item($event)">Analysis of Standard Items</mat-radio-button>
+              </mat-radio-group>
+            </div>
+
+
+            <mat-form-field  *ngIf=subhead2 class="animated fadeInRight" appearance="fill">
+              <mat-label >Select Chapter </mat-label>
+              <mat-select formControlName="subheads1" (selectionChange)="sub1($event)"   >
+                <mat-option value="">Select</mat-option>
+               <mat-option *ngFor="let city of subheadscos" [value]="city._id.as">
+                  {{city._id.as}}-{{city._id.qw}}
+                </mat-option> 
+             </mat-select>
+              <!-- <mat-error>Please select Chapter</mat-error> -->
+             </mat-form-field>  
+
+
+&nbsp;&nbsp;
+<mat-form-field  *ngIf=type  class="animated fadeInRight" appearance="fill">
+  <mat-label >Select  Type </mat-label>
+  <mat-select  (selectionChange)="rate($event)"  formControlName="type" required>
+    <mat-option value="">Select</mat-option>
+   <mat-option *ngFor="let city of ratetype" [value]="city._id">
+      {{city._id}}
+    </mat-option> 
+ </mat-select>
+  <mat-error>Please select </mat-error>
+ </mat-form-field> 
+ &nbsp;&nbsp;
+ <mat-form-field  *ngIf=analysissub class="animated fadeInRight" appearance="fill">
+  <mat-label >Select Chapter </mat-label>
+  <mat-select formControlName="subheads1" (selectionChange)="anasub1($event)"   >
+    <mat-option value="">Select</mat-option>
+   <mat-option *ngFor="let city of anasub" [value]="city._id.as">
+      {{city._id.as}}-{{city._id.qw}}
+    </mat-option> 
+ </mat-select>
+  <!-- <mat-error>Please select Chapter</mat-error> -->
+ </mat-form-field>  
+
+
+<button  mat-raised-button color="accent" *ngIf=button (click)="srrr()" >Save</button>
+<!-- //icode -->
+             <div  *ngIf=selecttabledata class="example-container mat-elevation-z8">
+          
+    
+              <table mat-table [dataSource]="listData" class="animated fadeInRight">
+            
+
+                <ng-container matColumnDef="select">
+                  <th mat-header-cell *matHeaderCellDef>
+                  
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                 
+          <mat-checkbox #checkboxes (click)="$event.stopPropagation()" (change)="onsave(element,$event.checked)"
+          *ngIf="(element.Calquantity!==0 && element.Unitvalue!==0); else elseBlock">
+                      </mat-checkbox>
+                      <ng-template    #elseBlock>
+                      <mat-checkbox disabled></mat-checkbox>
+                      
+            
+                    </ng-template> 
+                   
+                       
+                  </td>
+                </ng-container>
+
+                                 <!-- Position Column -->
+                <ng-container matColumnDef="Code" sticky>
+                  <th mat-header-cell *matHeaderCellDef> CODE </th>
+                  
+                 
+                  <td mat-cell *matCellDef="let element"> 
+                    <a  style=" color: #09ebd4;">{{element.Itemcode}} </a>   
+                   
+                      </td>
+                </ng-container>
+              
+                <!-- Name Column -->
+                <ng-container matColumnDef="Description">
+                  <th mat-header-cell *matHeaderCellDef>  DESCRIPTION </th>
+                  <td mat-cell *matCellDef="let element"> {{element.Description}} </td>
+                </ng-container>
+              
+                <!-- Weight Column -->
+                <ng-container matColumnDef="Unitvalue">
+                  <th mat-header-cell *matHeaderCellDef> UNIT </th>
+                  <td mat-cell *matCellDef="let element"> {{element.Unitvalue}} {{element.Unit}}  </td>
+                </ng-container> 
+              
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="Rate">
+                  <th mat-header-cell *matHeaderCellDef> RATE(in rs) </th>
+                  <td mat-cell *matCellDef="let element"> {{element.Rate | number:'1.2-2'}} </td>
+                </ng-container>
+
+                
+        
+               
+                <ng-container matColumnDef="loading">
+                  <mat-footer-cell *matFooterCellDef colspan="6">
+                 After selecting  click the show button to view the data ...
+                  </mat-footer-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="noData">
+                    <mat-footer-cell *matFooterCellDef colspan="6">
+                   No Data...
+                    </mat-footer-cell>
+                    </ng-container>
+              
+                <tr mat-header-row *matHeaderRowDef="displayedCol; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedCol;" ></tr>
+                <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}"></mat-footer-row>
+                <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null&&listData.data.length==0)}"></mat-footer-row>
+              </table>
+              </div>
+ <!-- code              -->
+              <button *ngIf=codedatabutton mat-raised-button color="accent" (click)="saveforcode()" >Code save</button>
+              <div  *ngIf=codedata class="example-container mat-elevation-z8">
+        
+  
+                <table mat-table [dataSource]="listData" class="animated fadeInRight">
+              
+  
+                  <ng-container matColumnDef="select">
+                    <th mat-header-cell *matHeaderCellDef>
+                    
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                   
+          
+                      <mat-checkbox #checkboxes (click)="$event.stopPropagation()" (change)="onsav(element,$event.checked)"
+        *ngIf="element.Unitvalue!=0 || (element.Unitvalue!='' ); else elseBlock">
+                    </mat-checkbox>
+                    <ng-template    #elseBlock>
+                    
+                    
+          
+                  </ng-template>
+                     
+                         
+                    </td>
+                  </ng-container>
+  
+                  <ng-container matColumnDef="Code" sticky>
+                    <th mat-header-cell *matHeaderCellDef> CODE </th>
+                    
+                   
+                    <td mat-cell *matCellDef="let element"> 
+                      {{element.Code}} 
+                     
+                        </td>
+                  </ng-container>
+                
+                
+                  <ng-container matColumnDef="Description">
+                    <th mat-header-cell *matHeaderCellDef>  DESCRIPTION </th>
+                    <td mat-cell *matCellDef="let element"> {{element.Description}} </td>
+                  </ng-container>
+                
+                
+                  <ng-container matColumnDef="Unit">
+                    <th mat-header-cell *matHeaderCellDef> UNIT </th>
+                    <td mat-cell *matCellDef="let element"> {{element.Unitvalue}} {{element.Unit}}  </td>
+                  </ng-container> 
+                
+                 
+                  <ng-container matColumnDef="Rate">
+                    <th mat-header-cell *matHeaderCellDef> RATE(in rs) </th>
+                    <td mat-cell *matCellDef="let element"> {{element.Rate | number:'1.2-2'}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="sorn">
+                    <th mat-header-cell *matHeaderCellDef> Standard/New </th>
+                    <td mat-cell *matCellDef="let element"> {{element.ss}} </td>
+                  </ng-container>
+  
+                  
+          
+                 
+                  <ng-container matColumnDef="loading">
+                    <mat-footer-cell *matFooterCellDef colspan="6">
+                   After selecting  click the show button to view the data ...
+                    </mat-footer-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="noData">
+                      <mat-footer-cell *matFooterCellDef colspan="6">
+                     No Data...
+                      </mat-footer-cell>
+                      </ng-container>
+                
+                  <tr mat-header-row *matHeaderRowDef="display; sticky: true"></tr>
+                  <tr mat-row *matRowDef="let row; columns: display;" ></tr>
+                  <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}"></mat-footer-row>
+                  <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null&&listData.data.length==0)}"></mat-footer-row>
+                </table>
+                </div> 
+
+<!-- analysisf -->
+<!-- <button (click)="ddd()">derererr</button> -->
+<button  mat-raised-button color="accent" *ngIf= anabutton (click)="saveana()" >Saveitem</button>
+<div  *ngIf=analysisfdata class="example-container mat-elevation-z8">
+          
+    
+  <table mat-table [dataSource]="listData" class="animated fadeInRight">
+
+
+
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+      
+      </th>
+      <td mat-cell *matCellDef="let element">
+     
+<mat-checkbox #checkboxes (click)="$event.stopPropagation()" (change)="onsaveforana(element,$event.checked)"
+*ngIf="(element.Calquantity!==0 && element.Unitvalue!==0); else elseBlock">
+          </mat-checkbox>
+          <ng-template    #elseBlock>
+          <mat-checkbox disabled></mat-checkbox>
+          
+
+        </ng-template> 
+       
+           
+      </td>
+    </ng-container>
+
+
+                     <!-- Position Column -->
+    <ng-container matColumnDef="Code" sticky>
+      <th mat-header-cell *matHeaderCellDef> CODE </th>
+      
+     
+      <td mat-cell *matCellDef="let element"> 
+        <a  style=" color: #09ebd4;">{{element.Itemcode}} </a>   
+       
+          </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="Description">
+      <th mat-header-cell *matHeaderCellDef>  DESCRIPTION </th>
+      <td mat-cell *matCellDef="let element"> {{element.Description}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Unitvalue">
+      <th mat-header-cell *matHeaderCellDef> UNIT </th>
+      <td mat-cell *matCellDef="let element"> {{element.Unitvalue}} {{element.Unit}}  </td>
+    </ng-container> 
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Rate">
+      <th mat-header-cell *matHeaderCellDef> RATE(in rs) </th>
+      <td mat-cell *matCellDef="let element"> {{element.Rate| number:'1.2-2'}} </td>
+    </ng-container>
+
+    
+
+   
+    <ng-container matColumnDef="loading">
+      <mat-footer-cell *matFooterCellDef colspan="6">
+     After selecting  click the show button to view the data ...
+      </mat-footer-cell>
+      </ng-container>
+      <ng-container matColumnDef="noData">
+        <mat-footer-cell *matFooterCellDef colspan="6">
+       No Data...
+        </mat-footer-cell>
+        </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedCol; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedCol;" ></tr>
+    <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}"></mat-footer-row>
+    <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null&&listData.data.length==0)}"></mat-footer-row>
+  </table>
+  </div>
+
+
+              </form>
+
+               <form [formGroup]="form4">
+                <!-- {{form4.value |json}}  -->
+</form>
+
+<!-- <form [formGroup]="form5" >
+  {{form5.getRawValue() |json}}  
+<div  id="scrollId" *ngIf=costbreakup>
+  <label>Itemcode:&nbsp;</label> 
+  <input class="we" formControlName="Itemcode">
+&nbsp;
+  <label>Icode:&nbsp;</label> 
+  <input class="we" formControlName="Icode">
+  &nbsp;
+  <label>Code:&nbsp;</label> 
+  <input class="we" formControlName="Code" >
+  &nbsp;
+  <label>unit:&nbsp;</label> 
+  <input   class="we" formControlName="unitplus">
+  <br>
+  <label>Description</label>
+  <mat-grid-list cols="1" rowHeight="50px">
+    <mat-grid-tile  [rowspan]=2  [colspan]=1   >
+      <textarea class="text" formControlName="Description"></textarea> </mat-grid-tile>
+         
+  </mat-grid-list> -->
+  <!-- <mat-form-field  appearance="fill">
+    <mat-label>Rate</mat-label>
+    <input matInput formControlName="Rate">
+  </mat-form-field>
+  &nbsp;&nbsp;
+  <mat-form-field  appearance="fill">
+    <mat-label>Quantity</mat-label>
+    <input matInput type="number" (change)="qty($event)" formControlName="Qty" required>
+    <mat-error>Incorrect</mat-error>
+  </mat-form-field>
+  &nbsp;&nbsp;
+  <mat-form-field  appearance="fill">
+    <mat-label>Amount</mat-label>
+    <input matInput type="number"  formControlName="amount" required>
+    
+  </mat-form-field> -->
+
+  <!-- <table class="table-responsive ">
+     
+    <tr>
+      <th>Rate:<input class="we" formControlName="Rate"></th>
+      <th >Quantity:<input class="we"type="number" (change)="qty($event)" formControlName="Qty" required></th>
+      <th >total:<input  class="we" type="number"  formControlName="fintotal" required></th>
+</tr>
+</table> -->
+
+
+
+
+    <!-- <br>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+     
+        <tr>
+          <th>Labour percentage</th>
+          <th >Cartage</th>
+          <th >Water</th>
+          <th >Gst</th>
+          <th >Overheads</th>
+          <th >cess</th>
+        </tr>
+        <tr>
+          <td>       
+        
+            <input class="we" type="number" (change)="lab($event)" formControlName="labour" required>
+       
+        <br>
+     
+          <input class="we"  type="number"  formControlName="labourcost">
+         
+       
+      </td>
+          <td>  
+     
+            <input  class="we" type="number" formControlName="cartage">
+       
+         <br>
+    
+          <input class="we"  formControlName="cartagetot">
+       
+        
+      </td>
+          <td> 
+          
+            <input class="we" type="number" formControlName="water">
+        
+     <br>
+        
+          <input  class="we"   formControlName="watertot">
+       
+     
+      </td>
+        <td>  
+         
+          <input type="number" class="we"  formControlName="gst">
+   
+       <br>
+    
+        <input class="we"  formControlName="gsttot">
+     
+ 
+    </td>
+        <td>
+ 
+            <input class="we" type="number"  formControlName="overhead">
+        
+        <br>
+    
+          <input class="we"   formControlName="overtot">
+       
+      
+        </td>
+        <td> 
+          
+          <input class="we" type="number"  formControlName="cess">
+       
+       <br>
+
+        <input  class="we"  formControlName="cesstot">
+     
+      </td>
+       
+        </tr>
+      </table>
+
+</div> -->
+  <!-- <mat-form-field  appearance="fill">
+    <mat-label>Labou percentage</mat-label>
+    <input matInput type="number" (change)="lab($event)" formControlName="labour" required>
+    
+  </mat-form-field>
+  &nbsp;&nbsp;
+  <mat-form-field  appearance="fill">
+    <mat-label>Labourcost</mat-label>
+    <input matInput type="number"  formControlName="labourcost">
+   
+  </mat-form-field>
+  &nbsp;&nbsp;
+  <mat-form-field  appearance="fill">
+    <mat-label>total with labourcharges</mat-label>
+    <input matInput type="number"  formControlName="totalpluslabour">
+ 
+  </mat-form-field>
+  &nbsp;&nbsp;
+  <mat-form-field  appearance="fill">
+    <mat-label>cartage percentage</mat-label>
+    <input matInput type="number"  formControlName="cartage">
+ 
+  </mat-form-field>
+  &nbsp;&nbsp;
+  <mat-form-field  appearance="fill">
+    <mat-label>cartagecost </mat-label>
+    <input matInput   formControlName="cartagetot">
+ 
+  </mat-form-field>
+  &nbsp;&nbsp;
+  <mat-form-field  appearance="fill">
+    <mat-label>total with cartagecost and cartage charges </mat-label>
+    <input matInput   formControlName="cartagecharge">
+ 
+  </mat-form-field>
+  &nbsp;&nbsp;
+  <mat-form-field  appearance="fill">
+    <mat-label>water percentage </mat-label>
+    <input matInput  type="number" formControlName="water">
+ </mat-form-field>
+ &nbsp;&nbsp;
+ <mat-form-field  appearance="fill">
+  <mat-label>water charge </mat-label>
+  <input matInput   formControlName="watertot">
+
+</mat-form-field>
+&nbsp;&nbsp;
+
+<mat-form-field  appearance="fill">
+  <mat-label>total with watercost and cartage and labour charges </mat-label>
+  <input matInput   formControlName="watercharge">
+
+</mat-form-field>
+&nbsp;&nbsp;
+
+<mat-form-field  appearance="fill">
+  <mat-label>gst percentage </mat-label>
+  <input matInput type="number"   formControlName="gst">
+</mat-form-field>
+&nbsp;&nbsp;
+<mat-form-field  appearance="fill">
+<mat-label>gst  charge </mat-label>
+<input matInput   formControlName="gsttot">
+
+</mat-form-field>
+&nbsp;&nbsp;
+<mat-form-field  appearance="fill">
+<mat-label>total with watercost and cartage and labour and gst charges </mat-label>
+<input matInput   formControlName="gstcharge">
+
+</mat-form-field>
+&nbsp;&nbsp;
+<mat-form-field  appearance="fill">
+<mat-label>overheads percentage </mat-label>
+<input matInput type="number"  formControlName="overhead">
+</mat-form-field>
+&nbsp;&nbsp;
+<mat-form-field  appearance="fill">
+<mat-label>overheads  charge </mat-label>
+<input matInput   formControlName="overtot">
+
+</mat-form-field>
+&nbsp;&nbsp;
+
+<mat-form-field  appearance="fill">
+<mat-label>total</mat-label>
+<input matInput   formControlName="overcharge">
+
+</mat-form-field>
+&nbsp;&nbsp;
+
+<mat-form-field  appearance="fill">
+<mat-label>cess percentage </mat-label>
+<input matInput type="number"  formControlName="cess">
+</mat-form-field>
+&nbsp;&nbsp;
+<mat-form-field  appearance="fill">
+<mat-label>cess charge </mat-label>
+<input matInput   formControlName="cesstot">
+
+</mat-form-field>
+&nbsp;&nbsp;
+
+<mat-form-field  appearance="fill">
+<mat-label>total  </mat-label>
+<input matInput   formControlName="cesscharge">
+
+</mat-form-field>
+&nbsp;&nbsp;
+-->
+<!-- <div align="center">
+<button  mat-raised-button color="accent" (click)="update()" >update</button> 
+&nbsp;&nbsp;
+<button  mat-raised-button color="warn" (click)="delete()" >delete</button> 
+</div>
+</div>
+
+<br> -->
+<!-- <table style="width:100%">
+<tr>
+<th colspan="2">ItemCode:
+<mat-form-field   appearance="fill">
+<mat-label>ItemCode</mat-label>
+<input matInput formControlName="Itemcode">
+</mat-form-field></th>
+<th >Description
+<mat-form-field   appearance="fill">
+<mat-label>Description</mat-label>
+<textarea matInput formControlName="Description"></textarea>
+</mat-form-field>
+</th>
+<th >Unitvalue</th>
+<th >
+<mat-form-field  appearance="fill">
+<mat-label>total  </mat-label>
+<input matInput   formControlName="cesscharge">
+
+</mat-form-field></th>
+</tr>
+<tr>
+<td>  Icode:<mat-form-field  appearance="fill">
+<mat-label>Icode</mat-label>
+<input matInput formControlName="Icode">
+</mat-form-field></td>
+<td>code:<mat-form-field  appearance="fill">
+<mat-label>code</mat-label>
+<input matInput formControlName="Code">
+</mat-form-field></td>
+<td ><textarea formControlName="Description"></textarea></td>
+<td>55577855</td>
+<td>55577855</td>
+</tr>
+</table> -->
+
+
+<!-- 
+</form> -->
+                <div  *ngIf=selecttable class="example-container mat-elevation-z8">
+          
+    
+                  <table mat-table [dataSource]="listData" class="animated fadeInRight">
+
+                    <ng-container matColumnDef="select" >
+                      <th mat-header-cell *matHeaderCellDef>select </th>
+                      
+                     
+                      <td mat-cell  align="center" *matCellDef="let element"> 
+                    <!-- <button (click)="scroll(target)" >dff</button> -->
+                        <mat-radio-button  (change)="add(element)"   ></mat-radio-button>
+                       
+                          </td>
+                    </ng-container>
+
+
+ 
+                    <ng-container matColumnDef="Itemcode" sticky>
+                      <th mat-header-cell *matHeaderCellDef> Itemcode </th>
+          <td mat-cell   align="center" *matCellDef="let element"> {{element.ItemCode}} </td>
+        </ng-container>
+
+                    <ng-container matColumnDef="Icode" >
+                      <th mat-header-cell *matHeaderCellDef> Icode </th>
+                      
+                     
+                      <td mat-cell  align="center" *matCellDef="let element"> 
+                        {{element.Icode}}  
+                       
+                          </td>
+                    </ng-container>
+
+
+
+                    <ng-container matColumnDef="Code" >
+                      <th mat-header-cell *matHeaderCellDef> CODE </th>
+                      
+                     
+                      <td mat-cell  align="center" *matCellDef="let element"> 
+                        <a>{{element.Code}} </a>   
+                       
+                          </td>
+                    </ng-container>
+
+
+                  
+                   
+                    <ng-container matColumnDef="Description">
+                      <th mat-header-cell *matHeaderCellDef>  DESCRIPTION </th>
+                      <td mat-cell   *matCellDef="let element"> {{element.Description}} </td>
+                    </ng-container>
+                  
+                   
+                    <ng-container matColumnDef="Unitvalue">
+                      <th mat-header-cell *matHeaderCellDef> Unit </th>
+                      <td mat-cell  align="center" *matCellDef="let element"> {{element.Unitvalue}} {{element.Unit}}   </td>
+                    </ng-container> 
+
+                <ng-container matColumnDef="Rate">
+                      <th mat-header-cell *matHeaderCellDef> RATE(in rs) </th>
+                      <td mat-cell  align="center" *matCellDef="let element"> {{element.Rate}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Qty">
+                      <th mat-header-cell *matHeaderCellDef> Quantity </th>
+                      <td mat-cell  align="center" *matCellDef="let element"> {{element.Quantity}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Amount">
+                      <th mat-header-cell *matHeaderCellDef> Amount(in rs) </th>
+                      <td mat-cell  align="center" *matCellDef="let element"> {{element.Total| number:'1.2-2'}} </td>
+                    </ng-container>
+
+<!-- //labour','cartage','water','gst','over','cess' -->
+
+                    <ng-container matColumnDef="labour">
+                      <th mat-header-cell *matHeaderCellDef> labour%-charges </th>
+                      <td mat-cell  align="center" *matCellDef="let element"> {{element.labour_facor}}% = {{element.labourcost| number:'1.2-2'}}  </td>
+                    </ng-container>
+                    <ng-container matColumnDef="cartage">
+                      <th mat-header-cell *matHeaderCellDef> cartage%-charges </th>
+                      <td mat-cell  align="center" *matCellDef="let element">{{element.cartage}}% = {{element.cartagecost| number:'1.2-2'}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="water">
+                      <th mat-header-cell *matHeaderCellDef> water%-charges  </th>
+                      <td mat-cell  align="center" *matCellDef="let element">{{element.Water}}% = {{element.watercost| number:'1.2-2'}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="gst">
+                      <th mat-header-cell *matHeaderCellDef> gst%-charges </th>
+                      <td mat-cell  align="center" *matCellDef="let element"> {{element.gst}}% = {{element.gstcost| number:'1.2-2'}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="over">
+                      <th mat-header-cell *matHeaderCellDef> Overheads%-charges </th>
+                      <td mat-cell  align="center" *matCellDef="let element"> {{element.Overheads}}% = {{element.overheadcost| number:'1.2-2'}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="cess">
+                      <th mat-header-cell *matHeaderCellDef> cess%-charges </th>
+                      <td mat-cell  align="center" *matCellDef="let element">{{element.cess}}% = {{element.cesscost| number:'1.2-2'}}  </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="loading">
+                      <mat-footer-cell *matFooterCellDef colspan="6">
+                     After selecting  click the show button to view the data ...
+                      </mat-footer-cell>
+                      </ng-container>
+                      <ng-container matColumnDef="noData">
+                        <mat-footer-cell *matFooterCellDef colspan="6">
+                       No Data...
+                        </mat-footer-cell>
+                        </ng-container>
+                  
+                    <tr mat-header-row *matHeaderRowDef="displayed; sticky: true"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayed;"></tr>
+                    <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}"></mat-footer-row>
+                    <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null&&listData.data.length==0)}"></mat-footer-row>
+                  </table>
+              
+                  
+                  <!-- <table> 
+                  <tr>
+                    calquantity: <p>{{calvar}}</p>
+                   
+                    </tr>
+                    <tr>
+                    calculated total({{calunit}}):<p>{{total}}</p>
+                  </tr>
+                </table>
+                   -->
+                   
+                </div>
+                <div *ngIf=selecttable class="tab" align="center">
+                  <mat-card>
+                  <table class="table" >
+                <tr>
+                  <th align="center" valign="middle">calquantity:</th>
+                  <td>{{calvar}}</td>
+
+                  
+                </tr>
+                <tr>
+                  
+                  <th align="center" valign="middle">calculated total({{calunit}}):</th>
+                  <td align="center" valign="middle">{{total}}</td>
+                </tr>
+              </table>
+            </mat-card>
+            </div>
+               
+                  
+                
+
+
+                  <form [formGroup]="form6">
+                    <!-- {{form6.getRawValue()|json}}  -->
+                    </form>
+                    
+                    <!-- <div  class="table" formArrayName="user" >
+                     <mat-card>
+                      <button  mat-raised-button color="accent" (click)="update()" >update</button>
+                    <table class="table-responsive" >
+                    <thead> -->
+                        <!-- <div *ngFor="let control of form6.get('user').controls; let i = index"
+                        [formGroupName]="i" style="display: flex"> -->
+                      <!-- <tr>
+                        <th>select</th>
+                        <th>Itemcode</th>
+                        <th>Icode</th>
+                        <th>Code</th>
+                        <th>Description</th> -->
+                        <!-- <th>Unitvalue</th> -->
+                        <!-- <th>unit</th>
+                        <th>Rate</th>
+                        <th>Qty</th> -->
+                        <!-- <th>amount</th> -->
+                        <!-- <th>labour</th> -->
+                        <!-- <th>labourcost</th> -->
+                        <!-- <th>totalpluslabour</th>
+
+                        <th>cartage</th> -->
+                        <!-- <th>cartagetot</th> -->
+                        <!-- <th>cartagecharge</th>
+                        <th>water</th> -->
+                        <!-- <th>watertot</th> -->
+                        <!-- <th>watercharge</th>
+                        <th>gst</th> -->
+                        <!-- <th>gsttot</th> -->
+                        <!-- <th>gstcharge</th>
+
+                        <th>overhead</th> -->
+                        <!-- <th>overtot</th> -->
+                        <!-- <th>overcharge</th>
+                        <th>cess</th> -->
+                        <!-- <th>cesstot</th> -->
+                        <!-- <th>cesscharge</th> -->
+
+                        
+                      <!-- </tr>
+                    </thead>
+                    <tbody> 
+                      <tr  *ngFor="let control of form6.get('user').controls; let i = index"
+                      [formGroupName]="i" >
+                      <td> <mat-checkbox  (ngModelChange)="changeAction($event,i)" formControlName="select">
+                                  </mat-checkbox></td>
+ -->
+
+                      <!-- <td> <input type="checkbox" (ngModelChange)="changeAction($event,i)" formControlName="select"></td> -->
+                        <!-- <td class="c"> <input class="a" type="text" formControlName="Itemcode"> -->
+                        
+                          <!-- {{(<FormArray>this.form6.get("user")).at(index).get('Rate').value) -->
+                        <!-- </td>
+                        <td> <input class="a" type="text" formControlName="Icode"></td>
+                        <td> <input class="a" type="text" formControlName="Code"></td>
+                        <td> <input class="b" type="textbox" formControlName="Description"></td> -->
+                        <!-- <td> <input type="text" formControlName="Unitvalue">
+                          </td> -->
+                        <!-- <td> <input  class="a" type="text" formControlName="unit"></td>
+                        <td> <input class="a" type="text" formControlName="Rate"></td>
+                        <td> <input class="a" type="text" formControlName="Qty"></td> -->
+                        <!-- <td> <input type="text" formControlName="amount"></td> -->
+                        <!-- <td> <input  class="a" type="number" formControlName="labour">
+                          <input  class="a" type="number" formControlName="labourcost"></td> -->
+                        <!-- <td> <input type="text" formControlName="labourcost"></td> -->
+                        <!-- <td> <input  class="a"  type="number" formControlName="totalpluslabour"></td>
+                        <td> <div><input  class="a" type="number" formControlName="cartage">
+                          <input  class="a" type="number" formControlName="cartagetot">
+                        </div>
+                        </td> -->
+                        <!-- <td> <input type="text" formControlName="cartagetot"></td> -->
+                        <!-- <td> <input  class="a" type="number" formControlName="cartagecharge"></td>
+                        <td> <input  class="a" type="number" formControlName="water">
+                          <input  class="a"  type="number" formControlName="watertot"></td> -->
+                        <!-- <td> <input type="text" formControlName="watertot"> -->
+                          <!-- <input type="text" formControlName="watertot"></td> -->
+                        <!-- <td> <input  class="a" type="number" formControlName="watercharge"></td>
+                        <td> <input  class="a"  type="number" formControlName="gst">
+                          <input  class="a"  type="number" formControlName="gsttot"></td> -->
+                        <!-- <td> <input type="text" formControlName="gsttot"></td> -->
+                        <!-- <td> <input  class="a" type="number" formControlName="gstcharge"></td>
+                        <td> <input  class="a"  type="number" formControlName="overhead">
+                          <input  class="a"  type="number" formControlName="overtot"></td> -->
+                        <!-- <td> <input type="text" formControlName="overtot"></td> -->
+                        <!-- <td> <input  class="a"  type="number" formControlName="overcharge"></td>
+                        <td> <input   class="a" type="number" formControlName="cess">
+                          <input  class="a"  type="number" formControlName="cesstot"></td> -->
+                        <!-- <td> <input type="text" formControlName="cesstot"></td> -->
+                        <!-- <td> <input class="a"  type="number" formControlName="cesscharge"></td> -->
+                         
+    
+    
+                      
+                        <!-- </tr>
+                      </tbody> -->
+                      <!-- </div> -->
+                    <!-- </table> -->
+                  
+                  <!-- </mat-card> -->
+                    <!-- </div>
+                    <h5>total</h5>  <p >{{this.form6.get('tot').value}}</p> -->
+                     
+                    <!-- <div formArrayName="user" >
+                      <div *ngFor="let control of form6.get('user').controls; let i = index"
+                      [formGroupName]="i" style="display: flex">
+                    
+                      <input type="text" formControlName="Itemcode">
+
+
+                    </div>  -->
+
+
+
+                   
+
+                    <!-- </div> -->
+
+                    
+
+
+<!-- 
+</form> -->
+
+                <!-- </form>  -->
+
+
+
+
+                <div  align="center" class="container" *ngIf=showspinner >
+                  <mat-spinner *ngIf=showspinner >balaji</mat-spinner>
+                </div>
+</mat-card>
+
+
+
+
+
+
+
+
+  </div>
+  </body>
+
+  <!-- <mat-form-field   appearance="fill">
+    <mat-label>ItemCode</mat-label> -->
+    <!-- <input class="we" formControlName="Itemcode"> -->
+  <!-- </mat-form-field> -->
+  <!-- &nbsp;&nbsp;
+  <mat-form-field  appearance="fill">
+    <mat-label>Icode</mat-label>
+    <input matInput formControlName="Icode">
+  </mat-form-field>
+  &nbsp;&nbsp;
+  <mat-form-field  appearance="fill">
+    <mat-label>Code</mat-label>
+    <input matInput formControlName="Code">
+  </mat-form-field>
+  &nbsp;&nbsp;
+  <mat-form-field   appearance="fill">
+    <mat-label>Description</mat-label>
+    <textarea matInput formControlName="Description"></textarea>
+  </mat-form-field>
+  &nbsp;&nbsp;
+  <mat-form-field  appearance="fill">
+    <mat-label>UnitValue</mat-label>
+    <input matInput formControlName="Unitvalue">
+  </mat-form-field>
+  &nbsp;&nbsp;
+  <mat-form-field  appearance="fill">
+    <mat-label>Unit</mat-label>
+    <input matInput formControlName="Unit">
+  </mat-form-field>
+  &nbsp;&nbsp;
+  <mat-form-field  appearance="fill">
+    <mat-label>Rate</mat-label>
+    <input matInput formControlName="Rate">
+  </mat-form-field>
+  &nbsp;&nbsp;
+  <mat-form-field  appearance="fill">
+    <mat-label>Quantity</mat-label>
+    <input matInput type="number" (change)="qty($event)" formControlName="Qty" required>
+    <mat-error>Incorrect</mat-error>
+  </mat-form-field>
+  &nbsp;&nbsp;
+  <mat-form-field  appearance="fill">
+    <mat-label>Amount</mat-label>
+    <input matInput type="number"  formControlName="amount" required>
+    
+  </mat-form-field> -->
+
+
+  <!-- <div class="mb-3">
+        
+        <div class="form-check">
+          <input class="form-check-input" type="radio" (click)="civil()" formControlName="Civ_Elec"  value="CIVIL" >
+          <label class="form-check-label">CIVIL</label>
+          &nbsp;&nbsp;
+          <input class="form-check-input" type="radio" (click)="elect()" formControlName="Civ_Elec"  value="ELECT" >
+          <label class="form-check-label">ELECTRICAL </label>
+        </div>
+        </div> -->
+      <!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
+        <!-- <mat-form-field  *ngIf=showdetail appearance="fill" class="example-full-widt">
+          <mat-label >Select year</mat-label>
+          <mat-select   (selectionChange)="head($event)"  formControlName="details"   required>
+            <mat-option value="">--Select--</mat-option>
+            <mat-option value="Add Cost Breakup New Item Of Construction">Add Cost Breakup New Item Of Construction </mat-option>
+                <mat-option value="Add New Item Of Construction Under Standard & New Item">Add New Item Of Construction Under Standard & New Item</mat-option>
+                <mat-option value="Edit And Delete Cost Breakup New Item Of Construction">Edit And Delete Cost Breakup New Item Of Construction</mat-option>
+               
+                <mat-option value="View Cost Breakup of New Item Of Construction on Basic Rates">View Cost Breakup of New Item Of Construction on Basic Rates</mat-option>
+                <mat-option value="View Cost Breakup of New Item Of Construction on Market Rates">View Cost Breakup of New Item Of Construction on Market Rates</mat-option>
+                
+          </mat-select>
+          <mat-error>Select any one</mat-error>
+         </mat-form-field>  -->

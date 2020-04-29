@@ -1,0 +1,55 @@
+
+
+.example-container {
+
+    width: auto;
+      height: 300px;
+      overflow: auto;
+      background-image:-webkit-linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5));
+      background-size: cover;
+      margin-right: 10em;
+      margin-left: 10em;
+      top:1.5em;
+      position:relative;
+       clear: left;
+    }
+    
+    table {
+      width: 100%;
+    }
+    th{
+      border: 1px solid #e0e0e0;
+    }
+    td{
+      border-right: 1px solid  #e0e0e0;
+    }
+    .mat-header-cell {
+      color: white;
+      text-align:center;
+      background-color: black;
+      font-family: Tahoma;
+      font-size: 10pt;
+      padding:20px;
+      font-weight: bold;
+    }
+    
+    
+    
+    .hide{
+      display:none;
+    }
+    .mat-raised-button {
+      
+      font-family: tahoma;
+      font-size: 10pt;
+      background-color: #2fdb13;
+      color:black;
+      font-size: 10pt;
+      font-weight: bold;
+      margin-left:1em;
+      top:1.2em;
+     
+     
+     
+     
+    }

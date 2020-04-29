@@ -1,0 +1,291 @@
+
+     
+
+
+
+    <body>
+      <div id="main">
+        <nav class="navbar  navbar-expand-lg navbar-light " style="background-color: -webkit-linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5));">
+          <a class="navbar-brand"  > CMS</a>
+          <button class="navbar-toggler"style="background-color:#fffffff7" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav" >
+              <!-- <li class="nav-item active">
+                <a class="nav-link"  routerLink="/main" >HOME<span class="sr-only">(current)</span></a>
+              </li> -->
+              <li class="nav-item">
+                <a class="nav-link"routerLink="/Labour" >LABOUR</a>
+              </li>
+      
+              <li class="nav-item">
+                <a class="nav-link"routerLink="/mat" >MATERIALS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/plant" >PLANTS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link"routerLink="/Carriage">CARRIAGE</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link"routerLink="/rates">RATES</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link"routerLink="/cost">COST BREAK UP</a>
+              </li>
+              <li class="nav-item">
+                <a class="dropdown-item" (click)="dc()"data-toggle="collapse" 
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">LOGIN</a>
+              </li>
+            </ul>
+           
+           
+          </div>
+        </nav>
+        <div class="title" align="center">
+          <h1 style="background-color:#fffffff7" class="animated bounceOut"> WELCOME</h1> 
+          <h2  style="background-color:#fffffff7" class="animated fadeInUp">CONTRACTOR MONITORING SYSTEM</h2>
+         </div>
+
+         <!-- {{ipAddress}} -->
+         <!-- <button mat-raised-button color="accent" routerLink="/drop">add rates</button>   -->
+
+       <div  class ="ab" *ngIf=show> 
+          <mat-accordion class="example-headers-align">
+            <mat-expansion-panel  hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+             LOGIN
+                </mat-panel-title>
+                <mat-panel-description>
+                  Type your Username and Password
+                  <mat-icon>account_circle</mat-icon>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <form [formGroup]="loginform">
+              <mat-form-field>
+                <input matInput placeholder="Username" formControlName="UserName">
+              </mat-form-field>&nbsp;
+          
+              <mat-form-field>
+                <input matInput  type="password" placeholder="Password" formControlName="Accesscode">
+              </mat-form-field>
+          </form>
+              <mat-action-row>
+                <button mat-button color="primary" [disabled]='!loginform.valid'(click)="login1()" >LOGIN</button>
+                <button mat-button color="warn"  (click)="clear()">CLEAR</button>
+              </mat-action-row>
+              {{errormsg}}
+            </mat-expansion-panel>
+          
+            <mat-expansion-panel  >
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  New User
+                </mat-panel-title>
+                <mat-panel-description>
+                  To Register as an user fill the details & submit
+                  <mat-icon>person_add</mat-icon>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+           <form [formGroup]="form">
+              <mat-form-field>
+                <input matInput placeholder="Name" formControlName="name" >
+                
+                <mat-error *ngIf="!form.controls['name'].valid && form.controls['name'].touched">
+                   {{ getusername() }} 
+                </mat-error>
+               
+              </mat-form-field>&nbsp;
+              <mat-form-field>
+                <input matInput placeholder="E-mail" (keyup)="checkmail($event.target.value)" formControlName="email">
+               
+                <mat-error *ngIf="!form.controls['email'].valid && form.controls['email'].touched">
+                  {{ getErrorEmail() }}
+                </mat-error>
+                <!-- <mat-error>Email is required</mat-error> -->
+              </mat-form-field>&nbsp;
+              <mat-form-field>
+                <input matInput placeholder="Address" formControlName="address">
+                <mat-error>Address is required</mat-error> 
+              </mat-form-field>&nbsp;
+              <mat-form-field>
+                <input matInput placeholder="Ciy" formControlName="city">
+                <mat-error *ngIf="!form.controls['city'].valid && form.controls['city'].touched">
+                  {{ getcity() }}
+                </mat-error>
+              </mat-form-field>&nbsp;
+              
+              <mat-form-field>
+                <mat-label>State</mat-label>
+                <select matNativeControl formControlName="state" >
+                  <option  *ngFor="let city of state"   [ngValue]="city.statename"> {{city.statename}} </option>
+                </select>
+              </mat-form-field>
+
+              &nbsp;
+
+
+
+              <mat-form-field>
+                <input matInput placeholder="Pincode" formControlName="pincode">
+                <mat-error *ngIf="!form.controls['pincode'].valid && form.controls['pincode'].touched">
+                  {{ getpincode() }} 
+
+                </mat-error>
+              </mat-form-field>
+
+              &nbsp;&nbsp;
+              <br> <br>
+              <mat-form-field>
+                <input matInput placeholder="Mobile No" formControlName="mobile">
+                <mat-error *ngIf="!form.controls['mobile'].valid && form.controls['mobile'].touched">
+                  {{ getmobile() }}
+                </mat-error>
+                <!-- <mat-error *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div> -->
+              </mat-form-field>
+              <!-- <mat-form-field>
+                <input matInput placeholder="Office Type" formControlName="officetype">
+              </mat-form-field> -->
+              &nbsp;
+              <mat-form-field>
+                <mat-label>Office Type</mat-label>
+                <select matNativeControl formControlName="officetype" >
+                  <option value="Contractor" >Contractor </option>
+                  <option value="Manufacturer" >Manufacturer </option>
+                </select>
+                <mat-error>Office Type is required</mat-error> 
+              </mat-form-field>
+
+              &nbsp;
+
+
+
+              <mat-form-field>
+                <mat-label>Category</mat-label>
+                <select matNativeControl   formControlName="category"  >
+                  <option value="Civil" >Civil </option>
+                  <option value="Electrical" >Electrical </option>
+                  <option value="Both" >Both</option>
+                </select>
+                <mat-error>select any one</mat-error> 
+              </mat-form-field>
+              &nbsp;
+              <!-- <mat-form-field>
+                <input matInput placeholder="Pick Secret Question 1" formControlName="q1">
+              </mat-form-field> -->
+
+              <mat-form-field>
+                <mat-label>Pick Secret Question 1</mat-label>
+                <select matNativeControl formControlName="q1" >
+                  <option value="What is th name of your favourite chilhood friend?" >What is th name of your favourite chilhood friend?  </option>
+                  <option value="In what city or town was your first job?" >In what city or town was your first job?</option>
+                  <option value="what was your favourite sport in high school?" >what was your favourite sport in high school?</option>
+                  <option value="In what year was your father born?" >In what year was your father born?</option>
+                  <option value="What is your favourite animal?" >What is your favourite animal?</option>
+                  <option value="What is your preferred musical genre?" >What is your preferred musical genre?</option>
+                  <option value="What are the last 5 digits of your driver's license number?" >What are the last 5 digits of your driver's license number?</option>
+               
+                  <option value="What was your dream job as a child?" >What was your dream job as a child?</option>
+                  <option value="What sports team do you love to see lose?" >What sports team do you love to see lose? </option>
+                  <option value="What time of the day were you born?" >What time of the day were you born?</option>
+                  <option value="What is the country of your ultimate dream vacation?" >What is the country of your ultimate dream vacation?</option>
+                  <option value="What street did you live on in third standard?" >What street did you live on in third standard?</option>
+                
+                </select>
+                <mat-error>Select a Question1</mat-error>
+              </mat-form-field>
+&nbsp;
+
+
+
+
+
+
+
+
+              <mat-form-field>
+                <input matInput placeholder="Give Answer1 here" formControlName="a1">
+                <mat-error>Answer is required</mat-error>
+              </mat-form-field>
+              &nbsp;
+              <!-- <mat-form-field>
+                <input matInput placeholder="Pick Secret Question 2" formControlName="q2">
+              </mat-form-field> -->
+              <mat-form-field>
+                <mat-label>Pick Secret Question 2</mat-label>
+                <select matNativeControl formControlName="q2"    >
+                  <option value="What is th name of your favourite chilhood friend?" >What is th name of your favourite chilhood friend?  </option>
+                  <option value="In what city or town was your first job?" >In what city or town was your first job?</option>
+                  <option value="what was your favourite sport in high school?" >what was your favourite sport in high school?</option>
+                  <option value="In what year was your father born?" >In what year was your father born?</option>
+                  <option value="What is your favourite animal?" >What is your favourite animal?</option>
+                  <option value="What is your preferred musical genre?" >What is your preferred musical genre?</option>
+                  <option value="What are the last 5 digits of your driver's license number?" >What are the last 5 digits of your driver's license number?</option>
+               
+                  <option value="What was your dream job as a child?" >What was your dream job as a child?</option>
+                  <option value="What sports team do you love to see lose?" >What sports team do you love to see lose? </option>
+                  <option value="What time of the day were you born?" >What time of the day were you born?</option>
+                  <option value="What is the country of your ultimate dream vacation?" >What is the country of your ultimate dream vacation?</option>
+                  <option value="What street did you live on in third standard?" >What street did you live on in third standard?</option>
+                
+                </select>
+                <mat-error>Select a Question2</mat-error>
+              </mat-form-field>
+
+
+
+              &nbsp;
+
+
+
+              <mat-form-field>
+                <input matInput placeholder="Give Answer2 here" formControlName="a2">
+                <mat-error>Answer is required</mat-error>
+              </mat-form-field>
+            </form>
+              <mat-action-row>
+                <button  [disabled]='!form.valid' mat-button color="warn"(click)="sub()" >Submit</button>
+                <button mat-button color="primary" (click)="clear()"  >Clear</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+          
+            <mat-expansion-panel >
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+               Forgot Password
+                </mat-panel-title>
+                <mat-panel-description>
+                 Enter Your Username And Password
+                  <mat-icon>remove_red_eye</mat-icon>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+          
+              <mat-form-field>
+                <input matInput placeholder="Username">
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Password">
+              </mat-form-field>
+              
+              
+          
+              <mat-action-row>
+                <button mat-button color="primary" >Submit</button>
+                <button mat-button color="warn" >Clear</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+          
+          </mat-accordion>
+        </div> 
+      
+        
+      </div>
+   
+    
+      
+      
+      </body>
+  

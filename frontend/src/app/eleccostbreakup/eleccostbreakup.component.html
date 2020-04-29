@@ -1,0 +1,118 @@
+<br>
+ <div class="container-fluid">
+ 
+      <h3 align="center" >Details For the Cost of Standard Items(ELECTRICAL)</h3>
+  
+       
+
+
+      <div class="qw" >
+        <tr class="to" *ngFor="let heading of head ">
+            <!-- //"tot":17.09,"water":3677.62,"tax":15,"sub":36.78,"add1":611.035 -->
+            {{heading.Itemcode}}   {{heading.SubHeadDes}} {{heading.MasterDesc}}{{heading.SubMasterDesc}}  <br>
+           </tr><br>
+    
+    </div>
+
+
+  
+
+</div>
+
+<!-- 
+<button   mat-raised-button  (click)="show()"> show</button> -->
+
+
+
+
+
+<div  class="container">
+  <div  class="table">
+  <table mat-table [dataSource]="listData" class="mat-elevation-z8">
+ 
+    <!-- Position Column -->
+    <ng-container matColumnDef="ItemCode">
+      <th mat-header-cell *matHeaderCellDef>ITEMCODE</th>
+      <td mat-cell *matCellDef="let element"> {{element.ItemCode}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Code">
+      <th mat-header-cell *matHeaderCellDef>CODE</th>
+      <td mat-cell *matCellDef="let element"> {{element.Code}} </td>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="Description">
+      <th mat-header-cell *matHeaderCellDef>  DESCRIPTION </th>
+      <td mat-cell *matCellDef="let element"> {{element.Description}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Unitvalue">
+      <th mat-header-cell *matHeaderCellDef> UNIT </th>
+      <td mat-cell *matCellDef="let element"> {{element.Unitvalue}} {{element.Unit}}  </td>
+    </ng-container> 
+    <ng-container matColumnDef="Quantity">
+      <th mat-header-cell *matHeaderCellDef>Quantity </th>
+      <td mat-cell *matCellDef="let element"> {{element.Quantity}} </td>
+    </ng-container> 
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Rate">
+      <th mat-header-cell *matHeaderCellDef> RATE(in rs) </th>
+      <td mat-cell *matCellDef="let element"> {{element.Rate}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="Amount">
+      <th mat-header-cell *matHeaderCellDef> Amount </th>
+      <td mat-cell *matCellDef="let element"> {{element.Amount}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+   
+  </table>
+ 
+    <br>
+
+    <div class="q" align="right">
+        <tr class="tot" *ngFor="let product of Produc" align="right">Total cost of materials  &nbsp;&nbsp;&nbsp;&nbsp; {{product.Materialover| number:'1.2-2'}}</tr> <br>
+   
+         
+          <tr  *ngFor="let product of Produc" align="right"> Cartage 1% of cost of materials:&nbsp;&nbsp;&nbsp;&nbsp;{{product.cartage| number:'1.2-2'}} </tr> <br>
+          <tr  *ngFor="let product of Produc" align="right">total &nbsp;&nbsp;&nbsp;&nbsp;{{product.Total1| number:'1.2-2'}} </tr> <br>
+          <tr  *ngFor="let product of Produc" align="right">Add {{product.overheads}} of Contractor's profit and Overheads :&nbsp;&nbsp;&nbsp;&nbsp;{{product.Totdivover| number:'1.2-2'}}</tr> <br>
+               
+          <tr  *ngFor="let product of Produc" align="right">Total: &nbsp;&nbsp;&nbsp;&nbsp;{{product.Total2| number:'1.2-2'}} </tr> <br>
+          <tr  *ngFor="let product of Produc" align="right"> Calculated quantity :&nbsp;&nbsp;&nbsp;&nbsp;{{product.calquan| number:'1.2-2'}} </tr> <br>
+          <tr  *ngFor="let product of Produc" align="right">Calculated Total ({{product.calquan}} Each) : &nbsp;&nbsp;&nbsp;&nbsp;{{product.Total4| number:'1.2-2'}}</tr> <br>
+     
+          <tr *ngFor = "let heading of head" align="right">
+    
+            say :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{heading.Rate| number:'1.2-2'}}
+          
+          </tr>
+  </div>
+  
+ 
+</div>
+  
+  
+  
+  
+  
+  
+  
+  </div><br>
+
+  <div class="sub_div">
+    <button color="warn" mat-fab routerLink="/Labour">Labour</button>&nbsp;&nbsp;&nbsp;
+    
+    <button color="accent" mat-fab routerLink="/mat">Materials</button>&nbsp;&nbsp;&nbsp;
+    <button color="primary" mat-fab routerLink="/plant">Plants</button>&nbsp;&nbsp;&nbsp;
+    <button color="warn" mat-fab routerLink="/Carriage">Carriage</button>&nbsp;&nbsp;&nbsp;
+    <button color="primary" mat-button routerLink="/rates">Rates</button>&nbsp;&nbsp;&nbsp;
+    <button color="warn" mat-raised-button routerLink="/cost">Cost Break up</button>&nbsp;&nbsp;&nbsp;
+    <button color="warn" mat-button routerLink="/search">Search</button>&nbsp;&nbsp;&nbsp;
+    
+    </div>
